@@ -10,6 +10,7 @@ const Contact = () => {
     mobile: "",
     email: "",
     subject: "",
+    class: "",
     description: "",
   });
 
@@ -32,23 +33,32 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // ✅ UPDATED VALIDATION RULES
   const validate = () => {
     const newErrors = {};
 
+    // ✅ Name mandatory
     if (!formData.name.trim()) newErrors.name = "Name is required";
 
+    // ✅ Mobile mandatory + 10 digits
     if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
     else if (!/^[0-9]{10}$/.test(formData.mobile))
       newErrors.mobile = "Mobile must be 10 digits";
 
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "Enter a valid email";
+    // ❌ Email NOT mandatory
+    // ✅ But if user types email, it must be valid
+    if (formData.email.trim()) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+        newErrors.email = "Enter a valid email";
+    }
 
+    // ✅ Subject mandatory
     if (!formData.subject.trim()) newErrors.subject = "Subject is required";
 
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
+    // ✅ Class mandatory
+    if (!formData.class.trim()) newErrors.class = "Class is required";
+
+    // ❌ Description NOT mandatory (so no validation)
 
     return newErrors;
   };
@@ -65,11 +75,14 @@ const Contact = () => {
     console.log("Contact Form Submitted:", formData);
 
     setSuccess(true);
+
+    // ✅ reset form
     setFormData({
       name: "",
       mobile: "",
       email: "",
       subject: "",
+      class: "",
       description: "",
     });
   };
@@ -161,7 +174,7 @@ const Contact = () => {
 
             {/* Name */}
             <div className="mb-5">
-              <label className="font-bold text-slate-900">Name</label>
+              <label className="font-bold text-slate-900">Name *</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
                 <FaUser className="text-yellow-500" />
                 <input
@@ -182,7 +195,7 @@ const Contact = () => {
 
             {/* Mobile */}
             <div className="mb-5">
-              <label className="font-bold text-slate-900">Mobile No</label>
+              <label className="font-bold text-slate-900">Mobile No *</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
                 <FaPhoneAlt className="text-yellow-500" />
                 <input
@@ -201,7 +214,7 @@ const Contact = () => {
               )}
             </div>
 
-            {/* Email */}
+            {/* Email (NOT mandatory) */}
             <div className="mb-5">
               <label className="font-bold text-slate-900">Email</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
@@ -211,7 +224,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="example@gmail.com"
+                  placeholder="example@gmail.com (optional)"
                   className="w-full outline-none bg-transparent text-slate-900 font-semibold"
                 />
               </div>
@@ -224,7 +237,7 @@ const Contact = () => {
 
             {/* Subject */}
             <div className="mb-5">
-              <label className="font-bold text-slate-900">Subject</label>
+              <label className="font-bold text-slate-900">Subject *</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
                 <FaHeading className="text-yellow-500" />
                 <input
@@ -243,14 +256,35 @@ const Contact = () => {
               )}
             </div>
 
-            {/* Description */}
+            {/* ✅ Class (MANDATORY) */}
+            <div className="mb-5">
+              <label className="font-bold text-slate-900">Class *</label>
+              <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
+                <FaHeading className="text-yellow-500" />
+                <input
+                  type="text"
+                  name="class"
+                  value={formData.class}
+                  onChange={handleChange}
+                  placeholder="Enter class"
+                  className="w-full outline-none bg-transparent text-slate-900 font-semibold"
+                />
+              </div>
+              {errors.class && (
+                <p className="mt-1 text-red-600 font-semibold text-sm">
+                  {errors.class}
+                </p>
+              )}
+            </div>
+
+            {/* Description (NOT mandatory) */}
             <div className="mb-6">
               <label className="font-bold text-slate-900">Description</label>
               <textarea
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                placeholder="Write your message here..."
+                placeholder="Write your message here... (optional)"
                 rows="5"
                 className="
                   mt-2 w-full px-4 py-3 rounded-2xl
@@ -260,11 +294,6 @@ const Contact = () => {
                   focus:border-yellow-400 transition
                 "
               />
-              {errors.description && (
-                <p className="mt-1 text-red-600 font-semibold text-sm">
-                  {errors.description}
-                </p>
-              )}
             </div>
 
             {/* Submit */}

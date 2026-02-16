@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import hero from "../assets/hero.png";
+import B2c from "../assets/b2c.jpg";
 
 const Hero = () => {
   useEffect(() => {
@@ -44,11 +44,14 @@ const Hero = () => {
       {/* ✅ BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${hero})` }}
+        style={{ backgroundImage: `url(${B2c})` }}
       />
 
-      {/* ✅ YELLOW → AMBER → YELLOW GRADIENT OVERLAY */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-yellow-400/50 via-amber-500/55 to-yellow-400/50" />
+      {/* ✅ FIX: REMOVE BLACK LOOK */}
+      <div className="absolute inset-0 z-0 bg-black/15" />
+
+      
+     <div className="absolute inset-0 z-0 bg-black/50" />
 
       {/* ✅ CONTENT */}
       <div className="w-full max-w-5xl mx-auto text-center relative z-20">
@@ -67,7 +70,7 @@ const Hero = () => {
           <span className="font-black">learning that adapts</span>
           <br />
           <span className="font-black">to </span>
-          <span className="text-white-500 font-black">you</span>
+          <span className="text-white font-black">you</span>
         </h1>
 
         <p
@@ -110,7 +113,7 @@ const Hero = () => {
               transition-all duration-300
             "
           >
-            Explore More
+            Learn More
           </button>
         </div>
       </div>
