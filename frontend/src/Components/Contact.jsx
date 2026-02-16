@@ -113,17 +113,10 @@ const Contact = () => {
 
             <p className="mt-3 text-slate-600 font-medium leading-relaxed">
               Fill out the form and our support team will contact you. We usually
-              respond within 24 hours.
+              respond within 24 to 48 hours.
             </p>
 
             <div className="mt-7 space-y-4 text-slate-900 font-semibold">
-              <p className="text-slate-700 font-bold">
-                Support:{" "}
-                <span className="text-slate-900 font-extrabold">
-                  EEC Help Center
-                </span>
-              </p>
-
               <p className="break-all text-slate-700">
                 Email:{" "}
                 <a

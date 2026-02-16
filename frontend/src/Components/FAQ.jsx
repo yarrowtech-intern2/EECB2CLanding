@@ -1,4 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import {
   FaPlay,
   FaGraduationCap,
@@ -10,7 +13,17 @@ import {
 import { CiWifiOff } from "react-icons/ci";
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  // ✅ FIX: start with null (no open by default)
+  const [openIndex, setOpenIndex] = useState(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 120,
+    });
+  }, []);
 
   const faqs = [
     {
@@ -27,7 +40,7 @@ const FAQ = () => {
     {
       icon: <FaGraduationCap className="text-lg" />,
       question: "What grades does it support?",
-      answer: "From Class 1 to Class 12.",
+      answer: "From Class 3 to Class 10.",
     },
     {
       icon: <FaGift className="text-lg" />,
@@ -49,8 +62,18 @@ const FAQ = () => {
 
   const contentRefs = useRef([]);
 
+  // ✅ FIX: smooth toggle with correct height calculation
   const toggleFAQ = (index) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+    setOpenIndex((prev) => {
+      const next = prev === index ? null : index;
+
+      // wait 1 frame so height can calculate correctly (AOS + transition fix)
+      requestAnimationFrame(() => {
+        window.dispatchEvent(new Event("resize"));
+      });
+
+      return next;
+    });
   };
 
   const getHeight = (index) => {
@@ -59,26 +82,33 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="relative py-20 px-4 bg-white overflow-hidden">
+    <section
+      id="faq"
+      className="relative py-16 xs:py-20 px-3 xs:px-4 bg-white overflow-hidden"
+    >
       {/* Soft background glow */}
       <div className="absolute -top-44 -right-44 w-[720px] h-[720px] bg-sky-100/70 blur-[170px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-56 -left-56 w-[720px] h-[720px] bg-yellow-100/70 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900">
+        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-slate-900">
             FAQ –{" "}
             <span className="text-yellow-500">Frequently Asked Questions</span>
           </h2>
 
-          <p className="mt-4 text-slate-600 font-medium text-base sm:text-lg">
+          <p className="mt-4 text-slate-600 font-medium text-sm xs:text-base sm:text-lg">
             Quick answers to common questions about how EEC works.
           </p>
         </div>
 
-        {/* ✅ FIXED GRID (NO side stretch) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        {/* Grid */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -107,13 +137,13 @@ const FAQ = () => {
                 <button
                   type="button"
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-7 py-7 flex items-center justify-between gap-5 text-left relative z-10"
+                  className="w-full px-6 xs:px-7 py-6 xs:py-7 flex items-center justify-between gap-5 text-left relative z-10"
                 >
-                  <div className="flex items-center gap-5 flex-1 min-w-0">
+                  <div className="flex items-center gap-4 xs:gap-5 flex-1 min-w-0">
                     {/* Icon */}
                     <div
                       className="
-                        w-12 h-12 rounded-2xl
+                        w-11 h-11 xs:w-12 xs:h-12 rounded-2xl
                         bg-[#FEF9C3]
                         border border-yellow-200/70
                         flex items-center justify-center
@@ -125,7 +155,7 @@ const FAQ = () => {
                       {faq.icon}
                     </div>
 
-                    <h3 className="text-[15px] sm:text-[17px] font-extrabold text-slate-900 break-words">
+                    <h3 className="text-[14px] xs:text-[15px] sm:text-[17px] font-extrabold text-slate-900 break-words">
                       <span className="mr-2 font-extrabold">Q.</span>
                       {faq.question}
                     </h3>
@@ -141,7 +171,7 @@ const FAQ = () => {
 
                 {/* Answer */}
                 <div
-                  className="px-7 overflow-hidden relative z-10"
+                  className="px-6 xs:px-7 overflow-hidden relative z-10"
                   style={{
                     height: isOpen ? getHeight(index) : 0,
                     transition:
@@ -150,10 +180,10 @@ const FAQ = () => {
                 >
                   <div
                     ref={(el) => (contentRefs.current[index] = el)}
-                    className="pb-7 pt-1"
+                    className="pb-6 xs:pb-7 pt-1"
                   >
                     <div
-                      className="pl-[68px]"
+                      className="pl-[62px] xs:pl-[68px]"
                       style={{
                         opacity: isOpen ? 1 : 0,
                         transform: isOpen

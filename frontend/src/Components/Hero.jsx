@@ -110,7 +110,7 @@ const Hero = () => {
               transition-all duration-300
             "
           >
-            Get Started
+            Explore More
           </button>
         </div>
       </div>

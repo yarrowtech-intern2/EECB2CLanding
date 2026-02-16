@@ -16,7 +16,6 @@ const WhatMakesEECUnique = () => {
 
   const smartLearning = [
     "AI-adaptive pathways",
-    "Instant audio & text help",
     "Skill progression logic",
     "No video dependency",
     "Safe, distraction-free UX",
@@ -25,7 +24,6 @@ const WhatMakesEECUnique = () => {
   const students = [
     "Learn faster with feedback",
     "Understand with audio help",
-    "Easy → Arduous challenges",
     "Boost focus & reasoning",
     "Track self-progress",
   ];

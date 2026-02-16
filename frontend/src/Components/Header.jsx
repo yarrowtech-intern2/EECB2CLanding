@@ -7,6 +7,9 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const mobileRef = useRef(null);
 
+  // ✅ Change this to your main website URL
+  const MAIN_WEBSITE_URL = "https://your-main-website.com";
+
   const navLinks = [
     { label: "Home", id: "home" },
     { label: "Why EEC", id: "why-eec" },
@@ -17,7 +20,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; 
+      const scrollPosition = window.scrollY + 150;
 
       if (window.scrollY < 100) {
         setActiveSection("home");
@@ -37,9 +40,10 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const Header = () => {
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [])
+  }, []);
 
   useEffect(() => {
     const escHandler = (e) => {
@@ -97,6 +101,7 @@ const Header = () => {
       <div className="w-full bg-[#fef3c7]/80 backdrop-blur-2xl border-b border-yellow-400 shadow-[0_18px_60px_rgba(0,0,0,0.10)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-[82px] flex items-center justify-between gap-6">
+            {/* LOGO */}
             <button
               onClick={() => scrollToSection("home")}
               className="flex items-center"
@@ -110,6 +115,7 @@ const Header = () => {
               />
             </button>
 
+            {/* DESKTOP NAV */}
             <nav className="hidden lg:flex items-center gap-9">
               {navLinks.map((item, idx) => (
                 <button
@@ -119,25 +125,31 @@ const Header = () => {
                   aria-label={`Navigate to ${item.label}`}
                 >
                   {item.label}
-                  <span 
+                  <span
                     className={`absolute left-0 -bottom-2 h-[3px] bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 rounded-full transition-all duration-300 ${
-                      activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
+                      activeSection === item.id
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
                     }`}
                   />
                 </button>
               ))}
             </nav>
 
+            {/* ✅ DESKTOP GET STARTED (LINK TO MAIN WEBSITE) */}
             <div className="hidden lg:flex items-center">
-              <button
-                onClick={() => scrollToSection("eecunique")}
+              <a
+                href={MAIN_WEBSITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-7 py-3 rounded-full bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-white font-extrabold text-sm shadow-lg shadow-yellow-500/25 hover:shadow-xl hover:shadow-yellow-500/30 hover:scale-[1.03] transition-all duration-300"
-                aria-label="Get started with EEC"
+                aria-label="Go to main website"
               >
                 Get Started
-              </button>
+              </a>
             </div>
 
+            {/* MOBILE MENU BUTTON */}
             <button
               className="lg:hidden w-12 h-12 rounded-2xl bg-white/30 hover:bg-white/40 border border-white/40 flex items-center justify-center transition"
               onClick={() => setMobileOpen(true)}
@@ -149,6 +161,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       {mobileOpen && (
         <div className="fixed inset-0 bg-black/50 flex justify-end z-[99999]">
           <div
@@ -156,7 +169,7 @@ const Header = () => {
             className="w-[88%] max-w-[390px] h-full bg-white shadow-2xl p-5 flex flex-col animate-slideIn"
           >
             <div className="flex items-center justify-between gap-3">
-              <button 
+              <button
                 onClick={() => scrollToSection("home")}
                 aria-label="Go to home"
               >
@@ -177,6 +190,7 @@ const Header = () => {
               </button>
             </div>
 
+            {/* MOBILE LINKS */}
             <div className="mt-7 flex flex-col gap-2">
               {navLinks.map((item, idx) => (
                 <button
@@ -184,8 +198,8 @@ const Header = () => {
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left px-4 py-3 rounded-xl font-extrabold transition ${
                     activeSection === item.id
-                      ? 'bg-yellow-50 text-yellow-700'
-                      : 'text-slate-800 hover:bg-yellow-50 hover:text-yellow-700'
+                      ? "bg-yellow-50 text-yellow-700"
+                      : "text-slate-800 hover:bg-yellow-50 hover:text-yellow-700"
                   }`}
                   aria-label={`Navigate to ${item.label}`}
                 >
@@ -194,18 +208,32 @@ const Header = () => {
               ))}
             </div>
 
+            {/* ✅ MOBILE GET STARTED (LINK TO MAIN WEBSITE) */}
             <div className="mt-auto pt-6 border-t border-slate-200">
-              <button
-                onClick={() => scrollToSection("eecunique")}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-white font-extrabold shadow-lg hover:opacity-95 transition"
-                aria-label="Get started with EEC"
+              <a
+                href={MAIN_WEBSITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full block text-center py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-white font-extrabold shadow-lg hover:opacity-95 transition"
+                aria-label="Go to main website"
               >
                 Get Started
-              </button>
+              </a>
             </div>
           </div>
         </div>
       )}
+
+      {/* ANIMATION */}
+      <style>{`
+        @keyframes slideIn {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
+        .animate-slideIn {
+          animation: slideIn 0.25s ease-out forwards;
+        }
+      `}</style>
     </header>
   );
 };

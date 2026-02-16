@@ -46,7 +46,7 @@ const FeaturesModules = () => {
     },
     {
       icon: <FaGraduationCap className="text-[20px]" />,
-      title: "Progressive Learning (Class 1–12)",
+      title: "Progressive Learning (Class 3–10)",
       description:
         "Seamless academic growth from one class to the next. Covers core subjects in a simple, consistent format.",
     },
