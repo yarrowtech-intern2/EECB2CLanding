@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import Logo from "../assets/eec.jpeg";
+// import Logo from "../assets/eec.jpeg";
+import Logo from "/logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
   const mobileRef = useRef(null);
 
-  // ✅ Change this to your main website URL
+  // Change this to your main website URL
   const MAIN_WEBSITE_URL = "https://your-main-website.com";
 
   const navLinks = [
@@ -21,6 +23,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 150;
+      setScrolled(window.scrollY > 20);
 
       if (window.scrollY < 100) {
         setActiveSection("home");
@@ -39,7 +42,7 @@ const Header = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -98,51 +101,77 @@ const Header = () => {
 
   return (
     <header className="w-full fixed top-0 left-0 z-[9999]">
-      <div className="w-full bg-[#fef3c7]/80 backdrop-blur-2xl border-b border-yellow-400 shadow-[0_18px_60px_rgba(0,0,0,0.10)]">
+      <div
+        className={`w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.08)] border-b border-slate-200/60"
+            : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-[82px] flex items-center justify-between gap-6">
+          <div
+            className={`flex items-center justify-between gap-4 transition-all duration-300 ${
+              scrolled ? "h-17.5" : "h-20.5"
+            }`}
+          >
             {/* LOGO */}
             <button
               onClick={() => scrollToSection("home")}
-              className="flex items-center"
+              className="flex items-center shrink-0"
               aria-label="Go to home"
             >
               <img
                 src={Logo}
                 alt="EEC Logo"
-                className="w-[170px] sm:w-[190px] h-[60px] object-contain"
+                className={`object-contain transition-all duration-300 ${
+                  scrolled
+                    ? "w-35 sm:w-40 h-12"
+                    : "w-37.5 sm:w-45 h-14"
+                }`}
                 draggable={false}
               />
             </button>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-9">
+            <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-[15px] font-extrabold text-slate-900/90 hover:text-slate-950 transition relative group"
+                  className={`relative px-4 py-2 rounded-lg text-[14px] font-bold transition-all duration-200 ${
+                    activeSection === item.id
+                      ? scrolled
+                        ? "text-yellow-700 bg-yellow-50"
+                        : "text-white bg-white/15"
+                      : scrolled
+                        ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100/70"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                  }`}
                   aria-label={`Navigate to ${item.label}`}
                 >
                   {item.label}
-                  <span
-                    className={`absolute left-0 -bottom-2 h-[3px] bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 rounded-full transition-all duration-300 ${
-                      activeSection === item.id
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
-                    }`}
-                  />
+                  {activeSection === item.id && (
+                    <span
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.75 rounded-full ${
+                        scrolled ? "bg-yellow-500" : "bg-yellow-400"
+                      }`}
+                    />
+                  )}
                 </button>
               ))}
             </nav>
 
-            {/* ✅ DESKTOP GET STARTED (LINK TO MAIN WEBSITE) */}
-            <div className="hidden lg:flex items-center">
+            {/* DESKTOP GET STARTED */}
+            <div className="hidden lg:flex items-center shrink-0">
               <a
                 href={MAIN_WEBSITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-7 py-3 rounded-full bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-white font-extrabold text-sm shadow-lg shadow-yellow-500/25 hover:shadow-xl hover:shadow-yellow-500/30 hover:scale-[1.03] transition-all duration-300"
+                className={`px-6 py-2.5 rounded-lg font-extrabold text-sm transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] ${
+                  scrolled
+                    ? "bg-yellow-400 hover:bg-yellow-300 text-slate-900 shadow-sm hover:shadow-md"
+                    : "bg-white text-slate-900 shadow-lg shadow-black/10 hover:bg-yellow-400"
+                }`}
                 aria-label="Go to main website"
               >
                 Get Started
@@ -151,55 +180,77 @@ const Header = () => {
 
             {/* MOBILE MENU BUTTON */}
             <button
-              className="lg:hidden w-12 h-12 rounded-2xl bg-white/30 hover:bg-white/40 border border-white/40 flex items-center justify-center transition"
+              className={`lg:hidden w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                scrolled
+                  ? "bg-slate-100 hover:bg-slate-200 text-slate-800"
+                  : "bg-white/15 hover:bg-white/25 text-white border border-white/20"
+              }`}
               onClick={() => setMobileOpen(true)}
               aria-label="Open mobile menu"
             >
-              <FaBars className="text-slate-900 text-lg" />
+              <FaBars className="text-base" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* MOBILE MENU */}
-      {mobileOpen && (
-        <div className="fixed inset-0 bg-black/50 flex justify-end z-[99999]">
-          <div
-            ref={mobileRef}
-            className="w-[88%] max-w-[390px] h-full bg-white shadow-2xl p-5 flex flex-col animate-slideIn"
-          >
-            <div className="flex items-center justify-between gap-3">
-              <button
-                onClick={() => scrollToSection("home")}
-                aria-label="Go to home"
-              >
-                <img
-                  src={Logo}
-                  alt="EEC Logo"
-                  className="w-[160px] h-[55px] object-contain"
-                  draggable={false}
-                />
-              </button>
+      {/* MOBILE OVERLAY + DRAWER */}
+      <div
+        className={`fixed inset-0 z-99999 transition-all duration-300 ${
+          mobileOpen
+            ? "visible opacity-100"
+            : "invisible opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
 
-              <button
-                className="w-11 h-11 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition"
-                onClick={() => setMobileOpen(false)}
-                aria-label="Close mobile menu"
-              >
-                <FaTimes className="text-slate-800 text-lg" />
-              </button>
-            </div>
+        {/* Drawer */}
+        <div
+          ref={mobileRef}
+          className={`absolute top-0 right-0 w-[85%] max-w-95 h-full bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Drawer header */}
+          <div className="flex items-center justify-between gap-3 p-5 border-b border-slate-100">
+            <button
+              onClick={() => scrollToSection("home")}
+              aria-label="Go to home"
+            >
+              <img
+                src={Logo}
+                alt="EEC Logo"
+                className="w-35 h-12 object-contain"
+                draggable={false}
+              />
+            </button>
 
-            {/* MOBILE LINKS */}
-            <div className="mt-7 flex flex-col gap-2">
+            <button
+              className="w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close mobile menu"
+            >
+              <FaTimes className="text-slate-700 text-base" />
+            </button>
+          </div>
+
+          {/* Mobile nav links */}
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex flex-col gap-1">
               {navLinks.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left px-4 py-3 rounded-xl font-extrabold transition ${
+                  className={`text-left px-4 py-3.5 rounded-xl font-bold text-[15px] transition-all duration-200 ${
                     activeSection === item.id
-                      ? "bg-yellow-50 text-yellow-700"
-                      : "text-slate-800 hover:bg-yellow-50 hover:text-yellow-700"
+                      ? "bg-yellow-50 text-yellow-700 border-l-[3px] border-yellow-500"
+                      : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 border-l-[3px] border-transparent"
                   }`}
                   aria-label={`Navigate to ${item.label}`}
                 >
@@ -207,33 +258,22 @@ const Header = () => {
                 </button>
               ))}
             </div>
+          </div>
 
-            {/* ✅ MOBILE GET STARTED (LINK TO MAIN WEBSITE) */}
-            <div className="mt-auto pt-6 border-t border-slate-200">
-              <a
-                href={MAIN_WEBSITE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full block text-center py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-white font-extrabold shadow-lg hover:opacity-95 transition"
-                aria-label="Go to main website"
-              >
-                Get Started
-              </a>
-            </div>
+          {/* Mobile CTA */}
+          <div className="p-5 border-t border-slate-100">
+            <a
+              href={MAIN_WEBSITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full block text-center py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold text-sm shadow-sm hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+              aria-label="Go to main website"
+            >
+              Get Started
+            </a>
           </div>
         </div>
-      )}
-
-      {/* ANIMATION */}
-      <style>{`
-        @keyframes slideIn {
-          from { transform: translateX(100%); }
-          to { transform: translateX(0); }
-        }
-        .animate-slideIn {
-          animation: slideIn 0.25s ease-out forwards;
-        }
-      `}</style>
+      </div>
     </header>
   );
 };
