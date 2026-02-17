@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
@@ -28,6 +29,7 @@ function Home() {
 export default function App() {
   return (
     <div className="font-sans scroll-smooth overflow-x-hidden">
+      <Toaster position="bottom-right" reverseOrder={false} />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
