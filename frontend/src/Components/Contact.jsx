@@ -33,7 +33,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ UPDATED VALIDATION RULES
+  // ✅ VALIDATION RULES (EMAIL MANDATORY)
   const validate = () => {
     const newErrors = {};
 
@@ -45,12 +45,10 @@ const Contact = () => {
     else if (!/^[0-9]{10}$/.test(formData.mobile))
       newErrors.mobile = "Mobile must be 10 digits";
 
-    // ❌ Email NOT mandatory
-    // ✅ But if user types email, it must be valid
-    if (formData.email.trim()) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-        newErrors.email = "Enter a valid email";
-    }
+    // ✅ Email mandatory + valid
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Enter a valid email";
 
     // ✅ Subject mandatory
     if (!formData.subject.trim()) newErrors.subject = "Subject is required";
@@ -58,25 +56,35 @@ const Contact = () => {
     // ✅ Class mandatory
     if (!formData.class.trim()) newErrors.class = "Class is required";
 
-    // ❌ Description NOT mandatory (so no validation)
-
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
-    console.log("Contact Form Submitted:", formData);
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwTGN-QWyr2BPbV9NGUCWSTpcv9SO_PqQsiNxz-KSOQqoyhm3ZTVyYALMWg3fZYLWSX/exec", {
+      method: "POST",
+      mode: "no-cors", // required for Apps Script
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData,
+        project: "B2C", // 🔥 important: tells script to store in EEC B2C tab
+      }),
+    });
 
+    // Show success message
     setSuccess(true);
 
-    // ✅ reset form
+    // Reset form
     setFormData({
       name: "",
       mobile: "",
@@ -85,7 +93,13 @@ const Contact = () => {
       class: "",
       description: "",
     });
-  };
+
+  } catch (error) {
+    console.error("Submission Error:", error);
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <section
@@ -130,16 +144,20 @@ const Contact = () => {
             </p>
 
             <div className="mt-7 space-y-4 text-slate-900 font-semibold">
+              {/* Email */}
               <p className="break-all text-slate-700">
                 Email:{" "}
                 <a
                   href="mailto:electroniceducaresales@yarrowtech.co.in"
+                  target="_blank"
+                  rel="noreferrer"
                   className="font-extrabold text-slate-950 hover:text-yellow-600 hover:underline transition-all duration-300"
                 >
                   electroniceducaresales@yarrowtech.co.in
                 </a>
               </p>
 
+              {/* Phone */}
               <p className="text-slate-700">
                 Phone:{" "}
                 <a
@@ -214,9 +232,9 @@ const Contact = () => {
               )}
             </div>
 
-            {/* Email (NOT mandatory) */}
+            {/* Email (MANDATORY) */}
             <div className="mb-5">
-              <label className="font-bold text-slate-900">Email</label>
+              <label className="font-bold text-slate-900">Email *</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
                 <FaEnvelope className="text-yellow-500" />
                 <input
@@ -224,7 +242,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="example@gmail.com (optional)"
+                  placeholder="example@gmail.com"
                   className="w-full outline-none bg-transparent text-slate-900 font-semibold"
                 />
               </div>
@@ -256,7 +274,7 @@ const Contact = () => {
               )}
             </div>
 
-            {/* ✅ Class (MANDATORY) */}
+            {/* Class */}
             <div className="mb-5">
               <label className="font-bold text-slate-900">Class *</label>
               <div className="mt-2 flex items-center gap-3 px-4 py-3 rounded-2xl border border-slate-200 bg-white focus-within:border-yellow-400 transition">
@@ -277,14 +295,14 @@ const Contact = () => {
               )}
             </div>
 
-            {/* Description (NOT mandatory) */}
+            {/* Description */}
             <div className="mb-6">
               <label className="font-bold text-slate-900">Description</label>
               <textarea
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                placeholder="Write your message here... (optional)"
+                placeholder="Write your message here..."
                 rows="5"
                 className="
                   mt-2 w-full px-4 py-3 rounded-2xl

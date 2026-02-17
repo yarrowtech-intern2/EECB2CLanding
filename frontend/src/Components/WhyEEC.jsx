@@ -57,7 +57,7 @@ const WhyEEC = () => {
 
           <p className="text-slate-600 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed font-medium">
             Electronic Educare (EEC) is your one-stop intelligent learning
-            partner for school students from Class 1 to 12. Powered by smart AI
+            partner for school students from Class 3 to 10. Powered by smart AI
             and machine learning, it delivers personalized learning experiences,
             practice modules, and instant academic support to help every student
             thrive. We're here to make education smarter, faster, and
