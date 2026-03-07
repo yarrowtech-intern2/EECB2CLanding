@@ -1,289 +1,277 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
+import React, { useState, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useTexture, Billboard } from "@react-three/drei";
+import { Menu, X, ChevronRight, Brain, Zap, Trophy } from "lucide-react";
 
-import {
-  FaArrowRight,
-  FaBrain,
-  FaGamepad,
-  FaRocket,
-  FaTrophy,
-} from "react-icons/fa";
+/* =============================
+   IMPORT IMAGES
+============================= */
 
-/* ============================
-   PARTICLE FIELD
-============================ */
+import aiImg from "../assets/AI.jpg";
+import trophyImg from "../assets/Trophy.jpg";
+import studentImg from "../assets/cap.jpg";
 
-const ParticleField = () => {
-  const points = useRef();
+/* =============================
+   PARTICLES
+============================= */
 
-  const particles = useMemo(() => {
-    const arr = new Float32Array(500 * 3);
-    for (let i = 0; i < 500; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 40;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 40;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 40;
-    }
-    return arr;
-  }, []);
+const Particles = () => {
+  const ref = useRef();
 
-  useFrame(({ clock }) => {
-    if (points.current) {
-      const t = clock.getElapsedTime();
-      points.current.rotation.y = t * 0.02;
-      points.current.rotation.x = t * 0.01;
-    }
+  useFrame(() => {
+    if (ref.current) ref.current.rotation.y += 0.0005;
   });
 
+  const particles = [];
+
+  for (let i = 0; i < 120; i++) {
+    particles.push(
+      (Math.random() - 0.5) * 8,
+      (Math.random() - 0.5) * 8,
+      (Math.random() - 0.5) * 8
+    );
+  }
+
   return (
-    <points ref={points}>
+    <points ref={ref}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
+          array={new Float32Array(particles)}
           count={particles.length / 3}
-          array={particles}
           itemSize={3}
         />
       </bufferGeometry>
 
-      <pointsMaterial
-        color="#fbbf24"
-        size={0.12}
-        transparent
-        opacity={0.8}
-      />
+      <pointsMaterial size={0.04} color="#fbbf24" />
     </points>
   );
 };
 
-/* ============================
-   CAMERA PARALLAX
-============================ */
+/* =============================
+   IMAGE SLIDESHOW SYSTEM
+============================= */
 
-const CameraController = ({ mouse }) => {
-  useFrame(({ camera }) => {
-    camera.position.x += (mouse.x * 0.03 - camera.position.x) * 0.05;
-    camera.position.y += (-mouse.y * 0.03 - camera.position.y) * 0.05;
-    camera.lookAt(0, 0, 0);
-  });
+const ImageSlider3D = () => {
 
-  return null;
-};
+  const groupRef = useRef();
 
-/* ============================
-   AI NEURAL NETWORK
-============================ */
+  const aiRef = useRef();
+  const trophyRef = useRef();
+  const studentRef = useRef();
 
-const NeuralNetwork = () => {
-  const group = useRef();
+  const aiTexture = useTexture(aiImg);
+  const trophyTexture = useTexture(trophyImg);
+  const studentTexture = useTexture(studentImg);
 
-  const nodes = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 40; i++) {
-      arr.push([
-        (Math.random() - 0.5) * 12,
-        (Math.random() - 0.5) * 8,
-        (Math.random() - 0.5) * 12,
-      ]);
-    }
-    return arr;
-  }, []);
+  const planeSize = (texture, base = 1) => {
+    if (!texture.image) return [base, base];
+    const ratio = texture.image.width / texture.image.height;
+    return [base * ratio, base];
+  };
 
   useFrame(({ clock }) => {
+
     const t = clock.getElapsedTime();
 
-    if (group.current) {
-      group.current.rotation.y = t * 0.1;
-      group.current.rotation.x = Math.sin(t * 0.2) * 0.1;
+    if (groupRef.current) {
+      groupRef.current.position.y = Math.sin(t * 0.7) * 0.05;
     }
+
+    const step = Math.floor(t % 6);
+
+    if (aiRef.current) aiRef.current.visible = step < 2;
+    if (trophyRef.current) trophyRef.current.visible = step >= 2 && step < 4;
+    if (studentRef.current) studentRef.current.visible = step >= 4;
+
   });
 
   return (
-    <group ref={group}>
-      {/* Nodes */}
-      {nodes.map((pos, i) => (
-        <mesh key={i} position={pos}>
-          <sphereGeometry args={[0.15, 16, 16]} />
-          <meshStandardMaterial color="#fbbf24" emissive="#fbbf24" />
+    <group ref={groupRef}>
+
+      {/* AI IMAGE */}
+      <Billboard>
+        <mesh ref={aiRef} position={[0,0,0]}>
+          <planeGeometry args={planeSize(aiTexture,1.8)} />
+          <meshBasicMaterial map={aiTexture} transparent />
         </mesh>
-      ))}
+      </Billboard>
 
-      {/* Connections */}
-      {nodes.map((a, i) =>
-        nodes.map((b, j) => {
-          const dist = Math.sqrt(
-            (a[0] - b[0]) ** 2 +
-              (a[1] - b[1]) ** 2 +
-              (a[2] - b[2]) ** 2
-          );
+      {/* TROPHY IMAGE */}
+      <Billboard>
+        <mesh ref={trophyRef} position={[0,0,0]}>
+          <planeGeometry args={planeSize(trophyTexture,1.8)} />
+          <meshBasicMaterial map={trophyTexture} transparent />
+        </mesh>
+      </Billboard>
 
-          if (dist < 3 && i < j) {
-            const mid = [
-              (a[0] + b[0]) / 2,
-              (a[1] + b[1]) / 2,
-              (a[2] + b[2]) / 2,
-            ];
+      {/* STUDENT IMAGE */}
+      <Billboard>
+        <mesh ref={studentRef} position={[0,0,0]}>
+          <planeGeometry args={planeSize(studentTexture,1.8)} />
+          <meshBasicMaterial map={studentTexture} transparent />
+        </mesh>
+      </Billboard>
 
-            return (
-              <mesh key={`${i}-${j}`} position={mid}>
-                <cylinderGeometry args={[0.01, 0.01, dist, 8]} />
-                <meshStandardMaterial color="#fde68a" />
-              </mesh>
-            );
-          }
-
-          return null;
-        })
-      )}
     </group>
   );
 };
 
-/* ============================
-   HERO
-============================ */
+/* =============================
+   SCENE
+============================= */
 
-const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
-
-  useEffect(() => {
-    const handleMouse = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 10,
-        y: (e.clientY / window.innerHeight - 0.5) * 10,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (!section) return;
-
-    section.scrollIntoView({ behavior: "smooth" });
-  };
-
+const Scene = () => {
   return (
-    <section
-      id="home"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* 3D BACKGROUND */}
-      <div className="absolute inset-0">
-        <Canvas camera={{ position: [0, 0, 12], fov: 75 }}>
-          <color attach="background" args={["#fffaf0"]} />
+    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
+      <ambientLight intensity={0.8} />
+      <directionalLight position={[5, 5, 5]} intensity={1.4} />
+      <pointLight position={[0, 2, 2]} intensity={1.3} color="#ffb300" />
 
-          <ambientLight intensity={0.6} />
-
-          <directionalLight
-            position={[5, 8, 6]}
-            intensity={1}
-            color="#fbbf24"
-          />
-
-          <CameraController mouse={mousePosition} />
-
-          <ParticleField />
-
-          <NeuralNetwork />
-        </Canvas>
-      </div>
-
-      {/* HERO CONTENT */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full px-6">
-
-        <div
-          data-aos="fade-up"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-yellow-50 border border-yellow-200 text-sm font-bold mb-8"
-        >
-          <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
-          NEXT GENERATION LEARNING
-        </div>
-
-        <h1
-          data-aos="fade-up"
-          data-aos-delay="100"
-          className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-6 leading-tight"
-        >
-          Personalized Learning
-          <br />
-
-          <span className="bg-gradient-to-r from-yellow-500 to-amber-500 bg-clip-text text-transparent">
-            AI Guided Study
-          </span>
-        </h1>
-
-        <p
-          data-aos="fade-up"
-          data-aos-delay="150"
-          className="text-gray-700 text-xl md:text-2xl mb-10 max-w-3xl"
-        >
-          Gamified learning, adaptive study paths, and instant concept
-          support designed to help students master subjects faster.
-        </p>
-
-        <div
-          data-aos="fade-up"
-          data-aos-delay="200"
-          className="flex gap-5 justify-center"
-        >
-
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-9 py-4 text-lg bg-yellow-500 text-white rounded-xl font-bold hover:bg-yellow-600 transition flex items-center gap-2"
-          >
-            Start Free
-            <FaArrowRight />
-          </button>
-
-          <button
-            onClick={() => scrollToSection("features")}
-            className="px-9 py-4 text-lg border border-yellow-500 rounded-xl font-bold hover:bg-yellow-50 transition"
-          >
-            Explore
-          </button>
-
-        </div>
-
-        <div className="mt-10 flex flex-wrap justify-center gap-6 text-gray-600 text-sm">
-
-          <div className="flex items-center gap-2">
-            <FaBrain className="text-yellow-500" />
-            AI Tutor
-          </div>
-
-          <div className="flex items-center gap-2">
-            <FaGamepad className="text-yellow-500" />
-            Gamified Learning
-          </div>
-
-          <div className="flex items-center gap-2">
-            <FaRocket className="text-yellow-500" />
-            Fast Progress
-          </div>
-
-          <div className="flex items-center gap-2">
-            <FaTrophy className="text-yellow-500" />
-            Achievements
-          </div>
-
-        </div>
-
-      </div>
-    </section>
+      <Particles />
+      <ImageSlider3D />
+    </Canvas>
   );
 };
 
-export default Hero;
+/* =============================
+   HEADER
+============================= */
+
+const Header = () => {
+
+  const [mobileOpen,setMobileOpen] = useState(false);
+  const [scrolled,setScrolled] = useState(false);
+
+  useEffect(()=>{
+
+    const handleScroll = ()=>{
+      setScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener("scroll",handleScroll)
+
+    return ()=>window.removeEventListener("scroll",handleScroll)
+
+  },[])
+
+  return(
+    <header className={`fixed w-full z-50 transition ${
+      scrolled
+      ? "bg-amber-950/90 backdrop-blur border-b border-amber-700"
+      : "bg-transparent"
+    }`}>
+
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+        <div className="flex items-center gap-2">
+          <Brain className="text-amber-300"/>
+          <span className="text-white font-bold text-xl">EEC</span>
+        </div>
+
+        <button
+        className="md:hidden text-white"
+        onClick={()=>setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X/> : <Menu/>}
+        </button>
+
+      </div>
+
+    </header>
+  )
+}
+
+/* =============================
+   HERO
+============================= */
+
+const Hero = () => {
+
+  const scrollToContact = ()=>{
+    const section = document.getElementById("contact")
+
+    if(section){
+      section.scrollIntoView({behavior:"smooth"})
+    }
+  }
+
+  return(
+
+    <section className="relative min-h-screen bg-gradient-to-br from-amber-900 via-orange-800 to-amber-950 overflow-hidden pt-20">
+
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"/>
+      <div className="absolute bottom-0 -left-40 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl"/>
+
+      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+
+        {/* TEXT */}
+        <div className="space-y-8">
+
+          <h1 className="text-5xl lg:text-7xl font-black text-white leading-tight">
+            Personalized
+            <br/>
+            <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
+              Learning With AI
+            </span>
+          </h1>
+
+          <p className="text-amber-100 text-lg max-w-lg">
+            AI-powered tutoring, gamified learning, and adaptive study paths
+            helping students master subjects faster.
+          </p>
+
+          <button
+          onClick={scrollToContact}
+          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-300 to-orange-400 text-amber-900 font-bold rounded-xl hover:scale-105 transition"
+          >
+            Start Free Trial
+            <ChevronRight/>
+          </button>
+
+          <div className="flex gap-4 pt-6">
+
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <Brain size={16} className="text-amber-300"/>
+              <span className="text-white text-sm">AI Tutor</span>
+            </div>
+
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <Zap size={16} className="text-amber-300"/>
+              <span className="text-white text-sm">Fast Progress</span>
+            </div>
+
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <Trophy size={16} className="text-amber-300"/>
+              <span className="text-white text-sm">Achievements</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* 3D HERO */}
+
+        <div className="relative h-[600px]">
+          <Scene/>
+        </div>
+
+      </div>
+
+    </section>
+  )
+}
+
+/* =============================
+   MAIN
+============================= */
+
+export default function EECLanding(){
+
+  return(
+    <div className="bg-black min-h-screen">
+      <Header/>
+      <Hero/>
+    </div>
+  )
+}
