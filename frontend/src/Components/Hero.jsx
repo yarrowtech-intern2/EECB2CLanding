@@ -1,31 +1,179 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import B2c from "../assets/b2c.jpg";
+
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 import {
-  FaRocket,
+  FaArrowRight,
+  FaChevronDown,
   FaBrain,
   FaGamepad,
-  FaChevronDown,
+  FaRocket,
+  FaTrophy,
 } from "react-icons/fa";
 
+/* ============================
+   PARTICLE GALAXY BACKGROUND
+============================ */
+
+const ParticleField = () => {
+  const points = useRef();
+
+  const particles = new Float32Array(400 * 3);
+
+  for (let i = 0; i < 400; i++) {
+    particles[i * 3] = (Math.random() - 0.5) * 40;
+    particles[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    particles[i * 3 + 2] = (Math.random() - 0.5) * 40;
+  }
+
+  useFrame(({ clock }) => {
+    if (points.current) {
+      points.current.rotation.y = clock.getElapsedTime() * 0.02;
+      points.current.rotation.x = clock.getElapsedTime() * 0.01;
+    }
+  });
+
+  return (
+    <points ref={points}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={particles.length / 3}
+          array={particles}
+          itemSize={3}
+        />
+      </bufferGeometry>
+
+      <pointsMaterial
+        color="#fbbf24"
+        size={0.12}
+        transparent
+        opacity={0.8}
+      />
+    </points>
+  );
+};
+
+/* ============================
+   CAMERA PARALLAX MOTION
+============================ */
+
+const CameraController = ({ mouse }) => {
+  useFrame(({ camera }) => {
+    camera.position.x += (mouse.x * 0.03 - camera.position.x) * 0.05;
+    camera.position.y += (-mouse.y * 0.03 - camera.position.y) * 0.05;
+    camera.lookAt(0, 0, 0);
+  });
+
+  return null;
+};
+
+/* ============================
+   CINEMATIC SCENE DRIFT
+============================ */
+
+const SceneDrift = ({ children }) => {
+  const group = useRef();
+
+  useFrame(({ clock }) => {
+    if (group.current) {
+      group.current.rotation.y =
+        Math.sin(clock.getElapsedTime() * 0.15) * 0.15;
+      group.current.rotation.x =
+        Math.cos(clock.getElapsedTime() * 0.1) * 0.08;
+    }
+  });
+
+  return <group ref={group}>{children}</group>;
+};
+
+/* ============================
+   FLOATING GEOMETRIC BLOCK
+============================ */
+
+const GeometricBlock = ({ position, scale, color, speed, type }) => {
+  const meshRef = useRef();
+
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+
+    const t = clock.getElapsedTime();
+
+    meshRef.current.rotation.x = t * speed;
+    meshRef.current.rotation.y = t * speed * 0.8;
+
+    meshRef.current.position.y =
+      position[1] + Math.sin(t * 0.7 + position[0]) * 1.2;
+  });
+
+  const getGeometry = () => {
+    if (type === "cube") return <boxGeometry args={[1, 1, 1]} />;
+    if (type === "pyramid") return <coneGeometry args={[0.9, 1.2, 4]} />;
+    return <cylinderGeometry args={[0.6, 0.6, 1.2, 6]} />;
+  };
+
+  return (
+    <mesh ref={meshRef} position={position} scale={scale}>
+      {getGeometry()}
+      <meshStandardMaterial
+        color={color}
+        metalness={0.3}
+        roughness={0.6}
+      />
+    </mesh>
+  );
+};
+
+/* ============================
+   GRID FLOOR
+============================ */
+
+const GridFloor = () => {
+  return (
+    <gridHelper
+      args={[40, 40, "#fde68a", "#fef3c7"]}
+      position={[0, -5, 0]}
+    />
+  );
+};
+
+/* ============================
+   HERO SECTION
+============================ */
+
 const Hero = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     AOS.init({
       duration: 900,
       once: true,
-      offset: 80,
-      easing: "ease-out",
+      easing: "ease-out-cubic",
     });
-    AOS.refresh();
+  }, []);
+
+  useEffect(() => {
+    const handleMouse = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 10,
+        y: (e.clientY / window.innerHeight - 0.5) * 10,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouse);
+
+    return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -33,145 +181,136 @@ const Hero = () => {
     const section = document.getElementById(id);
     if (!section) return;
 
-    const header = document.querySelector("header");
-    const headerHeight = header ? header.offsetHeight : 0;
-
-    const y =
-      section.getBoundingClientRect().top +
-      window.pageYOffset -
-      (headerHeight + 20);
-
-    window.scrollTo({ top: y, behavior: "smooth" });
+    section.scrollIntoView({ behavior: "smooth" });
   };
-
-  const highlights = [
-    {
-      icon: <FaBrain />,
-      text: "AI-Powered Learning",
-    },
-    {
-      icon: <FaGamepad />,
-      text: "Gamified Progress",
-    },
-    {
-      icon: <FaRocket />,
-      text: "Boost Results",
-    },
-  ];
 
   return (
     <section
       id="home"
-      className="w-full min-h-screen relative overflow-hidden flex items-center justify-center"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image with parallax */}
-      <div
-        className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat scale-110"
-        style={{
-          backgroundImage: `url(${B2c})`,
-          transform: `scale(1.1) translateY(${scrollY * 0.15}px)`,
-        }}
-      />
+      {/* ========================= */}
+      {/* 3D CANVAS BACKGROUND */}
+      {/* ========================= */}
 
-      {/* Gradient overlay for readability */}
-      <div className="absolute inset-0 z-[1] bg-linear-to-b from-black/80 via-black/60 to-black/80" />
+      <div className="absolute inset-0">
+        <Canvas camera={{ position: [0, 0, 18], fov: 75 }}>
+          <color attach="background" args={["#fffaf0"]} />
 
-      {/* Animated accent glows */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/15 rounded-full blur-[120px] z-[2]" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-500/10 rounded-full blur-[140px] z-[2]" />
+          <CameraController mouse={mousePosition} />
 
-      {/* Content */}
-      <div className="w-full max-w-5xl mx-auto text-center relative z-10 px-4 pt-28 sm:pt-32 md:pt-36 pb-20">
-        {/* Badge */}
-        {/* <div
-          data-aos="fade-down"
-          data-aos-delay="100"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8"
+          <ambientLight intensity={0.7} />
+
+          <directionalLight
+            position={[5, 8, 6]}
+            intensity={1}
+            color="#fbbf24"
+          />
+
+          <ParticleField />
+
+          <SceneDrift>
+
+            <GeometricBlock
+              position={[-8, 4, -8]}
+              scale={2.5}
+              color="#fcd34d"
+              speed={0.4}
+              type="cube"
+            />
+
+            <GeometricBlock
+              position={[8, -2, -10]}
+              scale={2}
+              color="#fbbf24"
+              speed={0.3}
+              type="pyramid"
+            />
+
+            <GeometricBlock
+              position={[0, 5, -12]}
+              scale={1.8}
+              color="#f59e0b"
+              speed={0.5}
+              type="cylinder"
+            />
+
+            <GeometricBlock
+              position={[-4, -3, -6]}
+              scale={1.5}
+              color="#fef3c7"
+              speed={0.35}
+              type="cube"
+            />
+
+          </SceneDrift>
+
+          <GridFloor />
+
+        </Canvas>
+      </div>
+
+      {/* ========================= */}
+      {/* HERO CONTENT */}
+      {/* ========================= */}
+
+      <div className="relative z-10 text-center max-w-3xl px-6">
+
+        <div
+          data-aos="fade-up"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-50 border border-yellow-200 text-xs font-bold mb-6"
         >
-          <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-          <span className="text-white/90 font-bold text-sm tracking-wide">
-            India's Smart Learning Platform
-          </span>
-        </div> */}
+          <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" />
+          NEXT GENERATION LEARNING
+        </div>
 
-        {/* Main heading */}
         <h1
           data-aos="fade-up"
-          data-aos-delay="180"
-          className="font-black tracking-tight leading-[1.05] text-[38px] sm:text-[52px] md:text-[68px] lg:text-[82px] text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+          data-aos-delay="100"
+          className="text-4xl md:text-6xl font-black text-slate-900 mb-6"
         >
-          Personalized
+          Personalized Learning
           <br />
-          <span>learning that adapts</span>
-          <br />
-          <span>to </span>
-          <span className="relative inline-block">
-            <span className="relative z-10">you</span>
-            <span className="absolute bottom-1 sm:bottom-2 left-0 w-full h-3 sm:h-4 bg-yellow-400/40 rounded-sm -skew-x-3 z-0" />
+
+          <span className="bg-gradient-to-r from-yellow-500 to-amber-500 bg-clip-text text-transparent">
+            AI Guided Study
           </span>
         </h1>
 
-        {/* Subtitle */}
         <p
           data-aos="fade-up"
-          data-aos-delay="260"
-          className="mt-7 max-w-2xl mx-auto text-white/85 text-base sm:text-lg md:text-xl leading-relaxed font-medium"
+          data-aos-delay="150"
+          className="text-slate-700 mb-10 text-lg"
         >
-          AI-guided study paths, concept support, and gamified progress —
-          crafted to boost focus, reduce stress, and improve outcomes.
+          Gamified learning, adaptive study paths, and instant concept
+          support designed to help students master subjects faster.
         </p>
 
-        {/* Highlight pills */}
         <div
           data-aos="fade-up"
-          data-aos-delay="340"
-          className="mt-8 flex flex-wrap justify-center gap-3"
+          data-aos-delay="200"
+          className="flex gap-4 justify-center"
         >
-          {highlights.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-white/90 font-semibold text-sm hover:bg-white/15 transition-all duration-300"
-            >
-              <span className="text-yellow-400">{item.icon}</span>
-              {item.text}
-            </div>
-          ))}
-        </div>
 
-        {/* CTA buttons */}
-        <div
-          data-aos="fade-up"
-          data-aos-delay="420"
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
           <button
             onClick={() => scrollToSection("contact")}
-            className="px-10 py-4 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold text-base sm:text-lg shadow-lg shadow-yellow-500/30 hover:shadow-xl hover:shadow-yellow-400/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+            className="px-7 py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 transition flex items-center gap-2"
           >
-            Get Started Free
+            Start Free
+            <FaArrowRight />
           </button>
 
           <button
-            onClick={() => scrollToSection("eecunique")}
-            className="px-10 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/25 hover:bg-white/20 text-white font-extrabold text-base sm:text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+            onClick={() => scrollToSection("features")}
+            className="px-7 py-3 border border-yellow-500 rounded-lg font-bold hover:bg-yellow-50 transition"
           >
-            Learn More
+            Explore
           </button>
-        </div>
 
-        {/* Scroll indicator */}
-        <div
-          data-aos="fade-up"
-          data-aos-delay="500"
-          className="mt-16 flex flex-col items-center gap-2 cursor-pointer group"
-          onClick={() => scrollToSection("why-eec")}
-        >
-          <span className="text-white/50 text-xs font-bold tracking-widest uppercase group-hover:text-white/70 transition">
-            Scroll to explore
-          </span>
-          <FaChevronDown className="text-white/40 text-sm animate-bounce group-hover:text-yellow-400 transition" />
         </div>
       </div>
+
+
     </section>
   );
 };

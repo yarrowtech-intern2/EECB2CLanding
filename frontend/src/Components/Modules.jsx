@@ -40,7 +40,7 @@ const FeaturesModules = () => {
     },
     {
       icon: <FaHeadphones className="text-[20px]" />,
-      title: "Instant AI-Powered Explanations",
+      title: "Instant Explanations",
       description:
         "Stuck on a question? Instant text and audio explanations to clarify doubts quickly - no need to search elsewhere.",
     },
@@ -58,28 +58,11 @@ const FeaturesModules = () => {
     },
     {
       icon: <FaTrophy className="text-[20px]" />,
-      title: "Weekly Leaderboards & Motivation",
+      title: "Weekly Leaderboards",
       description:
         "Fun rankings and shortcuts to keep students engaged week after week.",
     },
-    {
-      icon: <FaBrain className="text-[20px]" />,
-      title: "Academic Brain Zones",
-      description:
-        "Reasoning, memory boosters, picture studies, written records and mini assessments for real growth.",
-    },
-    {
-      icon: <FaVolumeUp className="text-[20px]" />,
-      title: "Audio-Based Clarification",
-      description:
-        "Human-style AI audio explanations for students who learn better by listening.",
-    },
-    {
-      icon: <FaUsers className="text-[20px]" />,
-      title: "Parent Dashboard",
-      description:
-        "Clear, real-time view of activity, quiz scores, weak areas and overall progress.",
-    },
+    
   ];
 
   return (

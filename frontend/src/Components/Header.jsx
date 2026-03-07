@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-// import Logo from "../assets/eec.jpeg";
 import Logo from "/logo.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -9,7 +8,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const mobileRef = useRef(null);
 
-  // Change this to your main website URL
   const MAIN_WEBSITE_URL = "https://your-main-website.com";
 
   const navLinks = [
@@ -19,6 +17,10 @@ const Header = () => {
     { label: "FAQ", id: "faq" },
     { label: "Contacts", id: "contact" },
   ];
+
+  /* ======================
+     SCROLL ACTIVE SECTION
+  ====================== */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,8 +35,7 @@ const Header = () => {
       for (let i = navLinks.length - 1; i >= 0; i--) {
         const section = document.getElementById(navLinks[i].id);
         if (section) {
-          const sectionTop = section.offsetTop;
-          if (scrollPosition >= sectionTop) {
+          if (scrollPosition >= section.offsetTop) {
             setActiveSection(navLinks[i].id);
             break;
           }
@@ -46,8 +47,11 @@ const Header = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* ======================
+     CLOSE MOBILE MENU
+  ====================== */
 
   useEffect(() => {
     const handler = (e) => {
@@ -55,34 +59,25 @@ const Header = () => {
         setMobileOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   useEffect(() => {
-    const escHandler = (e) => {
-      if (e.key === "Escape") setMobileOpen(false);
-    };
-    document.addEventListener("keydown", escHandler);
-    return () => document.removeEventListener("keydown", escHandler);
-  }, []);
-
-  useEffect(() => {
     document.documentElement.style.overflow = mobileOpen ? "hidden" : "auto";
-    return () => {
-      document.documentElement.style.overflow = "auto";
-    };
   }, [mobileOpen]);
+
+  /* ======================
+     SCROLL FUNCTION
+  ====================== */
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (!section) return;
 
     if (id === "home") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setMobileOpen(false);
       return;
     }
@@ -91,187 +86,164 @@ const Header = () => {
     const elementPosition = section.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
 
     setMobileOpen(false);
   };
 
   return (
-    <header className="w-full fixed top-0 left-0 z-[9999]">
+    <header className="w-full fixed top-0 left-0 z-[10000]">
+
+      {/* NAVBAR BACKGROUND */}
+
       <div
-        className={`w-full transition-all duration-300 ${
+        className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.08)] border-b border-slate-200/60"
-            : "bg-transparent"
+            ? "bg-gradient-to-r from-white/80 via-yellow-50/80 to-white/80 backdrop-blur-2xl border-b border-yellow-200/40 shadow-lg"
+            : "bg-white/10 backdrop-blur-xl border-b border-white/10"
         }`}
       >
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div
-            className={`flex items-center justify-between gap-4 transition-all duration-300 ${
-              scrolled ? "h-17.5" : "h-20.5"
+            className={`flex items-center justify-between transition-all duration-300 ${
+              scrolled ? "h-16" : "h-20"
             }`}
           >
+
             {/* LOGO */}
+
             <button
               onClick={() => scrollToSection("home")}
-              className="flex items-center shrink-0"
-              aria-label="Go to home"
+              className="flex items-center"
             >
               <img
                 src={Logo}
                 alt="EEC Logo"
-                className={`object-contain transition-all duration-300 ${
-                  scrolled
-                    ? "w-35 sm:w-40 h-12"
-                    : "w-37.5 sm:w-45 h-14"
+                className={`transition-all duration-300 ${
+                  scrolled ? "h-10 w-auto" : "h-12 w-auto"
                 }`}
-                draggable={false}
               />
             </button>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-1">
+
+            <nav className="hidden lg:flex items-center gap-2">
+
               {navLinks.map((item, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 rounded-lg text-[14px] font-bold transition-all duration-200 ${
+                  className={`relative px-4 py-2 rounded-lg text-sm font-bold transition ${
                     activeSection === item.id
-                      ? scrolled
-                        ? "text-yellow-700 bg-yellow-50"
-                        : "text-white bg-white/15"
-                      : scrolled
-                        ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100/70"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "text-yellow-700 bg-yellow-100/70"
+                      : "text-slate-700 hover:bg-yellow-50"
                   }`}
-                  aria-label={`Navigate to ${item.label}`}
                 >
                   {item.label}
+
                   {activeSection === item.id && (
-                    <span
-                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.75 rounded-full ${
-                        scrolled ? "bg-yellow-500" : "bg-yellow-400"
-                      }`}
-                    />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-[2px] bg-yellow-500 rounded-full" />
                   )}
                 </button>
               ))}
+
             </nav>
 
-            {/* DESKTOP GET STARTED */}
-            <div className="hidden lg:flex items-center shrink-0">
+            {/* DESKTOP CTA */}
+
+            <div className="hidden lg:flex">
+
               <a
                 href={MAIN_WEBSITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-6 py-2.5 rounded-lg font-extrabold text-sm transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] ${
-                  scrolled
-                    ? "bg-yellow-400 hover:bg-yellow-300 text-slate-900 shadow-sm hover:shadow-md"
-                    : "bg-white text-slate-900 shadow-lg shadow-black/10 hover:bg-yellow-400"
-                }`}
-                aria-label="Go to main website"
+                className="px-6 py-2.5 rounded-lg font-bold text-sm bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-slate-900 shadow-md hover:shadow-lg transition"
               >
                 Get Started
               </a>
+
             </div>
 
             {/* MOBILE MENU BUTTON */}
+
             <button
-              className={`lg:hidden w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                scrolled
-                  ? "bg-slate-100 hover:bg-slate-200 text-slate-800"
-                  : "bg-white/15 hover:bg-white/25 text-white border border-white/20"
-              }`}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/40 backdrop-blur hover:bg-white/60 transition"
               onClick={() => setMobileOpen(true)}
-              aria-label="Open mobile menu"
             >
-              <FaBars className="text-base" />
+              <FaBars />
             </button>
+
           </div>
         </div>
       </div>
 
-      {/* MOBILE OVERLAY + DRAWER */}
+      {/* ======================
+         MOBILE MENU
+      ====================== */}
+
       <div
-        className={`fixed inset-0 z-99999 transition-all duration-300 ${
-          mobileOpen
-            ? "visible opacity-100"
-            : "invisible opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[99999] transition ${
+          mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        {/* Backdrop */}
+
+        {/* BACKDROP */}
+
         <div
-          className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
-            mobileOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0 bg-black/40"
           onClick={() => setMobileOpen(false)}
         />
 
-        {/* Drawer */}
+        {/* DRAWER */}
+
         <div
           ref={mobileRef}
-          className={`absolute top-0 right-0 w-[85%] max-w-95 h-full bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-out ${
+          className={`absolute right-0 top-0 w-[85%] max-w-[350px] h-full bg-white shadow-2xl transition-transform ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {/* Drawer header */}
-          <div className="flex items-center justify-between gap-3 p-5 border-b border-slate-100">
-            <button
-              onClick={() => scrollToSection("home")}
-              aria-label="Go to home"
-            >
-              <img
-                src={Logo}
-                alt="EEC Logo"
-                className="w-35 h-12 object-contain"
-                draggable={false}
-              />
+
+          <div className="flex items-center justify-between p-5 border-b">
+
+            <img src={Logo} alt="logo" className="h-10" />
+
+            <button onClick={() => setMobileOpen(false)}>
+              <FaTimes />
             </button>
 
-            <button
-              className="w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition"
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close mobile menu"
-            >
-              <FaTimes className="text-slate-700 text-base" />
-            </button>
           </div>
 
-          {/* Mobile nav links */}
-          <div className="flex-1 overflow-y-auto p-4">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left px-4 py-3.5 rounded-xl font-bold text-[15px] transition-all duration-200 ${
-                    activeSection === item.id
-                      ? "bg-yellow-50 text-yellow-700 border-l-[3px] border-yellow-500"
-                      : "text-slate-700 hover:bg-slate-50 hover:text-slate-900 border-l-[3px] border-transparent"
-                  }`}
-                  aria-label={`Navigate to ${item.label}`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
+          <div className="p-5 flex flex-col gap-2">
+
+            {navLinks.map((item, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToSection(item.id)}
+                className={`text-left px-4 py-3 rounded-lg font-semibold ${
+                  activeSection === item.id
+                    ? "bg-yellow-100 text-yellow-700"
+                    : "hover:bg-slate-50"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+
           </div>
 
-          {/* Mobile CTA */}
-          <div className="p-5 border-t border-slate-100">
+          <div className="p-5 border-t">
+
             <a
               href={MAIN_WEBSITE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full block text-center py-3.5 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold text-sm shadow-sm hover:shadow-md transition-all duration-200 active:scale-[0.98]"
-              aria-label="Go to main website"
+              className="block text-center py-3 rounded-lg bg-gradient-to-r from-yellow-400 to-amber-400 text-slate-900 font-bold"
             >
               Get Started
             </a>
+
           </div>
+
         </div>
       </div>
     </header>
