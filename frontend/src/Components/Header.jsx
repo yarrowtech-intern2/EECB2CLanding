@@ -8,14 +8,12 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const mobileRef = useRef(null);
 
-  const MAIN_WEBSITE_URL = "https://your-main-website.com";
-
   const navLinks = [
     { label: "Home", id: "home" },
     { label: "Why EEC", id: "why-eec" },
     { label: "Features & Modules", id: "features" },
     { label: "FAQ", id: "faq" },
-    { label: "Contacts", id: "contact" },
+    { label: "Contact", id: "contact" },
   ];
 
   /* ======================
@@ -24,33 +22,31 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+
       const scrollPosition = window.scrollY + 150;
-      setScrolled(window.scrollY > 20);
 
-      if (window.scrollY < 100) {
-        setActiveSection("home");
-        return;
-      }
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
 
-      for (let i = navLinks.length - 1; i >= 0; i--) {
-        const section = document.getElementById(navLinks[i].id);
         if (section) {
-          if (scrollPosition >= section.offsetTop) {
-            setActiveSection(navLinks[i].id);
-            break;
+          if (
+            scrollPosition >= section.offsetTop &&
+            scrollPosition < section.offsetTop + section.offsetHeight
+          ) {
+            setActiveSection(link.id);
           }
         }
-      }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   /* ======================
-     CLOSE MOBILE MENU
+     MOBILE CLOSE OUTSIDE
   ====================== */
 
   useEffect(() => {
@@ -61,11 +57,16 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handler);
+
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  /* ======================
+     BODY SCROLL LOCK
+  ====================== */
+
   useEffect(() => {
-    document.documentElement.style.overflow = mobileOpen ? "hidden" : "auto";
+    document.body.style.overflow = mobileOpen ? "hidden" : "auto";
   }, [mobileOpen]);
 
   /* ======================
@@ -76,69 +77,62 @@ const Header = () => {
     const section = document.getElementById(id);
     if (!section) return;
 
+    const headerOffset = 80;
+
     if (id === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setMobileOpen(false);
-      return;
+    } else {
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
-
-    const headerOffset = 90;
-    const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
 
     setMobileOpen(false);
   };
 
   return (
-    <header className="w-full fixed top-0 left-0 z-[10000]">
+    <header className="fixed top-0 left-0 w-full z-[9999]">
 
-      {/* NAVBAR BACKGROUND - BEIGE/TAN WITH YELLOW ACCENTS */}
+      {/* NAVBAR */}
 
       <div
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-gradient-to-r from-amber-100 via-stone-200 to-amber-100 backdrop-blur-2xl border-b border-yellow-300/50 shadow-md"
-            : "bg-gradient-to-r from-stone-300 via-stone-250 to-stone-300 backdrop-blur-xl border-b border-stone-400/30"
+            ? "bg-white shadow-md border-b"
+            : "bg-white/70 backdrop-blur-md"
         }`}
       >
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6">
 
-          <div
-            className={`flex items-center justify-between transition-all duration-300 ${
-              scrolled ? "h-16" : "h-20"
-            }`}
-          >
+          <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* LOGO */}
 
-            <button
-              onClick={() => scrollToSection("home")}
-              className="flex items-center"
-            >
+            <button onClick={() => scrollToSection("home")}>
               <img
                 src={Logo}
-                alt="EEC Logo"
-                className={`transition-all duration-300 ${
-                  scrolled ? "h-10 w-auto" : "h-12 w-auto"
-                }`}
+                alt="logo"
+                className="h-9 lg:h-11 w-auto"
               />
             </button>
 
             {/* DESKTOP NAV */}
 
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-2">
 
-              {navLinks.map((item, idx) => (
+              {navLinks.map((item) => (
                 <button
-                  key={idx}
+                  key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-5 py-2.5 rounded-md text-sm font-semibold transition ${
+                  className={`px-5 py-2 rounded-md text-sm font-semibold transition ${
                     activeSection === item.id
-                      ? "bg-yellow-300/90 text-amber-900 shadow-md"
-                      : "text-stone-700 hover:text-stone-900"
+                      ? "bg-yellow-400 text-black shadow"
+                      : "text-gray-700 hover:text-black"
                   }`}
                 >
                   {item.label}
@@ -149,24 +143,22 @@ const Header = () => {
 
             {/* DESKTOP CTA */}
 
-            <div className="hidden lg:flex">
+            <div className="hidden lg:block">
 
-              <a
-                href={MAIN_WEBSITE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-7 py-2.5 rounded-md font-bold text-sm bg-yellow-400 hover:bg-yellow-500 text-amber-900 shadow-md hover:shadow-lg transition"
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 rounded-md font-semibold shadow transition"
               >
                 Get Started
-              </a>
+              </button>
 
             </div>
 
             {/* MOBILE MENU BUTTON */}
 
             <button
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-yellow-300/70 hover:bg-yellow-400 transition text-amber-900"
               onClick={() => setMobileOpen(true)}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-yellow-400"
             >
               <FaBars />
             </button>
@@ -188,7 +180,7 @@ const Header = () => {
         {/* BACKDROP */}
 
         <div
-          className="absolute inset-0 bg-black/30"
+          className="absolute inset-0 bg-black/40"
           onClick={() => setMobileOpen(false)}
         />
 
@@ -196,31 +188,35 @@ const Header = () => {
 
         <div
           ref={mobileRef}
-          className={`absolute right-0 top-0 w-[85%] max-w-[350px] h-full bg-stone-100 shadow-2xl transition-transform ${
+          className={`absolute right-0 top-0 w-[85%] max-w-[320px] h-full bg-white shadow-xl transition-transform ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
 
-          <div className="flex items-center justify-between p-5 border-b border-yellow-300 bg-gradient-to-r from-stone-300 to-amber-100">
+          {/* TOP */}
 
-            <img src={Logo} alt="logo" className="h-10" />
+          <div className="flex items-center justify-between p-5 border-b">
 
-            <button onClick={() => setMobileOpen(false)} className="text-amber-900 hover:text-amber-950">
-              <FaTimes size={24} />
+            <img src={Logo} alt="logo" className="h-9" />
+
+            <button onClick={() => setMobileOpen(false)}>
+              <FaTimes size={22} />
             </button>
 
           </div>
 
+          {/* LINKS */}
+
           <div className="p-5 flex flex-col gap-2">
 
-            {navLinks.map((item, idx) => (
+            {navLinks.map((item) => (
               <button
-                key={idx}
+                key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-left px-5 py-3 rounded-md font-semibold transition ${
+                className={`text-left px-4 py-3 rounded-md font-medium ${
                   activeSection === item.id
-                    ? "bg-yellow-300 text-amber-900 shadow-md"
-                    : "text-stone-700 hover:bg-yellow-100 hover:text-stone-900"
+                    ? "bg-yellow-400 text-black"
+                    : "hover:bg-gray-100"
                 }`}
               >
                 {item.label}
@@ -229,14 +225,16 @@ const Header = () => {
 
           </div>
 
-          <div className="p-5 border-t border-yellow-300">
+          {/* CTA */}
 
-            <a
-              href={MAIN_WEBSITE_URL}
-              className="block text-center py-3 rounded-md bg-yellow-400 hover:bg-yellow-500 text-amber-900 font-bold transition shadow-md hover:shadow-lg"
+          <div className="p-5 border-t">
+
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="w-full py-3 bg-yellow-400 rounded-md font-semibold shadow"
             >
               Get Started
-            </a>
+            </button>
 
           </div>
 

@@ -1,277 +1,161 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useTexture, Billboard } from "@react-three/drei";
-import { Menu, X, ChevronRight, Brain, Zap, Trophy } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ChevronRight } from "lucide-react";
 
-/* =============================
-   IMPORT IMAGES
-============================= */
+import Screw from "../assets/screw.png";
+import cap from "../assets/cap.jpg";
+import AI from "../assets/AI.jpg";
+import Book from "../assets/book.jpg";
+import Trophy from "../assets/Trophy.jpg";
 
-import aiImg from "../assets/AI.jpg";
-import trophyImg from "../assets/Trophy.jpg";
-import studentImg from "../assets/cap.jpg";
-
-/* =============================
-   PARTICLES
-============================= */
-
-const Particles = () => {
-  const ref = useRef();
-
-  useFrame(() => {
-    if (ref.current) ref.current.rotation.y += 0.0005;
-  });
-
-  const particles = [];
-
-  for (let i = 0; i < 120; i++) {
-    particles.push(
-      (Math.random() - 0.5) * 8,
-      (Math.random() - 0.5) * 8,
-      (Math.random() - 0.5) * 8
-    );
-  }
-
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          array={new Float32Array(particles)}
-          count={particles.length / 3}
-          itemSize={3}
-        />
-      </bufferGeometry>
-
-      <pointsMaterial size={0.04} color="#fbbf24" />
-    </points>
-  );
-};
-
-/* =============================
-   IMAGE SLIDESHOW SYSTEM
-============================= */
-
-const ImageSlider3D = () => {
-
-  const groupRef = useRef();
-
-  const aiRef = useRef();
-  const trophyRef = useRef();
-  const studentRef = useRef();
-
-  const aiTexture = useTexture(aiImg);
-  const trophyTexture = useTexture(trophyImg);
-  const studentTexture = useTexture(studentImg);
-
-  const planeSize = (texture, base = 1) => {
-    if (!texture.image) return [base, base];
-    const ratio = texture.image.width / texture.image.height;
-    return [base * ratio, base];
-  };
-
-  useFrame(({ clock }) => {
-
-    const t = clock.getElapsedTime();
-
-    if (groupRef.current) {
-      groupRef.current.position.y = Math.sin(t * 0.7) * 0.05;
-    }
-
-    const step = Math.floor(t % 6);
-
-    if (aiRef.current) aiRef.current.visible = step < 2;
-    if (trophyRef.current) trophyRef.current.visible = step >= 2 && step < 4;
-    if (studentRef.current) studentRef.current.visible = step >= 4;
-
-  });
-
-  return (
-    <group ref={groupRef}>
-
-      {/* AI IMAGE */}
-      <Billboard>
-        <mesh ref={aiRef} position={[0,0,0]}>
-          <planeGeometry args={planeSize(aiTexture,1.8)} />
-          <meshBasicMaterial map={aiTexture} transparent />
-        </mesh>
-      </Billboard>
-
-      {/* TROPHY IMAGE */}
-      <Billboard>
-        <mesh ref={trophyRef} position={[0,0,0]}>
-          <planeGeometry args={planeSize(trophyTexture,1.8)} />
-          <meshBasicMaterial map={trophyTexture} transparent />
-        </mesh>
-      </Billboard>
-
-      {/* STUDENT IMAGE */}
-      <Billboard>
-        <mesh ref={studentRef} position={[0,0,0]}>
-          <planeGeometry args={planeSize(studentTexture,1.8)} />
-          <meshBasicMaterial map={studentTexture} transparent />
-        </mesh>
-      </Billboard>
-
-    </group>
-  );
-};
-
-/* =============================
-   SCENE
-============================= */
-
-const Scene = () => {
-  return (
-    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
-      <ambientLight intensity={0.8} />
-      <directionalLight position={[5, 5, 5]} intensity={1.4} />
-      <pointLight position={[0, 2, 2]} intensity={1.3} color="#ffb300" />
-
-      <Particles />
-      <ImageSlider3D />
-    </Canvas>
-  );
-};
-
-/* =============================
-   HEADER
-============================= */
-
-const Header = () => {
-
-  const [mobileOpen,setMobileOpen] = useState(false);
-  const [scrolled,setScrolled] = useState(false);
-
-  useEffect(()=>{
-
-    const handleScroll = ()=>{
-      setScrolled(window.scrollY > 20)
-    }
-
-    window.addEventListener("scroll",handleScroll)
-
-    return ()=>window.removeEventListener("scroll",handleScroll)
-
-  },[])
-
-  return(
-    <header className={`fixed w-full z-50 transition ${
-      scrolled
-      ? "bg-amber-950/90 backdrop-blur border-b border-amber-700"
-      : "bg-transparent"
-    }`}>
-
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        <div className="flex items-center gap-2">
-          <Brain className="text-amber-300"/>
-          <span className="text-white font-bold text-xl">EEC</span>
-        </div>
-
-        <button
-        className="md:hidden text-white"
-        onClick={()=>setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X/> : <Menu/>}
-        </button>
-
-      </div>
-
-    </header>
-  )
-}
-
-/* =============================
-   HERO
-============================= */
+const images = [
+  { img: AI, title: "AI Learning", subtitle: "Smart Education System" },
+  { img: cap, title: "Smart Students", subtitle: "Learning Excellence" },
+  { img: Book, title: "Digital Learning", subtitle: "Smart Study System" },
+  { img: Trophy, title: "Top Achievers", subtitle: "Student Success" },
+];
 
 const Hero = () => {
 
-  const scrollToContact = ()=>{
-    const section = document.getElementById("contact")
+  const [index, setIndex] = useState(0);
 
-    if(section){
-      section.scrollIntoView({behavior:"smooth"})
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToContact = () => {
+    const section = document.getElementById("contact");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
-  return(
+  const current = images[index];
 
-    <section className="relative min-h-screen bg-gradient-to-br from-amber-900 via-orange-800 to-amber-950 overflow-hidden pt-20">
+  return (
+    <section className="relative min-h-screen overflow-hidden">
 
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"/>
-      <div className="absolute bottom-0 -left-40 w-96 h-96 bg-yellow-500/20 rounded-full blur-3xl"/>
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 bg-[#F2B300]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+      {/* CONTAINER */}
+      <div className="relative max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12 items-center min-h-screen">
 
-        {/* TEXT */}
-        <div className="space-y-8">
+        {/* LEFT TEXT */}
+        <div className="space-y-6 text-black text-center md:text-left">
 
-          <h1 className="text-5xl lg:text-7xl font-black text-white leading-tight">
-            Personalized
-            <br/>
-            <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
-              Learning With AI
-            </span>
-          </h1>
-
-          <p className="text-amber-100 text-lg max-w-lg">
-            AI-powered tutoring, gamified learning, and adaptive study paths
-            helping students master subjects faster.
+          <p className="max-w-md text-sm md:text-base leading-relaxed mx-auto md:mx-0">
+            AI-guided study paths, concept videose, and gamified progress-created to boost 
+            focus, reduce stress and improve outcomes.
           </p>
 
+          <h1 className="font-light leading-tight text-4xl md:text-5xl lg:text-6xl">
+            Personalized Learning <br/>
+            <span className="font-semibold">that adaps to you</span>
+          </h1>
+
+          {/* CTA BUTTON */}
           <button
-          onClick={scrollToContact}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-300 to-orange-400 text-amber-900 font-bold rounded-xl hover:scale-105 transition"
+            onClick={scrollToContact}
+            className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition shadow-lg"
           >
-            Start Free Trial
-            <ChevronRight/>
+            Get Free Trial
+            <ChevronRight size={18}/>
           </button>
 
-          <div className="flex gap-4 pt-6">
+        </div>
 
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Brain size={16} className="text-amber-300"/>
-              <span className="text-white text-sm">AI Tutor</span>
-            </div>
+        {/* CENTER IMAGE */}
+        <div className="relative flex items-center justify-center">
 
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Zap size={16} className="text-amber-300"/>
-              <span className="text-white text-sm">Fast Progress</span>
-            </div>
+          <div className="absolute w-64 h-64 md:w-96 md:h-96 bg-white/30 blur-[120px] rounded-full"/>
 
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-              <Trophy size={16} className="text-amber-300"/>
-              <span className="text-white text-sm">Achievements</span>
+          <img
+            src={Screw}
+            alt="Education Symbol"
+            className="relative w-[220px] md:w-[320px] lg:w-[420px] object-contain animate-float"
+          />
+
+        </div>
+
+        {/* RIGHT CARD */}
+        <div className="space-y-4 flex flex-col items-center lg:items-end">
+
+          <div className="text-sm text-black flex items-center gap-2">
+          </div>
+
+          <div className="card-hover bg-white/40 backdrop-blur-xl rounded-xl overflow-hidden w-full max-w-[320px] shadow-xl">
+
+            <div className="relative h-[260px] md:h-[300px] overflow-hidden">
+
+              <img
+                src={current.img}
+                alt={current.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+              />
+
+              <div className="absolute inset-0 bg-black/40"/>
+
+              <div className="absolute bottom-0 p-5 text-white">
+
+                <h3 className="font-semibold text-lg">
+                  {current.title}
+                </h3>
+
+                <p className="text-sm text-gray-200">
+                  {current.subtitle}
+                </p>
+
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-        {/* 3D HERO */}
+      </div>
 
-        <div className="relative h-[600px]">
-          <Scene/>
-        </div>
+      {/* BOTTOM INFO */}
+      <div className="absolute bottom-6 left-6 right-6 hidden md:flex justify-between text-sm text-black">
+
+        <span>EEC Platform</span>
+
+        <span>
+          Kolkata, India <br/>
+        </span>
+
+        <span>
+          Advanced <br/>
+          Education Technology
+        </span>
 
       </div>
 
+      {/* CSS */}
+      <style>
+        {`
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-18px); }
+          100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .card-hover:hover img{
+          transform: scale(1.08);
+        }
+        `}
+      </style>
+
     </section>
-  )
-}
+  );
+};
 
-/* =============================
-   MAIN
-============================= */
-
-export default function EECLanding(){
-
-  return(
-    <div className="bg-black min-h-screen">
-      <Header/>
-      <Hero/>
-    </div>
-  )
-}
+export default Hero;
