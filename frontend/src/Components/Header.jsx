@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Logo from "/logo.png";
+import { useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
+import Logo from "../assets/logo.jpg";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
@@ -7,6 +9,9 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const mobileRef = useRef(null);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
     { label: "Home", id: "home" },
@@ -74,8 +79,34 @@ const Header = () => {
   ====================== */
 
   const scrollToSection = (id) => {
+    setMobileOpen(false);
+    
+    // If we're not on the home page, redirect there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      
+      // Add a slight delay to allow the Home component to mount before scrolling
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          const headerOffset = 80;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        } else if (id === 'home') {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 100);
+      return;
+    }
+
     const section = document.getElementById(id);
-    if (!section) return;
+    if (!section) {
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
 
     const headerOffset = 80;
 
@@ -90,81 +121,54 @@ const Header = () => {
         behavior: "smooth",
       });
     }
-
-    setMobileOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[9999]">
+    <header className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${scrolled ? 'py-3 bg-white/80 backdrop-blur-md shadow-sm border-b border-white/30' : 'py-5 bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-6 relative flex items-center justify-between h-12 lg:h-14">
 
-      {/* NAVBAR */}
+        {/* LOGO */}
+        <button onClick={() => scrollToSection("home")} className="relative z-10 flex-shrink-0">
+          <img src={Logo} alt="logo" className="h-9 lg:h-11 w-auto" />
+        </button>
 
-      <div
-        className={`transition-all duration-300 ${
-          scrolled
-            ? "bg-white shadow-md border-b"
-            : "bg-white/70 backdrop-blur-md"
-        }`}
-      >
-
-        <div className="max-w-7xl mx-auto px-6">
-
-          <div className="flex items-center justify-between h-16 lg:h-20">
-
-            {/* LOGO */}
-
-            <button onClick={() => scrollToSection("home")}>
-              <img
-                src={Logo}
-                alt="logo"
-                className="h-9 lg:h-11 w-auto"
-              />
-            </button>
-
-            {/* DESKTOP NAV */}
-
-            <nav className="hidden lg:flex items-center gap-2">
-
-              {navLinks.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-5 py-2 rounded-md text-sm font-semibold transition ${
-                    activeSection === item.id
-                      ? "bg-yellow-400 text-black shadow"
-                      : "text-gray-700 hover:text-black"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-
-            </nav>
-
-            {/* DESKTOP CTA */}
-
-            <div className="hidden lg:block">
-
+        {/* DESKTOP NAV GROUP */}
+        <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 z-10 w-max">
+          <nav className="flex items-center gap-1 bg-white/40 backdrop-blur-md border border-white/40 shadow-sm rounded-full p-1">
+            {navLinks.map((item) => (
               <button
-                onClick={() => scrollToSection("contact")}
-                className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 rounded-md font-semibold shadow transition"
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  activeSection === item.id
+                    ? "bg-black text-white shadow"
+                    : "text-gray-800 hover:bg-white/60 hover:text-black"
+                }`}
               >
-                Get Started
+                {item.label}
               </button>
-
-            </div>
-
-            {/* MOBILE MENU BUTTON */}
-
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md bg-yellow-400"
-            >
-              <FaBars />
-            </button>
-
-          </div>
+            ))}
+          </nav>
         </div>
+
+        {/* RIGHT ACTION BUTTONS */}
+        <div className="flex items-center gap-4 relative z-10">
+          <button
+            onClick={() => toast.success("Get Started functionality coming soon!", { icon: "🚀", style: { borderRadius: "10px", background: "#333", color: "#fff" } })}
+            className="hidden lg:block bg-white/40 backdrop-blur-md border border-white/60 hover:bg-white/60 text-black px-6 py-2.5 rounded-full font-semibold shadow-lg transition-all hover:scale-105 whitespace-nowrap"
+          >
+            Get Started
+          </button>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-200 text-black"
+          >
+            <FaBars />
+          </button>
+        </div>
+
       </div>
 
       {/* ======================
@@ -230,7 +234,7 @@ const Header = () => {
           <div className="p-5 border-t">
 
             <button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => toast.success("Get Started functionality coming soon!", { style: { borderRadius: "10px", background: "#333", color: "#fff" } })}
               className="w-full py-3 bg-yellow-400 rounded-md font-semibold shadow"
             >
               Get Started

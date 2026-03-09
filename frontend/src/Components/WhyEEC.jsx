@@ -32,7 +32,7 @@ const WhyEEC = () => {
     {
       icon: <FaUserShield className="text-lg" />,
       title: "Supportive",
-      description: "Parent view & progress reports",
+      description: "Subject Wise progress reports",
     },
   ];
 
