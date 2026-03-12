@@ -16,15 +16,6 @@ const FAQ = () => {
   // ✅ FIX: start with null (no open by default)
   const [openIndex, setOpenIndex] = useState(null);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 120,
-    });
-  }, []);
-
   const faqs = [
     {
       icon: <FaPlay className="text-lg" />,

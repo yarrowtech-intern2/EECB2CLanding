@@ -28,16 +28,6 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      offset: 80,
-      easing: "ease-out",
-    });
-    AOS.refresh();
-  }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -116,7 +106,7 @@ const Contact = () => {
     }
   };
 
-  const classOptions = Array.from({ length: 12 }, (_, i) => i + 1);
+  const classOptions = Array.from({ length: 8}, (_, i) => i + 3);
 
   const contactCards = [
     {

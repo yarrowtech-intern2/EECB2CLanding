@@ -4,14 +4,6 @@ import "aos/dist/aos.css";
 import { FaCheckCircle, FaBolt, FaGamepad, FaUserShield } from "react-icons/fa";
 
 const WhyEEC = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 850,
-      once: true,
-      offset: 90,
-      easing: "ease-out",
-    });
-  }, []);
 
   const features = [
     {
@@ -71,27 +63,49 @@ const WhyEEC = () => {
             <div
               key={index}
               data-aos="fade-up"
-              data-aos-delay={150 + index * 120}
+              data-aos-delay={index * 300}
               className="
-                bg-white
+                group relative bg-white
+                rounded-[26px]
                 border border-slate-200/70
-                rounded-2xl
-                px-6 py-6
-                shadow-[0_10px_30px_rgba(15,23,42,0.08)]
-                hover:shadow-[0_16px_55px_rgba(15,23,42,0.12)]
-                transition-shadow duration-300 ease-out
+                shadow-[0_18px_60px_rgba(15,23,42,0.08)]
+                p-8
+                transition-all duration-300 ease-out
+                hover:border-yellow-300
+                hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
+                hover:scale-[1.02]
+                cursor-pointer
               "
             >
-              {/* Top small pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-50 border border-yellow-200 text-slate-800 text-sm font-semibold">
-                <span className="text-yellow-500">{feature.icon}</span>
-                {feature.title}
-              </div>
+              {/* Light yellow tint inside card */}
+              <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-yellow-50/60 via-white to-white opacity-70 pointer-events-none" />
 
-              {/* Description */}
-              <p className="mt-4 text-slate-600 text-sm font-medium">
-                {feature.description}
-              </p>
+              <div className="relative z-10">
+                {/* Icon box */}
+                <div
+                  className="
+                    w-14 h-14 rounded-2xl
+                    bg-[#FEF9C3]
+                    border border-yellow-200/70
+                    flex items-center justify-center
+                    text-blue-900
+                    shadow-[0_10px_25px_rgba(15,23,42,0.08)]
+                    mb-6
+                    transition-transform duration-300
+                    group-hover:scale-110 text-[24px]
+                  "
+                >
+                  <span className="text-yellow-600 group-hover:rotate-12 transition-transform duration-300 pl-1 pb-1">{feature.icon}</span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">
+                  {feature.title}
+                </h3>
+
+                <p className="mt-3 text-slate-600 text-sm leading-relaxed font-medium">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

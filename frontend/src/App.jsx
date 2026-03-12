@@ -6,7 +6,6 @@ import Header from "./Components/Header";
 import Hero from "./Components/Hero";
 import WhyEEC from "./Components/WhyEEC";
 import Modules from "./Components/Modules";
-import EECUnique from "./Components/EECUnique";
 import FAQ from "./Components/FAQ";
 import Contact from "./Components/Contact";
 import Floating from "./Components/Floating";
@@ -18,7 +17,6 @@ function Home() {
       <Hero />
       <WhyEEC />
       <Modules />
-      {/* <EECUnique /> */}
       <FAQ />
       <Contact />
       <Floating />
@@ -26,8 +24,19 @@ function Home() {
   );
 }
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function App() {
   React.useEffect(() => {
+    AOS.init({
+      duration: 850,
+      once: false,
+      mirror: true,
+      offset: 90,
+      easing: "ease-out",
+    });
+    AOS.refresh();
     const cursor = document.getElementById('custom-cursor');
     const cursorFollower = document.getElementById('custom-cursor-follower');
 

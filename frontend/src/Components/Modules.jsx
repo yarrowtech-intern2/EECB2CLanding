@@ -15,15 +15,6 @@ import {
 } from "react-icons/fa";
 
 const FeaturesModules = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 850,
-      once: true,
-      offset: 90,
-      easing: "ease-out",
-    });
-    AOS.refresh();
-  }, []);
 
   const features = [
     {

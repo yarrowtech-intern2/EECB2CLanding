@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, Brain, Lightbulb, BookOpen, Award } from "lucide-react";
 
-import Screw from "../assets/screw.png";
+import Student from "../assets/Student.png"
 import cap from "../assets/cap.jpg";
 import AI from "../assets/AI.jpg";
 import Book from "../assets/book.jpg";
@@ -30,27 +30,26 @@ const Hero = () => {
     <section id="home" className="relative h-auto md:h-screen min-h-[100vh] w-full overflow-hidden flex flex-col md:flex-row bg-gradient-to-br from-amber-500 to-yellow-400">
       
       {/* Vertical line separator mimicking reference */}
-      <div className="absolute top-0 right-[32%] w-[1px] h-full bg-white/10 hidden lg:block z-0" />
 
 
       {/* Mobile: shown in-flow between columns */}
-      <div className="flex justify-end items-end pt-16 pb-0 lg:hidden relative z-10 w-full pointer-events-none overflow-hidden" style={{ marginBottom: '-2px' }}>
+      <div className="flex justify-center items-end pt-12 pb-0 lg:hidden relative z-10 w-full pointer-events-none" style={{ marginBottom: '-2px' }}>
         <div className="absolute inset-0 flex justify-center items-end">
-          <div className="w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] bg-yellow-300/30 blur-[80px] rounded-full" />
+          <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] bg-yellow-300/30 blur-[80px] rounded-full" />
         </div>
         <img
-          src={Screw}
+          src={Student}
           alt="Education Symbol"
-          className="w-[220px] sm:w-[300px] md:w-[360px] h-auto object-contain object-bottom drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10 mx-auto"
+          className="w-[340px] sm:w-[460px] md:w-[540px] h-auto object-contain object-bottom drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10 mx-auto"
         />
       </div>
 
       {/* Desktop: absolute floating centered */}
-      <div className="hidden lg:block absolute top-[65%] left-[55%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none w-[340px] xl:w-[380px]">
+      <div className="hidden lg:block absolute bottom-0 left-[52%] -translate-x-1/2 z-20 pointer-events-none w-[560px] xl:w-[720px]">
          <div className="w-full h-full flex items-center justify-center" >
-            <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-[250px] h-[50px] bg-yellow-300/30 blur-[40px] rounded-full -z-10" />
+            <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[400px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
             <img
-              src={Screw}
+              src={Student}
               alt="Education Symbol"
               className="w-full h-auto object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
             />
@@ -94,20 +93,18 @@ const Hero = () => {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-[100vh] flex-col justify-end pb-8 pl-6 sm:pl-12 lg:pl-0 pr-0 mt-12 lg:mt-0 lg:border-l lg:border-white/5 overflow-hidden">
+      <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-[100vh] flex-col justify-end pb-8 pl-6 sm:pl-12 lg:pl-0 pr-0 mt-12 lg:mt-0 overflow-hidden">
         
         {/* Cards Row Container */}
         <div className="lg:mb-[15vh] w-full overflow-hidden relative">
           {/* Edge Blur Overlays using CSS mask for a clean fade effect */}
-          <div className="absolute inset-y-0 left-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-amber-500 hover:from-yellow-400 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-amber-500 hover:from-yellow-400 to-transparent z-10 pointer-events-none" />
-
+          {/* Removed overlays per user request */}
           {/* Marquee Track */}
           <div className="marquee-track flex gap-4 items-center">
             {loopedImages.map((item, idx) => (
               <div 
                 key={idx} 
-                className="marquee-card relative w-[180px] sm:w-[220px] lg:w-[200px] xl:w-[240px] h-[280px] sm:h-[340px] lg:h-[300px] xl:h-[360px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer border border-[#FF8000]/80 shrink-0 overflow-hidden rounded-3xl"
+                className="marquee-card relative w-[180px] sm:w-[220px] lg:w-[200px] xl:w-[240px] h-[280px] sm:h-[340px] lg:h-[300px] xl:h-[360px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
               >
                 <img
                   src={item.img}
@@ -115,7 +112,7 @@ const Hero = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#1a0a04]/90 via-[#1a0a04]/40 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 text-sm sm:text-base font-semibold text-[#F6F5EE] leading-tight">
+                <div className="absolute bottom-5 left-5 right-5 text-sm sm:text-base font-normal text-[#F6F5EE] leading-tight">
                   {item.title}
                 </div>
               </div>
