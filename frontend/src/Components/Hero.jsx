@@ -57,24 +57,21 @@ const Hero = () => {
       </div>
 
       {/* LEFT COLUMN */}
-      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-32 lg:pt-32 pb-8 px-6 sm:px-12 lg:px-24 xl:px-32 text-white justify-start">
+      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-32 lg:pt-32 pb-12 px-6 sm:px-12 lg:px-24 xl:px-32 text-white justify-center">
         
-        {/* Main Heading (Massive and lower like 'Modern Care...' in reference) */}
-        <div className="z-10 animate-[fadeInUp_1s_ease-out_forwards] pointer-events-none self-start relative">
+        {/* Main Heading */}
+        <div className="z-10 animate-[fadeInUp_1s_ease-out_forwards] pointer-events-none self-start relative mb-10">
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
-          <h1 className="text-5xl sm:text-6xl lg:text-[5rem] xl:text-[6.5rem] leading-[0.9] tracking-[-0.04em] text-white font-bold drop-shadow-md">
+          <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] xl:text-[6rem] leading-[1] tracking-[-0.04em] text-white font-bold drop-shadow-md">
             Personalized <br />
             Learning <br />
             <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br/> to you</span>
           </h1>
         </div>
 
-        {/* Spacer to push content down */}
-        <div className="flex-1 min-h-[40px] lg:min-h-[60px]"></div>
-
         {/* Top Text (Intro and Button) */}
-        <div className="max-w-[500px] animate-[fadeInUp_1s_ease-out_0.2s_forwards] mb-[8vh] relative z-10">
-          <p className="text-black/80 text-[1.1rem] sm:text-[1.25rem] leading-[1.7] font-medium tracking-wide mb-8 drop-shadow-sm">
+        <div className="max-w-[500px] animate-[fadeInUp_1s_ease-out_0.2s_forwards] relative z-10">
+          <p className="text-black/80 text-[1rem] sm:text-[1.1rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm">
             AI-guided study paths, concept videos, and gamified progress tailored to boost 
             focus, reduce stress, and dramatically improve outcomes.
           </p>
