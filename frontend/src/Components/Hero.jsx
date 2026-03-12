@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, Brain, Lightbulb, BookOpen, Award } from "lucide-react";
 
-import Student from "../assets/Student.png"
+import Student from "../assets/student.png"
 import cap from "../assets/cap.jpg";
 import AI from "../assets/AI.jpg";
 import Book from "../assets/book.jpg";
