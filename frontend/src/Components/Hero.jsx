@@ -28,58 +28,54 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
-      <div className="w-full max-w-[88rem] mx-auto flex flex-col lg:flex-row relative h-full">
+      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] mx-auto flex flex-col lg:flex-row relative h-full">
       
       {/* Vertical line separator mimicking reference */}
 
       {/* Desktop: absolute floating centered */}
-      <div className="hidden lg:flex absolute bottom-[-10px] left-[52%] -translate-x-1/2 z-20 pointer-events-none w-[540px] xl:w-[680px] h-full items-end justify-center">
+      <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] 2xl:left-[52%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[700px] h-[90%] xl:h-[95%] 2xl:h-full items-end justify-center">
          <div className="w-full relative flex items-end justify-center pb-0" >
-            <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[400px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
+            <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[280px] xl:w-[350px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
             <img
               src={Student}
               alt="Education Symbol"
-              className="w-full h-auto max-h-[85vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
+              className="w-full h-auto max-h-[70vh] xl:max-h-[80vh] 2xl:max-h-[90vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
             />
          </div>
       </div>
 
       {/* LEFT COLUMN */}
-      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-28 md:pt-36 lg:pt-0 pb-12 md:pb-16 lg:pb-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-white justify-center">
+      <div className="relative z-20 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-28 md:pt-36 lg:pt-0 pb-12 md:pb-16 lg:pb-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 text-white justify-center">
         
         {/* Main Heading */}
-        <div className="z-10 pointer-events-none self-start relative mb-10">
+        <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none">
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
           <div className="animate-[fadeInUp_1s_ease-out_forwards]">
-            <div style={{ animation: 'float 6s ease-in-out infinite' }}>
-              <h1 className="text-4xl xs:text-5xl sm:text-[3.5rem] md:text-[4.5rem] lg:text-[4.2rem] xl:text-[5.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-md break-words">
-                Personalized <br />
-                Learning <br />
-                <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br/> to you</span>
-              </h1>
-            </div>
+            <h1 className="text-4xl xs:text-5xl sm:text-[3.5rem] md:text-[4.5rem] lg:text-[3.8rem] xl:text-[5.0rem] 2xl:text-[6.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] break-words">
+              Personalized <br />
+              Learning <br />
+              <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br className="lg:hidden 2xl:block"/> to you</span>
+            </h1>
           </div>
         </div>
 
         {/* Top Text (Intro and Button) */}
-        <div className="max-w-[500px] relative z-10">
+        <div className="max-w-[500px] lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[650px] relative z-[25] pointer-events-auto">
           <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
-            <div style={{ animation: 'float 6s ease-in-out infinite 0.5s' }}>
-              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.1rem] xl:text-[1.2rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm max-w-[90%] md:max-w-[85%] lg:max-w-full">
-                AI-guided study paths, concept videos, and gamified progress tailored to boost 
-                focus, reduce stress, and dramatically improve outcomes.
-              </p>
-              
-              <button
-                onClick={scrollToContact}
-                className="group relative px-10 py-4 text-lg font-bold text-orange-950 bg-white rounded-full shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all duration-300 pointer-events-auto hover:-translate-y-1 block w-fit"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-                <span className="relative z-10 flex items-center gap-2">
-                  Start Free Trial <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-            </div>
+            <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.05rem] xl:text-[1.15rem] 2xl:text-[1.4rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md max-w-[90%] md:max-w-[85%] lg:max-w-full">
+              AI-guided study paths, concept videos, and gamified progress tailored to boost 
+              focus, reduce stress, and dramatically improve outcomes.
+            </p>
+            
+            <button
+              onClick={scrollToContact}
+              className="group relative px-10 py-4 text-lg font-bold text-orange-950 bg-white rounded-full shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all duration-300 pointer-events-auto hover:-translate-y-1 block w-fit"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+              <span className="relative z-10 flex items-center gap-2">
+                Start Free Trial <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
           </div>
         </div>
 
@@ -101,7 +97,7 @@ const Hero = () => {
       <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-full flex-col justify-end pb-8 pl-6 sm:pl-12 lg:pl-0 pr-0 mt-12 lg:mt-0 overflow-hidden">
         
         {/* Cards Row Container */}
-        <div className="lg:mb-[15vh] w-full overflow-hidden relative">
+        <div className="lg:mb-[15vh] 2xl:mb-[20vh] w-full overflow-hidden relative">
           {/* Edge Blur Overlays using CSS mask for a clean fade effect */}
           {/* Removed overlays per user request */}
           {/* Marquee Track */}

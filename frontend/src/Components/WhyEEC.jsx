@@ -43,7 +43,7 @@ const WhyEEC = () => {
       <div className="global-container relative z-10">
         {/* Header */}
         <div className="text-center mb-14" data-aos="fade-up">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-6 text-slate-900">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[1.1] tracking-tight font-extrabold mb-6 text-slate-900">
             Why <span className="text-yellow-500">EEC?</span>
           </h2>
 
