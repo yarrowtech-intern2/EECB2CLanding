@@ -151,7 +151,7 @@ const Contact = () => {
       {/* Background decorations */}
       <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-yellow-100/60 blur-[170px] rounded-full" />
       <div className="absolute -bottom-52 -right-52 w-[650px] h-[650px] bg-sky-100/60 blur-[180px] rounded-full" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-violet-50/40 blur-[200px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-50/40 blur-[200px] rounded-full" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Heading */}
@@ -159,7 +159,7 @@ const Contact = () => {
           <span className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 tracking-wide uppercase">
             Get in Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-950">
             Contact <span className="text-yellow-500">Us</span>
           </h2>
           <p className="mt-4 text-slate-500 font-medium max-w-lg mx-auto text-base sm:text-lg leading-relaxed">

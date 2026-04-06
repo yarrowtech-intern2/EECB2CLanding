@@ -84,7 +84,7 @@ const FAQ = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold text-slate-900">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900">
             FAQ –{" "}
             <span className="text-yellow-500">Frequently Asked Questions</span>
           </h2>

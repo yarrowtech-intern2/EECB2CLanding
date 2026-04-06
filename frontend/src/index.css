@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
+@theme {
+  --breakpoint-xs: 480px;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   cursor: none; /* Hide default cursor for the custom one */

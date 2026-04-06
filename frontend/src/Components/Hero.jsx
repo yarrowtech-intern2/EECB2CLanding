@@ -27,70 +27,77 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto md:h-screen min-h-[100vh] w-full overflow-hidden flex flex-col md:flex-row bg-gradient-to-br from-amber-500 to-yellow-400">
+    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex flex-col lg:flex-row bg-gradient-to-br from-amber-500 to-yellow-400">
       
       {/* Vertical line separator mimicking reference */}
 
-
-      {/* Mobile: shown in-flow between columns */}
-      <div className="flex justify-center items-end pt-12 pb-0 lg:hidden relative z-10 w-full pointer-events-none" style={{ marginBottom: '-2px' }}>
-        <div className="absolute inset-0 flex justify-center items-end">
-          <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] bg-yellow-300/30 blur-[80px] rounded-full" />
-        </div>
-        <img
-          src={Student}
-          alt="Education Symbol"
-          className="w-[340px] sm:w-[460px] md:w-[540px] h-auto object-contain object-bottom drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10 mx-auto"
-        />
-      </div>
-
       {/* Desktop: absolute floating centered */}
-      <div className="hidden lg:block absolute bottom-0 left-[52%] -translate-x-1/2 z-20 pointer-events-none w-[560px] xl:w-[720px]">
-         <div className="w-full h-full flex items-center justify-center" >
+      <div className="hidden lg:flex absolute bottom-[-10px] left-[52%] -translate-x-1/2 z-20 pointer-events-none w-[540px] xl:w-[680px] h-full items-end justify-center">
+         <div className="w-full relative flex items-end justify-center pb-0" >
             <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[400px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
             <img
               src={Student}
               alt="Education Symbol"
-              className="w-full h-auto object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
+              className="w-full h-auto max-h-[85vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
             />
          </div>
       </div>
 
       {/* LEFT COLUMN */}
-      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-32 lg:pt-32 pb-12 px-6 sm:px-12 lg:px-24 xl:px-32 text-white justify-center">
+      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-32 lg:pt-0 pb-12 lg:pb-0 px-4 sm:px-12 lg:px-24 xl:px-32 text-white justify-center">
         
         {/* Main Heading */}
-        <div className="z-10 animate-[fadeInUp_1s_ease-out_forwards] pointer-events-none self-start relative mb-10">
+        <div className="z-10 pointer-events-none self-start relative mb-10">
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
-          <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] xl:text-[6rem] leading-[1] tracking-[-0.04em] text-white font-bold drop-shadow-md">
-            Personalized <br />
-            Learning <br />
-            <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br/> to you</span>
-          </h1>
+          <div className="animate-[fadeInUp_1s_ease-out_forwards]">
+            <div style={{ animation: 'float 6s ease-in-out infinite' }}>
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-[4.2rem] xl:text-[5.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-md break-words">
+                Personalized <br />
+                Learning <br />
+                <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br/> to you</span>
+              </h1>
+            </div>
+          </div>
         </div>
 
         {/* Top Text (Intro and Button) */}
-        <div className="max-w-[500px] animate-[fadeInUp_1s_ease-out_0.2s_forwards] relative z-10">
-          <p className="text-black/80 text-[1rem] sm:text-[1.1rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm">
-            AI-guided study paths, concept videos, and gamified progress tailored to boost 
-            focus, reduce stress, and dramatically improve outcomes.
-          </p>
-          
-          <button
-            onClick={scrollToContact}
-            className="group relative px-10 py-4 text-lg font-bold text-orange-950 bg-white rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all duration-300 pointer-events-auto hover:-translate-y-1"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 flex items-center gap-2">
-              Start Free Trial <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </button>
+        <div className="max-w-[500px] relative z-10">
+          <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
+            <div style={{ animation: 'float 6s ease-in-out infinite 0.5s' }}>
+              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm">
+                AI-guided study paths, concept videos, and gamified progress tailored to boost 
+                focus, reduce stress, and dramatically improve outcomes.
+              </p>
+              
+              <button
+                onClick={scrollToContact}
+                className="group relative px-10 py-4 text-lg font-bold text-orange-950 bg-white rounded-full shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all duration-300 pointer-events-auto hover:-translate-y-1 block w-fit"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Start Free Trial <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Image: shown in-flow below text, hidden on Desktop */}
+        <div className="flex justify-center items-center pt-16 pb-4 lg:hidden relative z-10 w-full pointer-events-none mt-4">
+          <div className="absolute inset-0 flex justify-center items-center -z-10 bg-gradient-to-br from-amber-500/0 to-amber-500/0">
+            <div className="w-[80vw] h-[80vw] max-w-[350px] max-h-[350px] bg-yellow-300/40 blur-[50px] rounded-full" />
+          </div>
+          <img
+            src={Student}
+            alt="Education Symbol"
+            className="w-[90%] max-w-[480px] h-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10 mx-auto"
+          />
         </div>
 
       </div>
 
       {/* RIGHT COLUMN */}
-      <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-[100vh] flex-col justify-end pb-8 pl-6 sm:pl-12 lg:pl-0 pr-0 mt-12 lg:mt-0 overflow-hidden">
+      <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-full flex-col justify-end pb-8 pl-6 sm:pl-12 lg:pl-0 pr-0 mt-12 lg:mt-0 overflow-hidden">
         
         {/* Cards Row Container */}
         <div className="lg:mb-[15vh] w-full overflow-hidden relative">

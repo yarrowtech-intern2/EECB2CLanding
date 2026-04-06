@@ -130,7 +130,7 @@ const Header = () => {
       className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${
         scrolled
           ? "py-3 bg-white/80 backdrop-blur-md shadow-sm border-b border-white/30"
-          : "py-4 bg-white/80 backdrop-blur-md lg:bg-transparent"
+          : "py-4 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 relative flex items-center justify-between h-14 lg:h-14">

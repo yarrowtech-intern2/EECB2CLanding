@@ -69,7 +69,7 @@ const FeaturesModules = () => {
         {/* Header */}
         <div className="text-center mb-14">
           <h2
-            className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900"
+            className="mt-6 text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900"
             data-aos="fade-up"
             data-aos-delay="120"
           >
