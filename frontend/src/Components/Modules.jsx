@@ -59,13 +59,13 @@ const FeaturesModules = () => {
   return (
     <section
       id="features"
-      className="w-full py-24 px-4 relative overflow-hidden bg-white"
+      className="w-full py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative overflow-hidden bg-white"
     >
       {/* Soft Background Glow */}
       <div className="absolute -top-56 -right-56 w-[800px] h-[800px] bg-sky-100/70 blur-[180px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-64 -left-64 w-[850px] h-[850px] bg-slate-100/80 blur-[190px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[88rem] mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-14">
           <h2

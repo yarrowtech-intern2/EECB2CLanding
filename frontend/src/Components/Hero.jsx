@@ -27,7 +27,8 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex flex-col lg:flex-row bg-gradient-to-br from-amber-500 to-yellow-400">
+    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
+      <div className="w-full max-w-[88rem] mx-auto flex flex-col lg:flex-row relative h-full">
       
       {/* Vertical line separator mimicking reference */}
 
@@ -44,7 +45,7 @@ const Hero = () => {
       </div>
 
       {/* LEFT COLUMN */}
-      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-28 md:pt-36 lg:pt-0 pb-12 md:pb-16 lg:pb-0 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 text-white justify-center">
+      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-28 md:pt-36 lg:pt-0 pb-12 md:pb-16 lg:pb-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-white justify-center">
         
         {/* Main Heading */}
         <div className="z-10 pointer-events-none self-start relative mb-10">
@@ -125,9 +126,10 @@ const Hero = () => {
         </div>
 
       </div>
+      </div>
 
       {/* FIXED BOTTOM META ALIGNMENTS */}
-      <div className="absolute bottom-8 left-0 w-full px-6 sm:px-12 lg:px-24 xl:px-32 flex flex-col md:flex-row justify-between gap-8 md:gap-0 pointer-events-none z-30">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-[88rem] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between gap-8 md:gap-0 pointer-events-none z-30">
         
 
       </div>

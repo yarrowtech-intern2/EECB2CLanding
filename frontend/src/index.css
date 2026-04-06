@@ -7,7 +7,8 @@
 
 body {
   font-family: 'Outfit', sans-serif;
-  cursor: none; /* Hide default cursor for the custom one */
+  cursor: none;
+  /* Hide default cursor for the custom one */
 }
 
 /* Custom Cursor Styles */
@@ -47,6 +48,7 @@ body {
   transition: transform 0.15s ease-out;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }

@@ -31,7 +31,7 @@ const WhyEEC = () => {
   return (
     <section
       id="why-eec"
-      className="w-full py-20 px-4 relative overflow-hidden bg-white"
+      className="w-full py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative overflow-hidden bg-white"
     >
       {/* Background soft gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-white" />
@@ -40,7 +40,7 @@ const WhyEEC = () => {
       <div className="absolute -top-44 -left-44 w-[520px] h-[520px] bg-yellow-200/40 blur-[160px] rounded-full" />
       <div className="absolute -bottom-52 -right-52 w-[580px] h-[580px] bg-amber-200/40 blur-[170px] rounded-full" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-[88rem] mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-14" data-aos="fade-up">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-6 text-slate-900">
