@@ -23,7 +23,7 @@ export default function Footer() {
     "https://www.google.com/maps/search/?api=1&query=Citi+Mart+Dharmatala+Kolkata";
 
   return (
-    <footer className="relative pt-0 pb-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden bg-white">
+    <footer className="relative pt-0 pb-20 overflow-hidden bg-white">
       {/* ===================== WHITE BACKGROUND ===================== */}
       <div className="absolute inset-0 z-0 bg-white" />
 
@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="absolute -bottom-48 -right-48 w-[560px] h-[560px] bg-yellow-200/40 blur-[130px] rounded-full z-0" />
 
       {/* ===================== CONTENT ===================== */}
-      <div className="max-w-[88rem] mx-auto relative z-20 pt-20">
+      <div className="global-container relative z-20 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* LEFT CARD */}
           <div className="bg-yellow-400 rounded-3xl p-8 sm:p-10 text-black shadow-lg border border-yellow-500/30">

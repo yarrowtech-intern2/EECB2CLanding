@@ -133,7 +133,7 @@ const Header = () => {
           : "py-4 bg-transparent"
       }`}
     >
-      <div className="max-w-[88rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative flex items-center justify-between h-14 lg:h-16">
+      <div className="global-container relative flex items-center justify-between h-14 lg:h-16">
 
         {/* LOGO */}
         <button

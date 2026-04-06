@@ -129,7 +129,7 @@ const Hero = () => {
       </div>
 
       {/* FIXED BOTTOM META ALIGNMENTS */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-[88rem] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between gap-8 md:gap-0 pointer-events-none z-30">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 global-container flex flex-col md:flex-row justify-between gap-8 md:gap-0 pointer-events-none z-30">
         
 
       </div>

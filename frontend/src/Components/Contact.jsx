@@ -146,14 +146,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="w-full py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative overflow-hidden bg-linear-to-b from-slate-50 to-white"
+      className="w-full py-24 relative overflow-hidden bg-linear-to-b from-slate-50 to-white"
     >
       {/* Background decorations */}
       <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-yellow-100/60 blur-[170px] rounded-full" />
       <div className="absolute -bottom-52 -right-52 w-[650px] h-[650px] bg-sky-100/60 blur-[180px] rounded-full" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-50/40 blur-[200px] rounded-full" />
 
-      <div className="max-w-[88rem] mx-auto relative z-10">
+      <div className="global-container relative z-10">
         {/* Heading */}
         <div className="text-center mb-16" data-aos="fade-up">
           <span className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 tracking-wide uppercase">

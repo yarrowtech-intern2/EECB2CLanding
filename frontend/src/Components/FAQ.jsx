@@ -75,13 +75,13 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative py-16 xs:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-white overflow-hidden"
+      className="relative py-16 xs:py-20 bg-white overflow-hidden"
     >
       {/* Soft background glow */}
       <div className="absolute -top-44 -right-44 w-[720px] h-[720px] bg-sky-100/70 blur-[170px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-56 -left-56 w-[720px] h-[720px] bg-yellow-100/70 blur-[180px] rounded-full pointer-events-none" />
 
-      <div className="max-w-[88rem] mx-auto relative z-10">
+      <div className="global-container relative z-10">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900">
