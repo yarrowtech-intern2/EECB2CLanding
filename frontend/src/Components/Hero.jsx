@@ -44,14 +44,14 @@ const Hero = () => {
       </div>
 
       {/* LEFT COLUMN */}
-      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-32 lg:pt-0 pb-12 lg:pb-0 px-4 sm:px-12 lg:px-24 xl:px-32 text-white justify-center">
+      <div className="relative z-10 w-full lg:w-[68%] h-full flex flex-col pt-24 sm:pt-28 md:pt-36 lg:pt-0 pb-12 md:pb-16 lg:pb-0 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 text-white justify-center">
         
         {/* Main Heading */}
         <div className="z-10 pointer-events-none self-start relative mb-10">
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
           <div className="animate-[fadeInUp_1s_ease-out_forwards]">
             <div style={{ animation: 'float 6s ease-in-out infinite' }}>
-              <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-[4.2rem] xl:text-[5.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-md break-words">
+              <h1 className="text-4xl xs:text-5xl sm:text-[3.5rem] md:text-[4.5rem] lg:text-[4.2rem] xl:text-[5.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-md break-words">
                 Personalized <br />
                 Learning <br />
                 <span className="font-medium text-black/90 drop-shadow-sm">that adapts <br/> to you</span>
@@ -64,7 +64,7 @@ const Hero = () => {
         <div className="max-w-[500px] relative z-10">
           <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
             <div style={{ animation: 'float 6s ease-in-out infinite 0.5s' }}>
-              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm">
+              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.1rem] xl:text-[1.2rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-sm max-w-[90%] md:max-w-[85%] lg:max-w-full">
                 AI-guided study paths, concept videos, and gamified progress tailored to boost 
                 focus, reduce stress, and dramatically improve outcomes.
               </p>
@@ -108,7 +108,7 @@ const Hero = () => {
             {loopedImages.map((item, idx) => (
               <div 
                 key={idx} 
-                className="marquee-card relative w-[180px] sm:w-[220px] lg:w-[200px] xl:w-[240px] h-[280px] sm:h-[340px] lg:h-[300px] xl:h-[360px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
+                className="marquee-card relative w-[180px] sm:w-[220px] md:w-[240px] lg:w-[200px] xl:w-[240px] h-[280px] sm:h-[340px] md:h-[360px] lg:h-[300px] xl:h-[360px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
               >
                 <img
                   src={item.img}
