@@ -30,9 +30,6 @@ const Hero = () => {
     <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         
-        {/* Vertical line separator mimicking reference */}
-        <div className="hidden lg:block absolute left-[68%] top-0 bottom-0 w-[1px] bg-white/10 z-10" />
-
         {/* Desktop Mascot: absolute floating centered */}
         <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] 2xl:left-[52%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[620px] h-[90%] xl:h-[95%] 2xl:h-full items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
@@ -100,7 +97,7 @@ const Hero = () => {
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-60"
+                    className="absolute inset-0 w-full h-full object-cover opacity-100"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
                     <h3 className="text-white text-lg font-bold leading-tight">{item.title}</h3>
