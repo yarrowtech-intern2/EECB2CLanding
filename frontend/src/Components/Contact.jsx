@@ -168,7 +168,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 2xl:gap-16">
           {/* Left Info Section - 2 cols */}
           <div className="lg:col-span-2 space-y-5" data-aos="fade-right">
             {/* Info heading card */}

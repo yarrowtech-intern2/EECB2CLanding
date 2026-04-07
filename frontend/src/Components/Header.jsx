@@ -145,12 +145,12 @@ const Header = () => {
 
         {/* DESKTOP NAV */}
         <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 z-10 w-max">
-          <nav className="flex items-center gap-1 bg-white/40 backdrop-blur-md border border-white/40 shadow-sm rounded-full p-1">
+          <nav className="flex items-center gap-1 2xl:gap-2 bg-white/40 backdrop-blur-md border border-white/40 shadow-sm rounded-full p-1">
             {navLinks.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                className={`whitespace-nowrap px-5 py-2.5 2xl:px-7 2xl:py-3.5 rounded-full text-sm 2xl:text-base font-semibold transition-all duration-300 ${
                   activeSection === item.id
                     ? "bg-black text-white shadow"
                     : "text-gray-800 hover:bg-white/60 hover:text-black"

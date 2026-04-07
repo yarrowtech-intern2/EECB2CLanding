@@ -33,7 +33,7 @@ export default function Footer() {
 
       {/* ===================== CONTENT ===================== */}
       <div className="global-container relative z-20 pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 2xl:gap-20 items-stretch">
           {/* LEFT CARD */}
           <div className="bg-yellow-400 rounded-3xl p-8 sm:p-10 text-black shadow-lg border border-yellow-500/30">
             <div className="mb-6">

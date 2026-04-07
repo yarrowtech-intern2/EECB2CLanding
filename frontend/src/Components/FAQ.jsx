@@ -96,7 +96,7 @@ const FAQ = () => {
 
         {/* Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 2xl:gap-14 items-start"
           data-aos="fade-up"
           data-aos-delay="150"
         >

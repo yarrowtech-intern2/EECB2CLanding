@@ -88,7 +88,7 @@ const FeaturesModules = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 2xl:gap-12">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -99,7 +99,7 @@ const FeaturesModules = () => {
                 rounded-[26px]
                 border border-slate-200/70
                 shadow-[0_18px_60px_rgba(15,23,42,0.08)]
-                p-8
+                p-8 2xl:p-10
                 transition-all duration-300 ease-out
                 hover:border-yellow-300
                 hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
