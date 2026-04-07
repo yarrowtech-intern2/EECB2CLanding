@@ -17,10 +17,10 @@ const FloatingActions = () => {
     <div
       className="
         fixed
-        right-3 sm:right-4
-        bottom-4 sm:bottom-6
+        right-3 sm:right-4 xl:right-8
+        bottom-4 sm:bottom-6 xl:bottom-8
         z-[1000]
-        flex flex-col gap-3 sm:gap-4
+        flex flex-col gap-3 sm:gap-4 xl:gap-5
         pointer-events-auto
       "
     >
@@ -32,17 +32,17 @@ const FloatingActions = () => {
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
         className="
-          w-11 h-11 sm:w-14 sm:h-14
+          w-11 h-11 sm:w-14 sm:h-14 xl:w-16 xl:h-16
           rounded-full
           bg-green-500 hover:bg-green-600
           text-white
           flex items-center justify-center
-          shadow-lg hover:shadow-2xl
+          shadow-lg hover:shadow-[0_20px_50px_rgba(34,197,94,0.3)]
           transition-all duration-300
           hover:scale-110 active:scale-95
         "
       >
-        <FaWhatsapp className="w-5 h-5 sm:w-7 sm:h-7" />
+        <FaWhatsapp className="w-5 h-5 sm:w-7 sm:h-7 xl:w-8 xl:h-8" />
       </a>
 
       {/* Email */}
@@ -53,17 +53,17 @@ const FloatingActions = () => {
         aria-label="Send Email"
         title="Send Email"
         className="
-          w-11 h-11 sm:w-14 sm:h-14
+          w-11 h-11 sm:w-14 sm:h-14 xl:w-16 xl:h-16
           rounded-full
           bg-blue-500 hover:bg-blue-600
           text-white
           flex items-center justify-center
-          shadow-lg hover:shadow-2xl
+          shadow-lg hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)]
           transition-all duration-300
           hover:scale-110 active:scale-95
         "
       >
-        <FaEnvelope className="w-5 h-5 sm:w-7 sm:h-7" />
+        <FaEnvelope className="w-5 h-5 sm:w-7 sm:h-7 xl:w-8 xl:h-8" />
       </a>
     </div>
   );
