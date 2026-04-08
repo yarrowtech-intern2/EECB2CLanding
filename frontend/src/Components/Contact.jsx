@@ -159,7 +159,7 @@ const Contact = () => {
           <span className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 tracking-wide uppercase">
             Get in Touch
           </span>
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-950">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-950">
             Contact <span className="text-yellow-500">Us</span>
           </h2>
           <p className="mt-4 text-slate-500 font-medium max-w-lg mx-auto text-base sm:text-lg leading-relaxed">
@@ -168,7 +168,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 2xl:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 2xl:gap-16 3xl:gap-24">
           {/* Left Info Section - 2 cols */}
           <div className="lg:col-span-2 space-y-5" data-aos="fade-right">
             {/* Info heading card */}

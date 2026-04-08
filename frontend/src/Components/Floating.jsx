@@ -32,7 +32,7 @@ const FloatingActions = () => {
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
         className="
-          w-11 h-11 sm:w-14 sm:h-14 xl:w-16 xl:h-16
+          w-10 h-10 sm:w-12 sm:h-12 xl:w-16 xl:h-16
           rounded-full
           bg-green-500 hover:bg-green-600
           text-white
@@ -42,7 +42,7 @@ const FloatingActions = () => {
           hover:scale-110 active:scale-95
         "
       >
-        <FaWhatsapp className="w-5 h-5 sm:w-7 sm:h-7 xl:w-8 xl:h-8" />
+        <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 xl:w-8 xl:h-8" />
       </a>
 
       {/* Email */}
@@ -53,7 +53,7 @@ const FloatingActions = () => {
         aria-label="Send Email"
         title="Send Email"
         className="
-          w-11 h-11 sm:w-14 sm:h-14 xl:w-16 xl:h-16
+          w-10 h-10 sm:w-12 sm:h-12 xl:w-16 xl:h-16
           rounded-full
           bg-blue-500 hover:bg-blue-600
           text-white
@@ -63,7 +63,7 @@ const FloatingActions = () => {
           hover:scale-110 active:scale-95
         "
       >
-        <FaEnvelope className="w-5 h-5 sm:w-7 sm:h-7 xl:w-8 xl:h-8" />
+        <FaEnvelope className="w-5 h-5 sm:w-6 sm:h-6 xl:w-8 xl:h-8" />
       </a>
     </div>
   );

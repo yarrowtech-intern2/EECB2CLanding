@@ -84,7 +84,7 @@ const FAQ = () => {
       <div className="global-container relative z-10">
         {/* Heading */}
         <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900">
             FAQ –{" "}
             <span className="text-yellow-500">Frequently Asked Questions</span>
           </h2>
@@ -96,7 +96,7 @@ const FAQ = () => {
 
         {/* Grid */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 2xl:gap-14 items-start"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 2xl:gap-14 3xl:gap-20 items-start"
           data-aos="fade-up"
           data-aos-delay="150"
         >

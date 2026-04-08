@@ -69,7 +69,7 @@ const FeaturesModules = () => {
         {/* Header */}
         <div className="text-center mb-14">
           <h2
-            className="mt-6 text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900"
+            className="mt-6 text-2xl xs:text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900"
             data-aos="fade-up"
             data-aos-delay="120"
           >
@@ -88,7 +88,7 @@ const FeaturesModules = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 2xl:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 2xl:gap-12 3xl:gap-16">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -99,7 +99,7 @@ const FeaturesModules = () => {
                 rounded-[26px]
                 border border-slate-200/70
                 shadow-[0_18px_60px_rgba(15,23,42,0.08)]
-                p-8 2xl:p-10
+                p-8 2xl:p-10 3xl:p-12
                 transition-all duration-300 ease-out
                 hover:border-yellow-300
                 hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
