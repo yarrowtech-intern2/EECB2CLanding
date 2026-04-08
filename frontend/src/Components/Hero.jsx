@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
-      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24">
         
         {/* Desktop Mascot: absolute floating centered */}
         <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] 2xl:left-[52%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[620px] h-[90%] xl:h-[95%] 2xl:h-full items-end justify-center">
@@ -92,7 +92,7 @@ const Hero = () => {
               {loopedImages.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="marquee-card relative w-[200px] xl:w-[240px] h-[300px] xl:h-[360px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
+                  className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[280px] h-[300px] xl:h-[360px] 2xl:h-[420px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
                 >
                   <img
                     src={item.img}

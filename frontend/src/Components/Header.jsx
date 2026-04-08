@@ -133,16 +133,16 @@ const Header = () => {
           : "py-4 bg-transparent"
       }`}
     >
-      <div className="global-container relative flex items-center justify-between h-14 lg:h-16">
+      <div className="global-container relative flex items-center justify-between h-14 lg:h-16 2xl:h-20">
 
         {/* LOGO */}
         <button
           onClick={() => scrollToSection("home")}
           className="relative z-10 flex-shrink-0"
         >
-          <img src={Logo} alt="logo" className="h-9 lg:h-11 w-auto" />
+          <img src={Logo} alt="logo" className="h-9 lg:h-11 2xl:h-14 w-auto" />
         </button>
-
+ 
         {/* DESKTOP NAV */}
         <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 z-10 w-max">
           <nav className="flex items-center gap-1 2xl:gap-2 bg-white/40 backdrop-blur-md border border-white/40 shadow-sm rounded-full p-1">
@@ -150,7 +150,7 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`whitespace-nowrap px-5 py-2.5 2xl:px-7 2xl:py-3.5 rounded-full text-sm 2xl:text-base font-semibold transition-all duration-300 ${
+                className={`whitespace-nowrap px-5 py-2.5 2xl:px-8 2xl:py-4 rounded-full text-sm xl:text-base 2xl:text-lg font-semibold transition-all duration-300 ${
                   activeSection === item.id
                     ? "bg-black text-white shadow"
                     : "text-gray-800 hover:bg-white/60 hover:text-black"
@@ -177,7 +177,7 @@ const Header = () => {
                 },
               })
             }
-            className="hidden lg:block bg-white/40 backdrop-blur-md border border-white/60 hover:bg-white/60 text-black px-6 py-2.5 rounded-full font-semibold shadow-lg transition-all hover:scale-105 whitespace-nowrap"
+            className="hidden lg:block bg-white/40 backdrop-blur-md border border-white/60 hover:bg-white/60 text-black px-6 py-2.5 2xl:px-8 2xl:py-3.5 rounded-full font-semibold shadow-lg transition-all hover:scale-105 whitespace-nowrap 2xl:text-lg"
           >
             Get Started
           </button>
