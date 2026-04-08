@@ -28,12 +28,12 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
-      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24">
+      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] 2xl:left-[52%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[620px] h-[90%] xl:h-[95%] 2xl:h-full items-end justify-center">
+        <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] 2xl:left-[52%] 3xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[620px] 3xl:w-[750px] h-[90%] xl:h-[95%] 2xl:h-full items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
-              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[280px] xl:w-[350px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
+              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[280px] xl:w-[350px] 2xl:w-[500px] 3xl:w-[600px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
                 src={Student}
                 alt="Education Symbol"
@@ -45,10 +45,10 @@ const Hero = () => {
         {/* LEFT COLUMN: Text and CTA */}
         <div className="relative z-20 w-full lg:w-[68%] h-full flex flex-col pt-24 lg:pt-0 pb-12 lg:pb-0 text-white justify-center">
           
-          <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none">
+          <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none 3xl:max-w-[1000px]">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
             <div className="animate-[fadeInUp_1s_ease-out_forwards]">
-              <h1 className="text-4xl xs:text-5xl sm:text-[3.5rem] md:text-[4.5rem] lg:text-[3.8rem] xl:text-[5.0rem] 2xl:text-[6.5rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
+              <h1 className="text-4xl xs:text-5xl sm:text-[3.5rem] md:text-[4.5rem] lg:text-[3.8rem] xl:text-[5.0rem] 2xl:text-[6.5rem] 3xl:text-[8rem] leading-[1.05] tracking-[-0.04em] text-white font-bold drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
                 Personalized <br />
                 Learning <br />
                 <span className="font-medium text-white/90 drop-shadow-sm">that adapts <br className="hidden lg:block"/> to you</span>
@@ -56,9 +56,9 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="max-w-[500px] lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[650px] relative z-[25] pointer-events-auto">
+          <div className="max-w-[500px] lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[650px] 3xl:max-w-[850px] relative z-[25] pointer-events-auto">
             <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
-              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.05rem] xl:text-[1.15rem] 2xl:text-[1.4rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
+              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.25rem] lg:text-[1.05rem] xl:text-[1.15rem] 2xl:text-[1.4rem] 3xl:text-[1.7rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
                 AI-guided study paths, concept videos, and gamified progress tailored to boost 
                 focus, reduce stress, and dramatically improve outcomes.
               </p>
@@ -92,7 +92,7 @@ const Hero = () => {
               {loopedImages.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[280px] h-[300px] xl:h-[360px] 2xl:h-[420px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
+                  className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[280px] 3xl:w-[340px] h-[300px] xl:h-[360px] 2xl:h-[420px] 3xl:h-[500px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
                 >
                   <img
                     src={item.img}
