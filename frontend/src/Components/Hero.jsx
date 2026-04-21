@@ -27,28 +27,30 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
+    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400 overflow-hidden">
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-0 left-[55%] xl:left-[52%] 2xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[480px] 2xl:w-[580px] h-[90%] xl:h-[95%] items-end justify-center">
+        <div className="hidden lg:flex absolute bottom-0 left-[54%] xl:left-[51%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] h-[90%] xl:h-[95%] items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
               <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] xl:w-[400px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
                 src={Student}
                 alt="Education Symbol"
+                fetchpriority="high"
+                loading="eager"
                 className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
               />
            </div>
         </div>
 
         {/* LEFT COLUMN: Text and CTA */}
-        <div className="relative z-20 w-full lg:w-[68%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
+        <div className="relative z-20 w-full lg:w-[65%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
           
           <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none 3xl:max-w-[1000px]">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
             <div className="animate-[fadeInUp_1s_ease-out_forwards]">
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[6rem] leading-[1.05] tracking-[-0.05em] text-white font-black drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[4rem] 2xl:text-[4.8rem] leading-[1.1] tracking-[-0.04em] text-white font-black drop-shadow-[0_8px_10px_rgba(0,0,0,0.2)]">
                 Personalized <br />
                 Learning <br />
                 <span className="font-medium text-white/95 drop-shadow-sm">that adapts <br className="hidden lg:block"/> to you</span>
@@ -81,6 +83,8 @@ const Hero = () => {
               <img
                 src={Student}
                 alt="Education Symbol"
+                fetchpriority="high"
+                loading="eager"
                 className="w-[90%] max-w-[480px] h-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10"
               />
             </div>
