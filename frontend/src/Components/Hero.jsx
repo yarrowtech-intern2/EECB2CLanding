@@ -27,38 +27,38 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full overflow-x-hidden flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
+    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400">
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-[-10px] left-[58%] xl:left-[55%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[500px] 2xl:w-[580px] h-[90%] xl:h-[95%] items-end justify-center">
+        <div className="hidden lg:flex absolute bottom-0 left-[55%] xl:left-[52%] 2xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[380px] xl:w-[480px] 2xl:w-[580px] h-[90%] xl:h-[95%] items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
-              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[280px] xl:w-[350px] 2xl:w-[450px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
+              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] xl:w-[400px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
                 src={Student}
                 alt="Education Symbol"
-                className="w-full h-auto max-h-[70vh] xl:max-h-[80vh] 2xl:max-h-[90vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
+                className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
               />
            </div>
         </div>
 
         {/* LEFT COLUMN: Text and CTA */}
-        <div className="relative z-20 w-full lg:w-[68%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-0 pb-12 lg:pb-0 text-white justify-center">
+        <div className="relative z-20 w-full lg:w-[68%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
           
           <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none 3xl:max-w-[1000px]">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
             <div className="animate-[fadeInUp_1s_ease-out_forwards]">
-              <h1 className="text-[2.2rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] xl:text-[4.8rem] 2xl:text-[5.5rem] leading-[1.1] tracking-[-0.04em] text-white font-bold drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[6rem] leading-[1.05] tracking-[-0.05em] text-white font-black drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]">
                 Personalized <br />
                 Learning <br />
-                <span className="font-medium text-white/90 drop-shadow-sm">that adapts <br className="hidden lg:block"/> to you</span>
+                <span className="font-medium text-white/95 drop-shadow-sm">that adapts <br className="hidden lg:block"/> to you</span>
               </h1>
             </div>
           </div>
 
           <div className="max-w-[500px] lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[650px] 3xl:max-w-[850px] relative z-[25] pointer-events-auto">
             <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
-              <p className="text-black/80 text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] lg:text-[1.05rem] xl:text-[1.15rem] 2xl:text-[1.3rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
+              <p className="text-black/80 text-[0.95rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.15rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
                 AI-guided study paths, concept videos, and gamified progress tailored to boost 
                 focus, reduce stress, and dramatically improve outcomes.
               </p>
@@ -73,35 +73,50 @@ const Hero = () => {
           </div>
 
           {/* Mobile Mascot: Shown only below text on mobile */}
-          <div className="flex justify-center items-center pt-16 pb-4 lg:hidden relative z-10 w-full mt-4">
-            <div className="absolute inset-0 flex justify-center items-center -z-10">
-              <div className="w-[80vw] h-[80vw] max-w-[350px] max-h-[350px] bg-yellow-300/40 blur-[50px] rounded-full" />
+          <div className="flex flex-col justify-center items-center pt-16 pb-8 lg:hidden relative z-10 w-full mt-4">
+            <div className="relative flex justify-center items-center w-full">
+              <div className="absolute inset-0 flex justify-center items-center -z-10">
+                <div className="w-[80vw] h-[80vw] max-w-[350px] max-h-[350px] bg-yellow-300/40 blur-[50px] rounded-full" />
+              </div>
+              <img
+                src={Student}
+                alt="Education Symbol"
+                className="w-[90%] max-w-[480px] h-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10"
+              />
             </div>
-            <img
-              src={Student}
-              alt="Education Symbol"
-              className="w-[90%] max-w-[480px] h-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)]"
-            />
+            {/* Added Text for Mobile Gap */}
+            <div className="mt-6 px-4 text-center animate-[fadeInUp_1s_ease-out_0.5s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
+              <p className="text-black/90 font-bold text-lg sm:text-xl tracking-wide drop-shadow-sm">
+                Empower Your Future with Smart Learning! 🎓
+              </p>
+              <p className="text-black/70 font-medium text-sm sm:text-base mt-1">
+                Join the revolution in personalized education.
+              </p>
+            </div>
           </div>
         </div>
 
         {/* RIGHT COLUMN: Featured Marquee */}
         <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-full flex-col justify-end pb-12 lg:pb-24 overflow-hidden">
           <div className="lg:mb-[10vh] w-full overflow-hidden relative">
-            <div className="marquee-track flex gap-4 items-center">
-              {loopedImages.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[270px] h-[300px] xl:h-[360px] 2xl:h-[400px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
-                >
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-100"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                    <h3 className="text-white text-lg font-bold leading-tight">{item.title}</h3>
-                  </div>
+            <div className="marquee-track flex w-max">
+              {[0, 1].map((_, blockIdx) => (
+                <div key={blockIdx} className="flex gap-4 pr-4 items-center" aria-hidden={blockIdx === 1}>
+                  {images.map((item, idx) => (
+                    <div 
+                      key={idx} 
+                      className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[270px] h-[300px] xl:h-[360px] 2xl:h-[400px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
+                    >
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="absolute inset-0 w-full h-full object-cover opacity-100"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h3 className="text-white text-lg font-bold leading-tight">{item.title}</h3>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

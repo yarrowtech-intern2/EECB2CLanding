@@ -83,8 +83,8 @@ const FAQ = () => {
 
       <div className="global-container relative z-10">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900">
+        <div className="text-center mb-16 sm:mb-20" data-aos="fade-up">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight font-extrabold text-slate-900">
             FAQ –{" "}
             <span className="text-yellow-500">Frequently Asked Questions</span>
           </h2>

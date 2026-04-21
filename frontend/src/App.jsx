@@ -85,8 +85,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="font-sans scroll-smooth w-full min-h-screen flex justify-center bg-[#f8f9fa] overflow-x-hidden">
-      <div className="w-full max-w-[2560px] relative bg-white flex flex-col min-h-screen shadow-2xl">
+    <div className="font-sans scroll-smooth w-full flex justify-center bg-[#f8f9fa]">
+      <div className="w-full max-w-[2560px] relative bg-white flex flex-col shadow-2xl">
         <div id="custom-cursor" className="custom-cursor hidden lg:block"></div>
         <div id="custom-cursor-follower" className="custom-cursor-follower hidden lg:block"></div>
         <Toaster position="bottom-right" reverseOrder={false} />

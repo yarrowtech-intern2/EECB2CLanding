@@ -67,9 +67,9 @@ const FeaturesModules = () => {
 
       <div className="global-container relative z-10">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-16 sm:mb-20">
           <h2
-            className="mt-6 text-2xl xs:text-3xl sm:text-4xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-900"
+            className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight font-extrabold text-slate-900"
             data-aos="fade-up"
             data-aos-delay="120"
           >

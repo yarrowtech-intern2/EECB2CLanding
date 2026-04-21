@@ -129,31 +129,31 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-white/80 backdrop-blur-md shadow-sm border-b border-white/30"
+          ? "py-2 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100"
           : "py-4 bg-transparent"
       }`}
     >
-      <div className="global-container relative flex items-center justify-between h-14 lg:h-16 2xl:h-20">
+      <div className="global-container relative flex items-center justify-between h-14 lg:h-16">
 
         {/* LOGO */}
         <button
           onClick={() => scrollToSection("home")}
-          className="relative z-10 flex-shrink-0"
+          className="relative z-10 flex-shrink-0 bg-white px-3 py-2 rounded-xl shadow-sm border border-gray-100"
         >
-          <img src={Logo} alt="logo" className="h-9 lg:h-11 2xl:h-14 w-auto" />
+          <img src={Logo} alt="logo" className="h-7 lg:h-9 w-auto" />
         </button>
  
         {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 z-10 w-max">
-          <nav className="flex items-center gap-1 2xl:gap-2 bg-white/40 backdrop-blur-md border border-white/40 shadow-sm rounded-full p-1">
+        <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 z-10">
+          <nav className="flex items-center gap-1.5 bg-white/30 backdrop-blur-md border border-white/40 rounded-full p-1.5">
             {navLinks.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`whitespace-nowrap px-5 py-2.5 2xl:px-8 2xl:py-4 rounded-full text-sm xl:text-base 2xl:text-lg font-semibold transition-all duration-300 ${
+                className={`px-6 py-2 rounded-full text-sm xl:text-base font-bold transition-all duration-300 ${
                   activeSection === item.id
-                    ? "bg-black text-white shadow"
-                    : "text-gray-800 hover:bg-white/60 hover:text-black"
+                    ? "bg-black text-white shadow-md"
+                    : "text-black hover:bg-white/50"
                 }`}
               >
                 {item.label}
@@ -164,32 +164,21 @@ const Header = () => {
 
         {/* RIGHT ACTION BUTTONS */}
         <div className="flex items-center gap-4 relative z-10">
-
-          {/* DESKTOP BUTTON */}
           <button
             onClick={() =>
-              toast.success("Get Started functionality coming soon!", {
-                icon: "🚀",
-                style: {
-                  borderRadius: "10px",
-                  background: "#333",
-                  color: "#fff",
-                },
-              })
+              toast.success("Get Started functionality coming soon!")
             }
-            className="hidden lg:block bg-white/40 backdrop-blur-md border border-white/60 hover:bg-white/60 text-black px-6 py-2.5 2xl:px-8 2xl:py-3.5 rounded-full font-semibold shadow-lg transition-all hover:scale-105 whitespace-nowrap 2xl:text-lg"
+            className="hidden lg:block bg-white text-black px-8 py-3 rounded-full font-bold shadow-lg transition-all hover:scale-105 border border-gray-100"
           >
             Get Started
           </button>
 
-          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-200 text-black"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white text-black shadow-md border border-gray-100"
           >
-            <FaBars />
+            <FaBars size={18} />
           </button>
-
         </div>
       </div>
 

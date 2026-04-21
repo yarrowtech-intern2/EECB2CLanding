@@ -155,11 +155,11 @@ const Contact = () => {
 
       <div className="global-container relative z-10">
         {/* Heading */}
-        <div className="text-center mb-16" data-aos="fade-up">
+        <div className="text-center mb-16 sm:mb-20" data-aos="fade-up">
           <span className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 tracking-wide uppercase">
             Get in Touch
           </span>
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5rem] 2xl:text-[5.5rem] 3xl:text-[6.5rem] leading-[1.1] tracking-tight font-extrabold text-slate-950">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight font-extrabold text-slate-950">
             Contact <span className="text-yellow-500">Us</span>
           </h2>
           <p className="mt-4 text-slate-500 font-medium max-w-lg mx-auto text-base sm:text-lg leading-relaxed">
