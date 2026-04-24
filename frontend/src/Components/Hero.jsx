@@ -101,7 +101,7 @@ const Hero = () => {
         </div>
 
         {/* RIGHT COLUMN: Featured Marquee */}
-        <div className="relative z-10 flex w-full lg:w-[35%] xl:w-[32%] 2xl:w-[30%] ml-auto h-auto lg:h-full flex-col justify-end pb-12 lg:pb-24 overflow-hidden">
+        <div className="relative z-10 flex w-full lg:w-[35%] xl:w-[32%] 2xl:w-[30%] ml-auto h-auto lg:h-full flex-col justify-end pb-20 lg:pb-32 xl:pb-44 2xl:pb-52 overflow-hidden lg:mr-8 xl:mr-12">
           <div className="lg:mb-[10vh] w-full overflow-hidden relative">
             <div className="marquee-track flex w-max">
               {[0, 1].map((_, blockIdx) => (
