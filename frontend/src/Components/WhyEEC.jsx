@@ -37,8 +37,8 @@ const WhyEEC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-white" />
 
       {/* Soft blur blobs */}
-      <div className="absolute -top-44 -left-44 w-[520px] h-[520px] bg-yellow-200/40 blur-[160px] rounded-full" />
-      <div className="absolute -bottom-52 -right-52 w-[580px] h-[580px] bg-amber-200/40 blur-[170px] rounded-full" />
+      <div className="absolute -top-44 -left-44 w-[520px] h-[520px] bg-yellow-200/40 blur-[160px] rounded-full animate-gpu" />
+      <div className="absolute -bottom-52 -right-52 w-[580px] h-[580px] bg-amber-200/40 blur-[170px] rounded-full animate-gpu" />
 
       <div className="global-container relative z-10">
         {/* Header */}
@@ -75,6 +75,7 @@ const WhyEEC = () => {
                 hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
                 hover:scale-[1.02]
                 cursor-pointer
+                animate-gpu
               "
             >
               {/* Light yellow tint inside card */}

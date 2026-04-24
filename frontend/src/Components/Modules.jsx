@@ -62,8 +62,8 @@ const FeaturesModules = () => {
       className="w-full py-24 relative overflow-hidden bg-white"
     >
       {/* Soft Background Glow */}
-      <div className="absolute -top-56 -right-56 w-[800px] h-[800px] bg-sky-100/70 blur-[180px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-64 -left-64 w-[850px] h-[850px] bg-slate-100/80 blur-[190px] rounded-full pointer-events-none" />
+      <div className="absolute -top-56 -right-56 w-[800px] h-[800px] bg-sky-100/70 blur-[180px] rounded-full pointer-events-none animate-gpu" />
+      <div className="absolute -bottom-64 -left-64 w-[850px] h-[850px] bg-slate-100/80 blur-[190px] rounded-full pointer-events-none animate-gpu" />
 
       <div className="global-container relative z-10">
         {/* Header */}
@@ -104,6 +104,8 @@ const FeaturesModules = () => {
                 hover:border-yellow-300
                 hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
                 hover:scale-[1.02]
+                animate-gpu
+                cursor-pointer
               "
             >
               {/* Light yellow tint inside card */}

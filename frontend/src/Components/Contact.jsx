@@ -149,9 +149,9 @@ const Contact = () => {
       className="w-full py-24 relative overflow-hidden bg-linear-to-b from-slate-50 to-white"
     >
       {/* Background decorations */}
-      <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-yellow-100/60 blur-[170px] rounded-full" />
-      <div className="absolute -bottom-52 -right-52 w-[650px] h-[650px] bg-sky-100/60 blur-[180px] rounded-full" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-50/40 blur-[200px] rounded-full" />
+      <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-yellow-100/60 blur-[170px] rounded-full animate-gpu" />
+      <div className="absolute -bottom-52 -right-52 w-[650px] h-[650px] bg-sky-100/60 blur-[180px] rounded-full animate-gpu" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-50/40 blur-[200px] rounded-full animate-gpu" />
 
       <div className="global-container relative z-10">
         {/* Heading */}

@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-0 left-[54%] xl:left-[51%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] h-[90%] xl:h-[95%] items-end justify-center">
+        <div className="hidden lg:flex absolute bottom-0 left-[52%] xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] 3xl:w-[750px] h-[90%] xl:h-[95%] items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
               <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] xl:w-[400px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
@@ -39,13 +39,13 @@ const Hero = () => {
                 alt="Education Symbol"
                 fetchpriority="high"
                 loading="eager"
-                className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
+                className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)] animate-gpu"
               />
            </div>
         </div>
 
         {/* LEFT COLUMN: Text and CTA */}
-        <div className="relative z-20 w-full lg:w-[65%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
+        <div className="relative z-20 w-full lg:w-[50%] xl:w-[45%] 2xl:w-[42%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
           
           <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none 3xl:max-w-[1000px]">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
@@ -101,7 +101,7 @@ const Hero = () => {
         </div>
 
         {/* RIGHT COLUMN: Featured Marquee */}
-        <div className="relative z-10 flex w-full lg:w-[32%] h-auto lg:h-full flex-col justify-end pb-12 lg:pb-24 overflow-hidden">
+        <div className="relative z-10 flex w-full lg:w-[35%] xl:w-[32%] 2xl:w-[30%] ml-auto h-auto lg:h-full flex-col justify-end pb-12 lg:pb-24 overflow-hidden">
           <div className="lg:mb-[10vh] w-full overflow-hidden relative">
             <div className="marquee-track flex w-max">
               {[0, 1].map((_, blockIdx) => (
@@ -109,7 +109,7 @@ const Hero = () => {
                   {images.map((item, idx) => (
                     <div 
                       key={idx} 
-                      className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[270px] h-[300px] xl:h-[360px] 2xl:h-[400px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl"
+                      className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[270px] h-[300px] xl:h-[360px] 2xl:h-[400px] bg-black/20 shadow-2xl transition-all duration-700 hover:-translate-y-2 cursor-pointer shrink-0 overflow-hidden rounded-3xl animate-gpu"
                     >
                       <img
                         src={item.img}
@@ -149,8 +149,8 @@ const Hero = () => {
         }
 
         @keyframes marquee-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0%   { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         `}
       </style>
