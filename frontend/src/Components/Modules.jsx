@@ -15,6 +15,9 @@ import {
 } from "react-icons/fa";
 
 const FeaturesModules = () => {
+  useEffect(() => {
+    AOS.refresh();
+  }, []);
 
   const features = [
     {
@@ -59,7 +62,7 @@ const FeaturesModules = () => {
   return (
     <section
       id="features"
-      className="w-full py-24 relative overflow-hidden bg-white"
+      className="w-full py-24 relative bg-white"
     >
       {/* Soft Background Glow */}
       <div className="absolute -top-56 -right-56 w-[800px] h-[800px] bg-sky-100/70 blur-[180px] rounded-full pointer-events-none animate-gpu" />
@@ -92,8 +95,8 @@ const FeaturesModules = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              data-aos="fade-up"
-              data-aos-delay={250 + index * 70}
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

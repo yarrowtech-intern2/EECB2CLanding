@@ -4,6 +4,9 @@ import "aos/dist/aos.css";
 import { FaCheckCircle, FaBolt, FaGamepad, FaUserShield } from "react-icons/fa";
 
 const WhyEEC = () => {
+  useEffect(() => {
+    AOS.refresh();
+  }, []);
 
   const features = [
     {
@@ -31,7 +34,7 @@ const WhyEEC = () => {
   return (
     <section
       id="why-eec"
-      className="w-full py-20 relative overflow-hidden bg-white"
+      className="w-full py-20 relative bg-white"
     >
       {/* Background soft gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-white" />
@@ -62,8 +65,8 @@ const WhyEEC = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 300}
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

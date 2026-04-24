@@ -19,7 +19,6 @@ function Home() {
       <Modules />
       <FAQ />
       <Contact />
-      <Floating />
     </main>
   );
 }
@@ -53,6 +52,7 @@ export default function App() {
           <Route path="/floating" element={<Floating />} />
         </Routes>
         <Footer />
+        <Floating />
       </div>
     </div>
   );

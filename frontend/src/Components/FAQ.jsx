@@ -13,6 +13,10 @@ import {
 import { CiWifiOff } from "react-icons/ci";
 
 const FAQ = () => {
+  useEffect(() => {
+    AOS.refresh();
+  }, []);
+
   // ✅ FIX: start with null (no open by default)
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -75,7 +79,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative py-16 xs:py-20 bg-white overflow-hidden"
+      className="relative py-16 xs:py-20 bg-white"
     >
       {/* Soft background glow */}
       <div className="absolute -top-44 -right-44 w-[720px] h-[720px] bg-sky-100/70 blur-[170px] rounded-full pointer-events-none" />
@@ -97,8 +101,6 @@ const FAQ = () => {
         {/* Grid */}
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 2xl:gap-14 3xl:gap-20 items-start"
-          data-aos="fade-up"
-          data-aos-delay="150"
         >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -106,6 +108,8 @@ const FAQ = () => {
             return (
               <div
                 key={index}
+                data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+                data-aos-delay={index * 100}
                 className={`
                   group w-full rounded-[28px] bg-white
                   shadow-[0_18px_60px_rgba(15,23,42,0.10)]
