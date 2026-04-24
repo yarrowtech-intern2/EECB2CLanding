@@ -27,7 +27,7 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[700px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400 overflow-hidden">
+    <section id="home" className="relative h-auto lg:h-[85vh] lg:min-h-[650px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400 overflow-hidden">
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
@@ -39,7 +39,7 @@ const Hero = () => {
                 alt="Education Symbol"
                 fetchpriority="high"
                 loading="eager"
-                className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)] animate-gpu"
+                className="w-full h-auto max-h-[65vh] xl:max-h-[75vh] 2xl:max-h-[80vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)] animate-gpu"
               />
            </div>
         </div>
