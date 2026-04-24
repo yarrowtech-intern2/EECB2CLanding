@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
         
         {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-0 left-[52%] xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] 3xl:w-[750px] h-[90%] xl:h-[95%] items-end justify-center">
+        <div className="hidden lg:flex absolute bottom-0 left-[54%] xl:left-[52%] 2xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] 3xl:w-[750px] h-[90%] xl:h-[95%] items-end justify-center">
            <div className="w-full relative flex items-end justify-center pb-0" >
               <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] xl:w-[400px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
@@ -45,9 +45,9 @@ const Hero = () => {
         </div>
 
         {/* LEFT COLUMN: Text and CTA */}
-        <div className="relative z-20 w-full lg:w-[50%] xl:w-[45%] 2xl:w-[42%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center">
+        <div className="relative z-20 w-full lg:w-[45%] xl:w-[42%] 2xl:w-[40%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center lg:pr-10 xl:pr-16">
           
-          <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[420px] xl:max-w-[550px] 2xl:max-w-none 3xl:max-w-[1000px]">
+          <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[580px] 3xl:max-w-[1000px]">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
             <div className="animate-[fadeInUp_1s_ease-out_forwards]">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[4rem] 2xl:text-[4.8rem] leading-[1.1] tracking-[-0.04em] text-white font-black drop-shadow-[0_8px_10px_rgba(0,0,0,0.2)]">
@@ -58,7 +58,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="max-w-[500px] lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[650px] 3xl:max-w-[850px] relative z-[25] pointer-events-auto">
+          <div className="max-w-[500px] lg:max-w-[340px] xl:max-w-[420px] 2xl:max-w-[550px] 3xl:max-w-[850px] relative z-[25] pointer-events-auto">
             <div className="animate-[fadeInUp_1s_ease-out_0.2s_forwards] opacity-0" style={{ animationFillMode: 'forwards' }}>
               <p className="text-black/80 text-[0.95rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.15rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
                 AI-guided study paths, concept videos, and gamified progress tailored to boost 
