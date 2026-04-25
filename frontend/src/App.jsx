@@ -11,6 +11,10 @@ import Contact from "./Components/Contact";
 import Floating from "./Components/Floating";
 import Footer from "./Components/Footer";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Lenis from "lenis";
+
 function Home() {
   return (
     <main className="w-full">
@@ -22,10 +26,6 @@ function Home() {
     </main>
   );
 }
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Lenis from "lenis";
 
 export default function App() {
   React.useEffect(() => {
