@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, Brain, Lightbulb, BookOpen, Award } from "lucide-react";
 
-import Student from "../assets/student.png"
-import cap from "../assets/cap.jpg";
-import AI from "../assets/AI.jpg";
-import Book from "../assets/book.jpg";
-import Trophy from"../assets/Trophy.jpg";
+import Student from "../assets/student.webp"
+import cap from "../assets/cap.webp";
+import AI from "../assets/AI.webp";
+import Book from "../assets/book.webp";
+import Trophy from"../assets/Trophy.webp";
 
 const images = [
   { img: AI, title: "AI Learning", subtitle: "Smart Education System", icon: <Brain size={24} className="text-yellow-400" /> },
