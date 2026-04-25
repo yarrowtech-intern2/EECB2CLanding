@@ -8,6 +8,7 @@ const WhyEEC = () => {
     AOS.refresh();
   }, []);
 
+
   const features = [
     {
       icon: <FaCheckCircle className="text-lg" />,
@@ -34,7 +35,7 @@ const WhyEEC = () => {
   return (
     <section
       id="why-eec"
-      className="w-full py-20 relative bg-white"
+      className="w-full py-20 relative bg-white overflow-hidden"
     >
       {/* Background soft gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-white" />
@@ -45,7 +46,7 @@ const WhyEEC = () => {
 
       <div className="global-container relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold mb-6 text-slate-900">
             Why <span className="text-yellow-500">EEC?</span>
           </h2>
@@ -66,7 +67,6 @@ const WhyEEC = () => {
             <div
               key={index}
               data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useRef, useState } from "react";
 
 import {
   FaPlay,
@@ -13,9 +11,7 @@ import {
 import { CiWifiOff } from "react-icons/ci";
 
 const FAQ = () => {
-  useEffect(() => {
-    AOS.refresh();
-  }, []);
+
 
   // ✅ FIX: start with null (no open by default)
   const [openIndex, setOpenIndex] = useState(null);
@@ -79,7 +75,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative py-16 xs:py-20 bg-white"
+      className="relative py-16 xs:py-20 bg-white overflow-hidden"
     >
       {/* Soft background glow */}
       <div className="absolute -top-44 -right-44 w-[720px] h-[720px] bg-sky-100/70 blur-[170px] rounded-full pointer-events-none" />
@@ -87,7 +83,7 @@ const FAQ = () => {
 
       <div className="global-container relative z-10">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-900">
             FAQ –{" "}
             <span className="text-yellow-500">Frequently Asked Questions</span>
@@ -109,7 +105,6 @@ const FAQ = () => {
               <div
                 key={index}
                 data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                data-aos-delay={index * 100}
                 className={`
                   group w-full rounded-[28px] bg-white
                   shadow-[0_18px_60px_rgba(15,23,42,0.10)]

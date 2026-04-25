@@ -25,21 +25,47 @@ function Home() {
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Lenis from "lenis";
 
 export default function App() {
   React.useEffect(() => {
+    // Initialize AOS
     AOS.init({
-      duration: 850,
-      once: true, // Only animate once to improve performance
-      mirror: false, // Disable mirror to reduce recalculations
-      offset: 50,
-      easing: "ease-out",
+      duration: 600,
+      once: false, // Set to false so they can "go" and "come" back 
+      mirror: true, 
+      offset: 100,
+      easing: "ease-out-cubic",
     });
+
+    // Initialize Lenis Smooth Scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: true,
+      touchMultiplier: 1.5,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
-    <div className="font-sans scroll-smooth w-full flex justify-center bg-[#f8f9fa]">
-      <div className="w-full max-w-[2560px] relative bg-white flex flex-col shadow-2xl">
+    <div className="font-sans scroll-smooth w-full flex justify-center bg-[#f8f9fa] overflow-x-hidden">
+      <div className="w-full max-w-[2560px] relative bg-white flex flex-col shadow-2xl overflow-x-hidden">
         <Toaster position="bottom-right" reverseOrder={false} />
         <Header />
         <Routes>

@@ -27,101 +27,73 @@ const Hero = () => {
 
 
   return (
-    <section id="home" className="relative h-auto lg:h-screen lg:min-h-[600px] w-full flex justify-center bg-gradient-to-br from-amber-500 to-yellow-400 overflow-hidden">
-      <div className="w-full max-w-[88rem] 2xl:max-w-[105rem] 3xl:max-w-[120rem] mx-auto flex flex-col lg:flex-row relative h-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 3xl:px-32">
+    <section id="home" className="relative h-screen min-h-[100svh] w-full flex flex-col bg-gradient-to-br from-amber-500 to-yellow-400 overflow-hidden pt-[70px] lg:pt-0">
+      <div className="flex-1 w-full max-w-[88rem] mx-auto flex flex-col lg:flex-row relative px-4 sm:px-6 lg:px-12 items-center justify-between overflow-hidden">
         
-        {/* Desktop Mascot: absolute floating centered */}
-        <div className="hidden lg:flex absolute bottom-0 left-[54%] xl:left-[52%] 2xl:left-[50%] -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[540px] 2xl:w-[640px] 3xl:w-[750px] h-[90%] xl:h-[95%] items-end justify-center">
-           <div className="w-full relative flex items-end justify-center pb-0" >
-              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] xl:w-[400px] 2xl:w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
+        {/* Desktop Mascot */}
+        <div className="hidden lg:flex absolute bottom-0 left-1/2 -translate-x-1/2 z-[15] pointer-events-none w-[420px] xl:w-[640px] h-[90%] items-end justify-center">
+           <div className="w-full relative flex items-end justify-center" >
+              <div className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[500px] h-[80px] bg-yellow-300/30 blur-[60px] rounded-full -z-10" />
               <img
                 src={Student}
                 alt="Education Symbol"
-                fetchpriority="high"
-                loading="eager"
-                className="w-full h-auto max-h-[75vh] xl:max-h-[85vh] 2xl:max-h-[95vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)] animate-gpu"
-                decoding="async"
+                className="w-full h-auto max-h-[90vh] object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.5)]"
               />
            </div>
         </div>
 
-        {/* LEFT COLUMN: Text and CTA */}
-        <div className="relative z-20 w-full lg:w-[45%] xl:w-[42%] 2xl:w-[40%] min-h-full flex flex-col pt-32 sm:pt-40 lg:pt-24 pb-12 lg:pb-0 text-white justify-center lg:pr-10 xl:pr-16">
+        {/* CONTENT COLUMN */}
+        <div className="relative z-20 w-full lg:w-[45%] flex flex-col text-white text-center lg:text-left items-center lg:items-start justify-center py-2 lg:py-0">
           
-          <div className="z-[25] pointer-events-none self-start relative mb-10 lg:max-w-[380px] xl:max-w-[480px] 2xl:max-w-[580px] 3xl:max-w-[1000px]">
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-yellow-300/20 blur-[50px] rounded-full" />
-            <div className="animate-fade-in-up">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[4rem] 2xl:text-[4.8rem] leading-[1.1] tracking-[-0.04em] text-white font-black drop-shadow-[0_8px_10px_rgba(0,0,0,0.2)]">
-                Personalized <br />
-                Learning <br />
-                <span className="font-medium text-white/95 drop-shadow-sm">that adapts <br className="hidden lg:block"/> to you</span>
-              </h1>
-            </div>
-          </div>
+          <h1 className="text-[1.6rem] xs:text-3xl sm:text-4xl lg:text-[3.2rem] xl:text-[4rem] leading-[1.1] tracking-tight text-white font-black drop-shadow-md mb-3">
+            Personalized <br />
+            Learning <span className="font-medium opacity-90">that adapts to you</span>
+          </h1>
 
-          <div className="max-w-[500px] lg:max-w-[340px] xl:max-w-[420px] 2xl:max-w-[550px] 3xl:max-w-[850px] relative z-[25] pointer-events-auto">
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <p className="text-black/80 text-[0.95rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1rem] xl:text-[1.05rem] 2xl:text-[1.15rem] leading-[1.6] font-medium tracking-wide mb-8 drop-shadow-md">
-                AI-guided study paths, concept videos, and gamified progress tailored to boost 
-                focus, reduce stress, and dramatically improve outcomes.
-              </p>
-              
-              <button
-                onClick={scrollToContact}
-                className="group relative px-10 py-4 text-lg font-bold text-orange-950 bg-white rounded-full shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all duration-300 hover:-translate-y-1"
-              >
-                Start Free Trial
-              </button>
-            </div>
-          </div>
+          <p className="max-w-[420px] text-black/80 text-[0.75rem] sm:text-base leading-relaxed font-medium mb-5 sm:mb-8">
+            AI-guided study paths, concept videos, and gamified progress tailored to boost 
+            focus, reduce stress, and dramatically improve outcomes.
+          </p>
+          
+          <button
+            onClick={scrollToContact}
+            className="px-8 py-3 text-base font-bold text-orange-950 bg-white rounded-full shadow-lg hover:shadow-2xl transition-all active:scale-95"
+          >
+            Start Free Trial
+          </button>
 
-          {/* Mobile Mascot: Shown only below text on mobile */}
-          <div className="flex flex-col justify-center items-center pt-16 pb-8 lg:hidden relative z-10 w-full mt-4">
-            <div className="relative flex justify-center items-center w-full">
-              <div className="absolute inset-0 flex justify-center items-center -z-10">
-                <div className="w-[80vw] h-[80vw] max-w-[350px] max-h-[350px] bg-yellow-300/40 blur-[50px] rounded-full" />
-              </div>
-              <img
-                src={Student}
-                alt="Education Symbol"
-                fetchpriority="high"
-                loading="eager"
-                className="w-[90%] max-w-[480px] h-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.4)] relative z-10"
-                decoding="async"
-              />
-            </div>
-            {/* Added Text for Mobile Gap */}
-            <div className="mt-6 px-4 text-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <p className="text-black/90 font-bold text-lg sm:text-xl tracking-wide drop-shadow-sm">
+          {/* Mobile Mascot */}
+          <div className="mt-4 mb-2 lg:hidden w-full max-w-[240px]">
+            <img
+              src={Student}
+              alt="Student"
+              className="w-full h-auto max-h-[25svh] object-contain drop-shadow-2xl"
+            />
+            <div className="mt-2 text-center">
+              <p className="text-black/90 font-bold text-[10px] sm:text-xs tracking-tight">
                 Empower Your Future with Smart Learning! 🎓
               </p>
-              <p className="text-black/70 font-medium text-sm sm:text-base mt-1">
+              <p className="text-black/70 font-medium text-[8px] sm:text-[10px]">
                 Join the revolution in personalized education.
               </p>
             </div>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Featured Marquee */}
-        <div className="relative z-10 flex w-full lg:w-[32%] xl:w-[30%] 2xl:w-[28%] ml-auto h-auto lg:h-full flex-col justify-center pb-0 overflow-hidden mr-0 [contain:paint]">
-          <div className="w-full overflow-hidden relative">
-            <div className="marquee-track flex w-max animate-gpu">
+        {/* Marquee Section */}
+        <div className="relative z-10 w-full lg:w-[32%] mt-auto lg:mt-0 flex flex-col justify-end pb-6 lg:pb-0">
+          <div className="w-full overflow-hidden">
+            <div className="marquee-track flex animate-gpu">
               {[0, 1].map((_, blockIdx) => (
-                <div key={blockIdx} className="flex gap-4 pr-4 items-center" aria-hidden={blockIdx === 1}>
+                <div key={blockIdx} className="flex gap-2 pr-2" aria-hidden={blockIdx === 1}>
                   {images.map((item, idx) => (
                     <div 
                       key={idx} 
-                      className="marquee-card relative w-[200px] xl:w-[240px] 2xl:w-[270px] h-[300px] xl:h-[360px] 2xl:h-[400px] bg-black/20 shadow-2xl transition-all duration-1000 hover:-translate-y-4 cursor-pointer shrink-0 overflow-hidden rounded-3xl animate-gpu smooth-shadow"
+                      className="relative w-[110px] xs:w-[130px] sm:w-[180px] h-[150px] xs:h-[180px] sm:h-[240px] bg-black/20 rounded-xl overflow-hidden shrink-0"
                     >
-                      <img
-                        src={item.img}
-                        alt={item.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="absolute inset-0 w-full h-full object-cover opacity-90 brightness-[0.9] transition-all duration-500 group-hover:opacity-100 group-hover:brightness-100"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                        <h3 className="text-white text-lg font-bold leading-tight">{item.title}</h3>
+                      <img src={item.img} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                        <p className="text-white text-[10px] font-bold">{item.title}</p>
                       </div>
                     </div>
                   ))}
@@ -135,21 +107,6 @@ const Hero = () => {
       {/* CSS Animations */}
       <style>
         {`
-        @keyframes fadeInUp {
-          from { 
-            opacity: 0; 
-            transform: translate3d(0, 40px, 0); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translate3d(0, 0, 0); 
-          }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
         .marquee-track {
           display: flex;
           gap: 24px;

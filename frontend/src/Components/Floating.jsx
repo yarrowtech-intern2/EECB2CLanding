@@ -45,7 +45,7 @@ const FloatingActions = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            transform: isOpen ? "translate(-60px, -60px) scale(1)" : "translate(0, 0) scale(0)",
+            transform: isOpen ? "translate(-70px, -110px) scale(1)" : "translate(0, 0) scale(0)",
             transitionDelay: isOpen ? "100ms" : "0ms",
           }}
           className="
@@ -68,7 +68,7 @@ const FloatingActions = () => {
           target={isMobile ? "_self" : "_blank"}
           rel="noopener noreferrer"
           style={{
-            transform: isOpen ? "translate(0px, -85px) scale(1)" : "translate(0, 0) scale(0)",
+            transform: isOpen ? "translate(0px, -150px) scale(1)" : "translate(0, 0) scale(0)",
             transitionDelay: isOpen ? "200ms" : "0ms",
           }}
           className="
@@ -85,19 +85,19 @@ const FloatingActions = () => {
           <FaEnvelope size={20} />
         </a>
 
-        {/* Scroll Top - Left Center (Only if scrolled) */}
+        {/* Scroll Top - Above Main Toggle */}
         <button
           onClick={scrollToTop}
           style={{
-            transform: isOpen && isScrolled ? "translate(-85px, 0px) scale(1)" : "translate(0, 0) scale(0)",
-            transitionDelay: isOpen ? "300ms" : "0ms",
+            transform: isScrolled ? "translate(0px, -75px) scale(1)" : "translate(0, 0) scale(0)",
+            opacity: isScrolled ? 1 : 0,
           }}
           className="
             absolute pointer-events-auto
-            w-12 h-12 rounded-full
-            bg-slate-900 text-white
+            w-11 h-11 sm:w-12 sm:h-12 rounded-full
+            bg-slate-900/90 backdrop-blur-md text-white
             flex items-center justify-center
-            shadow-xl
+            shadow-2xl border border-white/10
             transition-all duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.275)
             hover:scale-110 active:scale-90
           "

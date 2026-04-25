@@ -19,6 +19,7 @@ const FeaturesModules = () => {
     AOS.refresh();
   }, []);
 
+
   const features = [
     {
       icon: <FaBook className="text-[20px]" />,
@@ -62,7 +63,7 @@ const FeaturesModules = () => {
   return (
     <section
       id="features"
-      className="w-full py-24 relative bg-white"
+      className="w-full py-24 relative bg-white overflow-hidden"
     >
       {/* Soft Background Glow */}
       <div className="absolute -top-56 -right-56 w-[800px] h-[800px] bg-sky-100/70 blur-[180px] rounded-full pointer-events-none animate-gpu" />
@@ -73,8 +74,6 @@ const FeaturesModules = () => {
         <div className="text-center mb-12 sm:mb-16">
           <h2
             className="mt-6 text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-900"
-            data-aos="fade-up"
-            data-aos-delay="120"
           >
             What EEC Offers{" "}
             <span className="text-yellow-500">(Features & Modules)</span>
@@ -82,8 +81,6 @@ const FeaturesModules = () => {
 
           <p
             className="mt-5 text-slate-600 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed font-medium"
-            data-aos="fade-up"
-            data-aos-delay="200"
           >
             Everything learners and parents need — thoughtfully organized,
             data-driven, and designed to motivate consistent progress.
@@ -96,7 +93,6 @@ const FeaturesModules = () => {
             <div
               key={index}
               data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

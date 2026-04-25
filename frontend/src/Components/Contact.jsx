@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 import {
@@ -155,7 +153,7 @@ const Contact = () => {
 
       <div className="global-container relative z-10">
         {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-bold text-sm mb-4 tracking-wide uppercase">
             Get in Touch
           </span>
@@ -170,7 +168,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 2xl:gap-16 3xl:gap-24">
           {/* Left Info Section - 2 cols */}
-          <div className="lg:col-span-2 space-y-5" data-aos="fade-right">
+          <div className="lg:col-span-2 space-y-5">
             {/* Info heading card */}
             <div className="relative overflow-hidden rounded-3xl bg-yellow-600 p-7 text-white">
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-300 rounded-full blur-2xl -translate-y-8 translate-x-8" />
@@ -192,9 +190,7 @@ const Contact = () => {
             {contactCards.map((card, idx) => (
               <div
                 key={idx}
-                data-aos="fade-up"
-                data-aos-delay={idx * 80}
-                className="group"
+                className="group animate-gpu"
               >
                 {card.href ? (
                   <a
@@ -242,7 +238,6 @@ const Contact = () => {
           {/* Right Form - 3 cols */}
           <form
             onSubmit={handleSubmit}
-            data-aos="fade-left"
             className="lg:col-span-3 bg-white rounded-3xl border border-slate-100 shadow-[0_20px_70px_rgba(15,23,42,0.07)] p-6 sm:p-8 lg:p-10"
           >
             <h3 className="text-xl font-extrabold text-slate-950 mb-1">
