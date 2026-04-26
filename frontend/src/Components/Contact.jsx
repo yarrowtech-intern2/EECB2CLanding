@@ -168,7 +168,10 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 2xl:gap-16 3xl:gap-24">
           {/* Left Info Section - 2 cols */}
-          <div className="lg:col-span-2 space-y-5">
+          <div 
+            data-aos="fade-right"
+            className="lg:col-span-2 space-y-5"
+          >
             {/* Info heading card */}
             <div className="relative overflow-hidden rounded-3xl bg-yellow-600 p-7 text-white">
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-300 rounded-full blur-2xl -translate-y-8 translate-x-8" />
@@ -238,6 +241,7 @@ const Contact = () => {
           {/* Right Form - 3 cols */}
           <form
             onSubmit={handleSubmit}
+            data-aos="fade-left"
             className="lg:col-span-3 bg-white rounded-3xl border border-slate-100 shadow-[0_20px_70px_rgba(15,23,42,0.07)] p-6 sm:p-8 lg:p-10"
           >
             <h3 className="text-xl font-extrabold text-slate-950 mb-1">

@@ -5,7 +5,7 @@ import { FaCheckCircle, FaBolt, FaGamepad, FaUserShield } from "react-icons/fa";
 
 const WhyEEC = () => {
   useEffect(() => {
-    AOS.refresh();
+    // AOS is refreshed globally in App.jsx
   }, []);
 
 
@@ -67,6 +67,7 @@ const WhyEEC = () => {
             <div
               key={index}
               data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

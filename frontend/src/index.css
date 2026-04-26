@@ -17,11 +17,11 @@ body {
 }
 
 /* Ensure hand cursor on all interactive elements */
-button, 
-a, 
-select, 
-input[type="button"], 
-input[type="submit"], 
+button,
+a,
+select,
+input[type="button"],
+input[type="submit"],
 input[type="reset"],
 .cursor-pointer {
   cursor: pointer !important;
@@ -37,9 +37,20 @@ body {
 }
 
 /* Optimization for heavy animations */
-.animate-gpu {
+.animate-gpu, [data-aos] {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000;
-  will-change: transform;
+  will-change: transform, opacity;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

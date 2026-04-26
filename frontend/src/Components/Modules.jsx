@@ -16,7 +16,7 @@ import {
 
 const FeaturesModules = () => {
   useEffect(() => {
-    AOS.refresh();
+    // AOS is refreshed globally
   }, []);
 
 
@@ -93,6 +93,7 @@ const FeaturesModules = () => {
             <div
               key={index}
               data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+              data-aos-delay={index * 100}
               className="
                 group relative bg-white
                 rounded-[26px]

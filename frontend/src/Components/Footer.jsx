@@ -35,7 +35,10 @@ export default function Footer() {
       <div className="global-container relative z-20 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 2xl:gap-20 3xl:gap-28 items-stretch">
           {/* LEFT CARD */}
-          <div className="bg-yellow-400 rounded-3xl p-8 sm:p-10 text-black shadow-lg border border-yellow-500/30">
+          <div 
+            data-aos="fade-right"
+            className="bg-yellow-400 rounded-3xl p-8 sm:p-10 text-black shadow-lg border border-yellow-500/30"
+          >
             <div className="mb-6">
               <h3 className="text-2xl font-black">Get In Touch With Us</h3>
               <div className="w-20 h-1 bg-black mt-3 rounded-full" />
@@ -115,7 +118,10 @@ export default function Footer() {
           </div>
 
           {/* RIGHT MAP */}
-          <div className="rounded-3xl overflow-hidden shadow-lg border border-yellow-200/60 relative">
+          <div 
+            data-aos="fade-left"
+            className="rounded-3xl overflow-hidden shadow-lg border border-yellow-200/60 relative"
+          >
             <iframe
               title="CITI Mart Location"
               src="https://www.google.com/maps?q=Citi+Mart+Dharmatala+Kolkata&output=embed"

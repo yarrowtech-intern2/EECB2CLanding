@@ -31,16 +31,17 @@ export default function App() {
   React.useEffect(() => {
     // Initialize AOS
     AOS.init({
-      duration: 600,
-      once: false, // Set to false so they can "go" and "come" back 
+      duration: 800,
+      once: false, 
       mirror: true, 
-      offset: 100,
+      offset: 80, 
       easing: "ease-out-cubic",
+      anchorPlacement: 'top-bottom',
     });
 
     // Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',

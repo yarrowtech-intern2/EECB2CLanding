@@ -114,10 +114,9 @@ const Header = () => {
       return;
     }
 
-    const headerOffset = 80;
-
+    const headerOffset = 90;
     const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
     window.scrollTo({
       top: offsetPosition,
