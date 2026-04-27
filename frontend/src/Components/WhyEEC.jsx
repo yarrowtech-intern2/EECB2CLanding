@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaCheckCircle, FaBolt, FaGamepad, FaUserShield } from "react-icons/fa";
+import { FaUserCheck, FaBolt, FaBookOpen, FaBullseye } from "react-icons/fa";
 
 const WhyEEC = () => {
   useEffect(() => {
@@ -11,105 +11,64 @@ const WhyEEC = () => {
 
   const features = [
     {
-      icon: <FaCheckCircle className="text-lg" />,
-      title: "Board-Aligned",
-      description: "CBSE, ICSE & State boards",
+      icon: <FaUserCheck className="text-lg" />,
+      description: "Personalized progress Learning",
     },
     {
       icon: <FaBolt className="text-lg" />,
-      title: "Efficient",
-      description: "Adaptive paths save time",
+      description: "Quick revision ",
     },
     {
-      icon: <FaGamepad className="text-lg" />,
-      title: "Engaging",
-      description: "Gamified learning",
+      icon: <FaBookOpen className="text-lg" />,
+      description: "Board wise structured modules ",
     },
     {
-      icon: <FaUserShield className="text-lg" />,
-      title: "Supportive",
-      description: "Subject Wise progress reports",
+      icon: <FaBullseye className="text-lg" />,
+      description: "Weak chapter revision",
     },
   ];
 
   return (
     <section
       id="why-eec"
-      className="w-full py-20 relative bg-white overflow-hidden"
+      className="w-full py-24 relative bg-purple-600 overflow-hidden"
     >
-      {/* Background soft gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-yellow-50 to-white" />
+      {/* Decorative yellow sun */}
+      <div className="absolute top-16 right-10 lg:right-32 w-20 h-20 lg:w-32 lg:h-32 bg-yellow-400 shadow-lg animate-[spin_12s_linear_infinite]" style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 border-[8px] border-purple-500 rounded-full opacity-50"></div>
 
-      {/* Soft blur blobs */}
-      <div className="absolute -top-44 -left-44 w-[520px] h-[520px] bg-yellow-200/40 blur-[160px] rounded-full animate-gpu" />
-      <div className="absolute -bottom-52 -right-52 w-[580px] h-[580px] bg-amber-200/40 blur-[170px] rounded-full animate-gpu" />
-
-      <div className="global-container relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold mb-6 text-slate-900">
-            Why <span className="text-yellow-500">EEC?</span>
+      <div className="global-container relative z-10 flex flex-col">
+        
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-white mb-6">
+            Why <span className="text-yellow-400 italic font-serif">EEC?</span>
           </h2>
-
-          <p className="text-slate-600 text-base sm:text-lg max-w-4xl mx-auto leading-relaxed font-medium">
-            Electronic Educare (EEC) is your one-stop intelligent learning
-            partner for school students from Class 3 to 10. Powered by smart AI
-            and machine learning, it delivers personalized learning experiences,
-            practice modules, and instant academic support to help every student
-            thrive. We're here to make education smarter, faster, and
-            future-ready.
+          
+          <p className="text-purple-100 text-base sm:text-lg max-w-3xl leading-relaxed font-medium mx-auto">
+            Electronic Educare (EEC) is your one-stop intelligent learning partner for school students from Class 3 to 10. Powered by smart AI and machine learning, it delivers personalized learning experiences, practice modules, and instant academic support to help every student thrive.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 2xl:gap-10 3xl:gap-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 w-full">
           {features.map((feature, index) => (
             <div
               key={index}
-              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-              data-aos-delay={index * 100}
-              className="
-                group relative bg-white
-                rounded-[26px]
-                border border-slate-200/70
-                shadow-[0_18px_60px_rgba(15,23,42,0.08)]
-                p-8 2xl:p-10 3xl:p-12
-                transition-all duration-300 ease-out
-                hover:border-yellow-300
-                hover:shadow-[0_22px_75px_rgba(245,158,11,0.18)]
-                hover:scale-[1.02]
-                cursor-pointer
-                animate-gpu
-              "
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
+              className="group relative cursor-pointer h-full"
             >
-              {/* Light yellow tint inside card */}
-              <div className="absolute inset-0 rounded-[26px] bg-gradient-to-br from-yellow-50/60 via-white to-white opacity-70 pointer-events-none" />
-
-              <div className="relative z-10">
-                {/* Icon box */}
-                <div
-                  className="
-                    w-14 h-14 rounded-2xl
-                    bg-[#FEF9C3]
-                    border border-yellow-200/70
-                    flex items-center justify-center
-                    text-blue-900
-                    shadow-[0_10px_25px_rgba(15,23,42,0.08)]
-                    mb-6
-                    transition-transform duration-300
-                    group-hover:scale-110 text-[24px]
-                  "
-                >
-                  <span className="text-yellow-600 group-hover:rotate-12 transition-transform duration-300 pl-1 pb-1">{feature.icon}</span>
+              <div className="bg-white h-full rounded-[32px] p-8 border border-slate-100 hover:border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-300 text-left relative overflow-hidden">
+                {/* Soft purple gradient line */}
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div className="flex items-center gap-5">
+                  <div className="w-14 h-14 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 group-hover:bg-yellow-400 group-hover:text-white transition-all shrink-0">
+                     {feature.icon}
+                  </div>
+                  <p className="text-slate-800 font-bold text-lg leading-tight group-hover:text-purple-600 transition-colors">
+                    {feature.description}
+                  </p>
                 </div>
-
-                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">
-                  {feature.title}
-                </h3>
-
-                <p className="mt-3 text-slate-600 text-sm leading-relaxed font-medium">
-                  {feature.description}
-                </p>
               </div>
             </div>
           ))}

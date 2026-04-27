@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaWhatsapp, FaEnvelope, FaArrowUp, FaPlus, FaTimes, FaCommentDots } from "react-icons/fa";
+import { FaWhatsapp, FaEnvelope, FaArrowUp, FaTimes, FaAddressBook, FaHeadset } from "react-icons/fa";
 
 const FloatingActions = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +26,21 @@ const FloatingActions = () => {
     setIsOpen(false);
   };
 
+  const scrollToContact = () => {
+    setIsOpen(false);
+    const section = document.getElementById("contact");
+    if (section) {
+      const headerOffset = 90;
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div
       className="
@@ -45,7 +60,7 @@ const FloatingActions = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            transform: isOpen ? "translate(-70px, -110px) scale(1)" : "translate(0, 0) scale(0)",
+            transform: isOpen ? "translate(-80px, -140px) scale(1)" : "translate(0, 0) scale(0)",
             transitionDelay: isOpen ? "100ms" : "0ms",
           }}
           className="
@@ -68,7 +83,7 @@ const FloatingActions = () => {
           target={isMobile ? "_self" : "_blank"}
           rel="noopener noreferrer"
           style={{
-            transform: isOpen ? "translate(0px, -150px) scale(1)" : "translate(0, 0) scale(0)",
+            transform: isOpen ? "translate(0px, -165px) scale(1)" : "translate(0, 0) scale(0)",
             transitionDelay: isOpen ? "200ms" : "0ms",
           }}
           className="
@@ -84,6 +99,27 @@ const FloatingActions = () => {
         >
           <FaEnvelope size={20} />
         </a>
+
+        {/* Contact Us - Further Left */}
+        <button
+          onClick={scrollToContact}
+          style={{
+            transform: isOpen ? "translate(-130px, -70px) scale(1)" : "translate(0, 0) scale(0)",
+            transitionDelay: isOpen ? "150ms" : "0ms",
+          }}
+          className="
+            absolute pointer-events-auto
+            w-12 h-12 rounded-full
+            bg-purple-600 text-white
+            flex items-center justify-center
+            shadow-[0_0_20px_rgba(107,70,193,0.4)]
+            transition-all duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.275)
+            hover:scale-110 active:scale-90
+          "
+          title="Contact Us"
+        >
+          <FaHeadset size={20} />
+        </button>
 
         {/* Scroll Top - Above Main Toggle */}
         <button
@@ -112,24 +148,24 @@ const FloatingActions = () => {
           className={`
             relative pointer-events-auto
             w-14 h-14 sm:w-16 sm:h-16
-            bg-gradient-to-tr from-yellow-400 via-amber-500 to-yellow-600
-            text-slate-950
+            bg-gradient-to-tr from-purple-500 via-purple-600 to-indigo-600
+            text-white
             flex items-center justify-center
-            shadow-[0_10px_35px_rgba(245,158,11,0.5)]
+            shadow-[0_10px_35px_rgba(107,70,193,0.5)]
             transition-all duration-500 ease-in-out
             hover:scale-110 active:scale-90
             ${isOpen ? "rounded-full" : "rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] animate-liquid"}
           `}
         >
           <div className={`transition-all duration-500 ${isOpen ? "rotate-180 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"}`}>
-            <FaCommentDots size={28} />
+            <FaAddressBook size={28} />
           </div>
           <div className={`absolute transition-all duration-500 ${isOpen ? "rotate-0 scale-100 opacity-100" : "rotate-180 scale-0 opacity-0"}`}>
             <FaTimes size={28} />
           </div>
 
           {/* Glowing Aura */}
-          <div className="absolute inset-0 rounded-inherit bg-yellow-400 blur-xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse" />
+          <div className="absolute inset-0 rounded-inherit bg-purple-400 blur-xl opacity-30 group-hover:opacity-50 transition-opacity animate-pulse" />
         </button>
       </div>
 

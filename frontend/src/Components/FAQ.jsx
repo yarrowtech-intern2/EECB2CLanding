@@ -18,36 +18,19 @@ const FAQ = () => {
 
   const faqs = [
     {
-      icon: <FaPlay className="text-lg" />,
-      question: "Is EEC a video-based app?",
-      answer: "No. EEC uses smart text and audio to teach — no long videos.",
-    },
-    {
-      icon: <CiWifiOff className="text-lg" />,
-      question: "Can I use it offline?",
-      answer:
-        "Not yet. EEC requires an active internet connection for accurate AI functioning.",
-    },
-    {
       icon: <FaGraduationCap className="text-lg" />,
-      question: "What grades does it support?",
-      answer: "From Class 3 to Class 10.",
+      question: "Is there the latest syllabus?",
+      answer: "Yes, absolutely! Our team of teacher-wizards works day and night to make sure every question is perfectly aligned with the newest board guidelines. No old stuff here!",
     },
     {
-      icon: <FaGift className="text-lg" />,
-      question: "How much is free?",
-      answer: "The first 5 stages are completely free.",
-    },
-    {
-      icon: <FaChartLine className="text-lg" />,
-      question: "Can parents track progress?",
-      answer: "Yes. Every account includes a Parent Dashboard.",
+      icon: <FaPlay className="text-lg" />,
+      question: "Can we print the papers for a real experience?",
+      answer: "No! Every paper is a high-quality PDF. It's the best way to train your brain!",
     },
     {
       icon: <FaShieldAlt className="text-lg" />,
-      question: "Is my data safe with EEC?",
-      answer:
-        "Absolutely. All user data is encrypted and securely stored on cloud servers.",
+      question: "What if we get stuck on a hard level?",
+      answer: "Don't worry, every explorer gets stuck sometimes! Our Scholar plan gives you access to Expert Help. Just send a flare, and our teachers will guide you through the solution!",
     },
   ];
 
@@ -75,123 +58,70 @@ const FAQ = () => {
   return (
     <section
       id="faq"
-      className="relative py-16 xs:py-20 bg-white overflow-hidden"
+      className="relative py-24 bg-slate-50 overflow-hidden"
     >
-      {/* Soft background glow */}
-      <div className="absolute -top-44 -right-44 w-[720px] h-[720px] bg-sky-100/70 blur-[170px] rounded-full pointer-events-none" />
-      <div className="absolute -bottom-56 -left-56 w-[720px] h-[720px] bg-yellow-100/70 blur-[180px] rounded-full pointer-events-none" />
-
       <div className="global-container relative z-10">
-        {/* Heading */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-900">
-            FAQ –{" "}
-            <span className="text-yellow-500">Frequently Asked Questions</span>
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-800 mb-6">
+            Got <span className="text-purple-600 italic font-serif">questions?</span>
           </h2>
-
-          <p className="mt-4 text-slate-600 font-medium text-sm xs:text-base sm:text-lg">
+          <p className="text-slate-500 text-base sm:text-lg max-w-3xl leading-relaxed font-medium mx-auto">
             Quick answers to common questions about how EEC works.
           </p>
         </div>
 
-        {/* Grid */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 2xl:gap-14 3xl:gap-20 items-start"
-        >
+        {/* Vertical List */}
+        <div className="flex flex-col gap-6 max-w-4xl mx-auto">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
               <div
                 key={index}
-                data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                className={`
-                  group w-full rounded-[28px] bg-white
-                  shadow-[0_18px_60px_rgba(15,23,42,0.10)]
-                  relative overflow-hidden
-                  transition-all duration-300 ease-out
-                  hover:shadow-[0_28px_90px_rgba(15,23,42,0.16)]
-                  hover:-translate-y-2
-                  active:scale-[0.99]
-                  ${isOpen ? "-translate-y-1" : ""}
-                `}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                className={`group w-full rounded-[24px] bg-white border transition-all duration-300 ease-out cursor-pointer ${isOpen ? "border-purple-300 shadow-[0_10px_30px_rgba(107,70,193,0.1)] ring-4 ring-purple-50" : "border-slate-200 shadow-sm hover:shadow-md hover:border-purple-200"}`}
               >
-                {/* top gradient line */}
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-yellow-400 via-sky-400 to-emerald-400 opacity-70" />
-
-                {/* soft hover glow */}
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-yellow-200/40 blur-[90px] rounded-full opacity-0 group-hover:opacity-100 transition duration-300" />
-                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-sky-200/40 blur-[90px] rounded-full opacity-0 group-hover:opacity-100 transition duration-300" />
-
                 {/* Question */}
                 <button
                   type="button"
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 xs:px-7 py-6 xs:py-7 flex items-center justify-between gap-5 text-left relative z-10"
+                  className="w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between gap-4 text-left relative z-10"
                 >
-                  <div className="flex items-center gap-4 xs:gap-5 flex-1 min-w-0">
-                    {/* Icon */}
-                    <div
-                      className="
-                        w-11 h-11 xs:w-12 xs:h-12 rounded-2xl
-                        bg-[#FEF9C3]
-                        border border-yellow-200/70
-                        flex items-center justify-center
-                        text-blue-900 shadow-sm
-                        transition-all duration-300
-                        group-hover:scale-110
-                      "
-                    >
+                  <div className="flex items-center gap-5 flex-1">
+                    <div className="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                       {faq.icon}
                     </div>
-
-                    <h3 className="text-[14px] xs:text-[15px] sm:text-[17px] font-extrabold text-slate-900 break-words">
-                      <span className="mr-2 font-extrabold">Q.</span>
+                    <h3 className="text-base sm:text-lg font-extrabold text-slate-800">
                       {faq.question}
                     </h3>
                   </div>
-
-                  <FaChevronDown
-                    className={`flex-shrink-0 text-blue-700 transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                    size={16}
-                  />
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isOpen ? "bg-purple-600 text-white" : "bg-slate-100 text-slate-400 group-hover:bg-purple-100 group-hover:text-purple-600"}`}>
+                     <FaChevronDown
+                       className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                       size={14}
+                     />
+                  </div>
                 </button>
 
                 {/* Answer */}
                 <div
-                  className="px-6 xs:px-7 overflow-hidden relative z-10"
+                  className="px-6 sm:px-8 overflow-hidden relative z-10"
                   style={{
                     height: isOpen ? getHeight(index) : 0,
-                    transition:
-                      "height 420ms cubic-bezier(0.22, 1, 0.36, 1)",
+                    transition: "height 300ms ease-in-out",
                   }}
                 >
                   <div
                     ref={(el) => (contentRefs.current[index] = el)}
-                    className="pb-6 xs:pb-7 pt-1"
+                    className="pb-6 sm:pb-8 pt-0 pl-[68px]"
                   >
-                    <div
-                      className="pl-[62px] xs:pl-[68px]"
-                      style={{
-                        opacity: isOpen ? 1 : 0,
-                        transform: isOpen
-                          ? "translateY(0px)"
-                          : "translateY(-6px)",
-                        transition:
-                          "opacity 350ms ease, transform 350ms ease",
-                      }}
-                    >
-                      <p className="text-slate-600 leading-relaxed font-medium text-sm sm:text-[15px]">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <p className="text-slate-500 leading-relaxed font-medium text-sm sm:text-base">
+                      {faq.answer}
+                    </p>
                   </div>
                 </div>
-
-                {/* Soft inner outline */}
-                <div className="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-black/5" />
               </div>
             );
           })}

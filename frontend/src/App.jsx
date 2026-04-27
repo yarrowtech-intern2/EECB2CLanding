@@ -6,6 +6,8 @@ import Header from "./Components/Header";
 import Hero from "./Components/Hero";
 import WhyEEC from "./Components/WhyEEC";
 import Modules from "./Components/Modules";
+import About from "./Components/About";
+import OurMission from "./Components/ourMission";
 import FAQ from "./Components/FAQ";
 import Contact from "./Components/Contact";
 import Floating from "./Components/Floating";
@@ -19,6 +21,8 @@ function Home() {
   return (
     <main className="w-full">
       <Hero />
+      <About />
+      <OurMission />
       <WhyEEC />
       <Modules />
       <FAQ />
