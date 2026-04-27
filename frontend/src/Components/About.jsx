@@ -1,5 +1,5 @@
 import React from "react";
-import learningMaterials from "../assets/wonderkids/learning_materials.png";
+import learningMaterials from "../assets/wonderkids/learning_materials.webp";
 
 const About = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import missionVision from "../assets/wonderkids/mission_vision.png";
+import missionVision from "../assets/wonderkids/mission_vision.webp";
 import { FaBullseye, FaBolt } from "react-icons/fa";
 
 const OurMission = () => {

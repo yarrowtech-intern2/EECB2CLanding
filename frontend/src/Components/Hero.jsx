@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import heroKid from "../assets/wonderkids/hero_kid.png";
-import otherKid from "../assets/wonderkids/learning_materials.png";
+import heroKid from "../assets/wonderkids/hero_kid.webp";
+import otherKid from "../assets/wonderkids/learning_materials.webp";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen w-full bg-white overflow-hidden flex flex-col items-center justify-center pt-28 pb-16 z-10">
+    <section id="home" className="relative min-h-screen w-full bg-white flex flex-col items-center justify-center pt-28 pb-16 z-10 overflow-hidden lg:overflow-visible">
       
       {/* Decorative Elements Layer */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -27,10 +27,10 @@ const Hero = () => {
           </svg>
         </div>
 
-        {/* Left Floating Kid - RESTORED ABSOLUTE POSITION */}
-        <div className="absolute top-[10%] left-[5%] sm:left-[10%] lg:top-[25%] lg:left-[15%] flex flex-col items-center scale-50 sm:scale-75 lg:scale-100 transition-all duration-500">
-          <div className="w-32 h-32 rounded-full bg-purple-100 border-[6px] border-white shadow-xl flex items-center justify-center overflow-hidden z-10 relative">
-             <img src={otherKid} alt="Student" className="w-[100%] h-auto object-cover object-top z-10" />
+        {/* Left Floating Kid (Top) */}
+        <div className="absolute top-[10%] left-[2%] sm:left-[5%] lg:top-[20%] lg:left-[10%] flex flex-col items-center scale-50 sm:scale-75 lg:scale-100 transition-all duration-500 z-10">
+          <div className="w-32 h-32 rounded-full bg-purple-100 border-[6px] border-white shadow-xl flex items-center justify-center overflow-hidden relative">
+             <img src={otherKid} alt="Student" className="w-[100%] h-auto object-cover object-top" />
           </div>
           <svg className="absolute -bottom-12 sm:-bottom-20 left-6 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 text-purple-600 opacity-60 sm:opacity-100" viewBox="0 0 100 100" fill="none">
             <path d="M 10 10 Q 10 80 80 80" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
@@ -38,7 +38,13 @@ const Hero = () => {
           </svg>
         </div>
 
-        {/* Right Floating Kid - REMOVED ABSOLUTE FOR MOBILE FLOW */}
+        {/* Right Floating Kid (Bottom) - DESKTOP ONLY */}
+        <div className="hidden lg:block absolute bottom-[15%] right-[10%] scale-110 transition-all duration-500 z-10">
+          <div className="absolute inset-0 bg-purple-200 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] scale-150 -translate-x-4 -translate-y-4" />
+          <div className="w-40 h-40 flex items-center justify-center relative">
+             <img src={heroKid} alt="Kid" className="w-[120%] h-auto object-contain drop-shadow-xl translate-y-2 translate-x-2" />
+          </div>
+        </div>
       </div>
 
       {/* Main Content */}
@@ -69,11 +75,11 @@ const Hero = () => {
           Discover thousands of fun and interactive learning activities to support your child's growth and learning process.
         </p>
 
-        {/* Bottom Kid - Now in flow above the button */}
-        <div className="flex items-center justify-center mb-6 relative z-20 lg:absolute lg:top-[40%] lg:right-[-160px] lg:mb-0 scale-50 sm:scale-75 lg:scale-100 transition-all duration-500">
-          <div className="absolute inset-0 bg-purple-200 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] scale-150 -translate-x-4 -translate-y-4" />
+        {/* MOBILE ONLY Image - Sequential Flow */}
+        <div className="lg:hidden flex items-center justify-center mb-6 relative z-20 scale-50 sm:scale-75 transition-all duration-500">
+          <div className="absolute inset-0 bg-purple-200 rounded-full scale-150 opacity-40" />
           <div className="w-28 h-28 flex items-center justify-center relative z-10">
-             <img src={heroKid} alt="Kid" className="w-[120%] h-auto object-contain drop-shadow-xl translate-y-2 translate-x-2" />
+             <img src={heroKid} alt="Kid" className="w-[120%] h-auto object-contain drop-shadow-md" />
           </div>
         </div>
         
