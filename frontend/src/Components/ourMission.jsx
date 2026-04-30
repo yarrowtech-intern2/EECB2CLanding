@@ -8,11 +8,11 @@ const OurMission = () => {
       <div className="global-container relative z-10 flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-20">
         
         {/* Right Side: Image (re-using teachers for this section) */}
-        <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end" data-aos="fade-left">
+        <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end" data-aos="fade-up" data-aos-offset="0">
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
             {/* Main Image - Now rounded square without border */}
             <div className="w-full h-full rounded-[40px] shadow-2xl overflow-hidden relative z-10 bg-white">
-               <img src={missionVision} alt="Our Mission" className="w-full h-full object-cover" />
+               <img src={missionVision} alt="Our Mission" className="w-full h-full object-cover" loading="eager" />
             </div>
             {/* Decorative shapes */}
             <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-24 h-24 sm:w-32 sm:h-32 bg-purple-400 rounded-3xl -z-10 opacity-20 animate-pulse"></div>

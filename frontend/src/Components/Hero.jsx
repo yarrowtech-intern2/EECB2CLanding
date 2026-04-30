@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
 
         {/* Left Floating Kid (Top) - DESKTOP ONLY */}
-        <div className="hidden lg:flex absolute top-[20%] left-[10%] flex-col items-center transition-all duration-500 z-10">
+        <div className="hidden lg:flex absolute top-[20%] left-[10%] flex-col items-center z-10 transition-transform">
           <div className="w-32 h-32 rounded-full bg-purple-100 border-[6px] border-white shadow-xl flex items-center justify-center overflow-hidden relative">
              <img src={otherKid} alt="Student" className="w-full h-full object-cover object-top" />
           </div>
@@ -39,19 +39,22 @@ const Hero = () => {
         </div>
 
         {/* Right Floating Kid (Bottom) - DESKTOP ONLY */}
-        <div className="hidden lg:block absolute bottom-[15%] right-[10%] scale-110 transition-all duration-500 z-10">
-          <div className="absolute inset-0 bg-purple-200 rounded-full scale-150 -translate-x-4 -translate-y-4" />
-          <div className="w-40 h-40 rounded-full flex items-center justify-center relative overflow-hidden bg-white/50 border-4 border-white shadow-xl">
+        <div className="hidden lg:block absolute bottom-[15%] right-[10%] scale-110 z-10">
+          <div className="absolute inset-0 bg-purple-200 rounded-full scale-150 -translate-x-4 -translate-y-4 opacity-50" />
+          <div className="w-40 h-40 rounded-full flex items-center justify-center relative overflow-hidden bg-white border-4 border-white shadow-2xl">
              <img src={heroKid} alt="Kid" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="global-container relative z-20 flex flex-col items-center text-center">
+      <div className="global-container relative z-30 flex flex-col items-center text-center">
         
         {/* Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-tight text-slate-900 font-extrabold mb-4 sm:mb-6 max-w-4xl relative z-20 px-4">
+        <h1 
+          data-aos="fade-up"
+          className="text-4xl sm:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-tight text-slate-900 font-extrabold mb-4 sm:mb-6 max-w-4xl relative px-4"
+        >
           The best place to <br />
           <span className="relative inline-block z-10 mr-4">
             <span className="text-purple-600 italic font-serif">learn</span>
@@ -72,27 +75,33 @@ const Hero = () => {
           for kids
         </h1>
 
-        {/* MOBILE IMAGES COLLAGE - CLEAN & IMPACTFUL */}
-        <div className="lg:hidden flex items-center justify-center gap-4 mb-6 relative px-4">
+        {/* MOBILE IMAGES COLLAGE */}
+        <div className="lg:hidden flex items-center justify-center gap-4 mb-10 relative px-4 z-40">
            {/* Image 1 */}
            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-purple-50 -rotate-6">
-              <img src={otherKid} alt="Student" className="w-full h-full object-cover object-top" />
+              <img src={otherKid} alt="Student" className="w-full h-full object-cover object-top" loading="eager" />
            </div>
            {/* Image 2 */}
-           <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-yellow-50 rotate-6 -translate-y-6">
-              <img src={heroKid} alt="Kid" className="w-full h-full object-cover" />
+           <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-white rotate-6 -translate-y-6">
+              <img src={heroKid} alt="Kid" className="w-full h-full object-cover" loading="eager" />
            </div>
            
            {/* Background blob for images */}
            <div className="absolute inset-0 bg-purple-100/50 blur-3xl -z-10 rounded-full scale-150" />
         </div>
 
-        <p className="max-w-xl text-slate-500 text-base sm:text-lg font-medium mb-6 sm:mb-8 leading-relaxed px-4 relative z-20">
+        <p 
+          data-aos="fade-up"
+          data-aos-delay="100"
+          className="max-w-xl text-slate-500 text-base sm:text-lg font-medium mb-6 sm:mb-8 leading-relaxed px-4 relative z-20"
+        >
           Discover thousands of fun and interactive learning activities to support your child's growth and learning process.
         </p>
 
         <button
           onClick={scrollToContact}
+          data-aos="fade-up"
+          data-aos-delay="200"
           className="flex items-center gap-3 px-10 py-4 sm:px-12 sm:py-5 text-lg font-bold text-white bg-purple-600 rounded-full shadow-[0_10px_25px_rgba(147,51,234,0.4)] hover:shadow-[0_15px_35px_rgba(147,51,234,0.5)] hover:bg-purple-700 transition-all hover:-translate-y-1 active:scale-95 relative z-30 mb-6 sm:mb-8"
         >
           Get started

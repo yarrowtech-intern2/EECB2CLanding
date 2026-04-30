@@ -35,11 +35,11 @@ export default function App() {
   React.useEffect(() => {
     // Initialize AOS
     AOS.init({
-      duration: 800,
-      once: false, 
-      mirror: true, 
-      offset: 80, 
-      easing: "ease-out-cubic",
+      duration: 200,
+      once: true, 
+      mirror: false, 
+      offset: 0, 
+      easing: "ease-out",
       anchorPlacement: 'top-bottom',
     });
 
