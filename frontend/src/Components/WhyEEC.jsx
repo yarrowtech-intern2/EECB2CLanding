@@ -31,7 +31,7 @@ const WhyEEC = () => {
   return (
     <section
       id="why-eec"
-      className="w-full py-24 relative bg-purple-600 overflow-hidden"
+      className="w-full py-6 sm:py-10 relative bg-purple-600 overflow-hidden"
     >
       {/* Decorative yellow sun */}
       <div className="absolute top-16 right-10 lg:right-32 w-20 h-20 lg:w-32 lg:h-32 bg-yellow-400 shadow-lg animate-[spin_12s_linear_infinite]" style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}></div>
@@ -39,7 +39,7 @@ const WhyEEC = () => {
 
       <div className="global-container relative z-10 flex flex-col">
         
-        <div className="mb-16 text-center">
+        <div className="mb-4 sm:mb-6 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-white mb-6">
             Why <span className="text-yellow-400 italic font-serif">EEC?</span>
           </h2>

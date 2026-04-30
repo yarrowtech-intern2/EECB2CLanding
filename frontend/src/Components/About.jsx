@@ -3,20 +3,20 @@ import learningMaterials from "../assets/wonderkids/learning_materials.webp";
 
 const About = () => {
   return (
-    <section id="about" className="w-full py-24 relative overflow-hidden bg-white">
-      <div className="global-container relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section id="about" className="w-full py-6 sm:py-10 relative overflow-hidden bg-white">
+      <div className="global-container relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
         
         {/* Left Side: Image */}
         <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-start" data-aos="fade-right">
-          <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl bg-purple-50 max-w-[480px]">
-            <img 
-              src={learningMaterials} 
-              alt="About Edify Eight" 
-              className="w-full h-auto object-cover"
-            />
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
+            {/* Main Image - Now rounded square without border */}
+            <div className="w-full h-full rounded-[40px] shadow-2xl overflow-hidden relative z-10 bg-white">
+              <img src={learningMaterials} alt="About Edify Eight" className="w-full h-full object-cover" />
+            </div>
+            {/* Decorative shapes */}
+            <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-24 h-24 sm:w-32 sm:h-32 bg-yellow-400 rounded-3xl -z-10 opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-24 h-24 sm:w-32 sm:h-32 bg-purple-200 rounded-3xl -z-10 opacity-40"></div>
           </div>
-          {/* Decorative shapes */}
-          <div className="absolute -top-6 -left-6 w-32 h-32 bg-yellow-400 rounded-full -z-10 opacity-20 animate-pulse"></div>
         </div>
 
         {/* Right Side: Content */}

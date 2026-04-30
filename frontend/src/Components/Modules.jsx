@@ -63,11 +63,11 @@ const FeaturesModules = () => {
   return (
     <section
       id="features"
-      className="w-full py-24 relative bg-white overflow-hidden"
+      className="w-full py-6 sm:py-10 relative bg-white overflow-hidden"
     >
       <div className="global-container relative z-10">
         {/* Header */}
-        <div className="mb-16 text-center">
+        <div className="mb-4 sm:mb-6 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-800">
             Our <span className="text-purple-600 italic font-serif">interactive</span> features
           </h2>

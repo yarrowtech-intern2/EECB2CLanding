@@ -144,11 +144,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="w-full py-24 relative overflow-hidden bg-white"
+      className="w-full py-6 sm:py-10 relative overflow-hidden bg-white"
     >
       <div className="global-container relative z-10">
         {/* Header */}
-        <div className="mb-16 text-center">
+        <div className="mb-4 sm:mb-6 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-slate-800 mb-6">
             Get in <span className="text-yellow-400 italic font-serif">touch</span>
           </h2>

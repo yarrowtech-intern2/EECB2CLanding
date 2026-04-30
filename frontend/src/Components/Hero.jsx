@@ -12,9 +12,9 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen w-full bg-white flex flex-col items-center justify-center pt-28 pb-16 z-10 overflow-hidden lg:overflow-visible">
+    <section id="home" className="relative min-h-[85vh] lg:min-h-screen w-full bg-white flex flex-col items-center justify-center pt-16 sm:pt-24 pb-4 sm:pb-8 z-10 overflow-hidden lg:overflow-visible">
       
-      {/* Decorative Elements Layer */}
+      {/* Decorative Elements Layer - DESKTOP ONLY FLOATING */}
       <div className="absolute inset-0 pointer-events-none z-0">
         
         {/* Bottom Left Concentric Circles */}
@@ -27,12 +27,12 @@ const Hero = () => {
           </svg>
         </div>
 
-        {/* Left Floating Kid (Top) */}
-        <div className="absolute top-[10%] left-[2%] sm:left-[5%] lg:top-[20%] lg:left-[10%] flex flex-col items-center scale-50 sm:scale-75 lg:scale-100 transition-all duration-500 z-10">
+        {/* Left Floating Kid (Top) - DESKTOP ONLY */}
+        <div className="hidden lg:flex absolute top-[20%] left-[10%] flex-col items-center transition-all duration-500 z-10">
           <div className="w-32 h-32 rounded-full bg-purple-100 border-[6px] border-white shadow-xl flex items-center justify-center overflow-hidden relative">
-             <img src={otherKid} alt="Student" className="w-[100%] h-auto object-cover object-top" />
+             <img src={otherKid} alt="Student" className="w-full h-full object-cover object-top" />
           </div>
-          <svg className="absolute -bottom-12 sm:-bottom-20 left-6 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 text-purple-600 opacity-60 sm:opacity-100" viewBox="0 0 100 100" fill="none">
+          <svg className="absolute -bottom-20 left-10 w-24 h-24 text-purple-600" viewBox="0 0 100 100" fill="none">
             <path d="M 10 10 Q 10 80 80 80" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
             <path d="M 70 70 L 85 80 L 75 95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           </svg>
@@ -40,17 +40,18 @@ const Hero = () => {
 
         {/* Right Floating Kid (Bottom) - DESKTOP ONLY */}
         <div className="hidden lg:block absolute bottom-[15%] right-[10%] scale-110 transition-all duration-500 z-10">
-          <div className="absolute inset-0 bg-purple-200 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] scale-150 -translate-x-4 -translate-y-4" />
-          <div className="w-40 h-40 flex items-center justify-center relative">
-             <img src={heroKid} alt="Kid" className="w-[120%] h-auto object-contain drop-shadow-xl translate-y-2 translate-x-2" />
+          <div className="absolute inset-0 bg-purple-200 rounded-full scale-150 -translate-x-4 -translate-y-4" />
+          <div className="w-40 h-40 rounded-full flex items-center justify-center relative overflow-hidden bg-white/50 border-4 border-white shadow-xl">
+             <img src={heroKid} alt="Kid" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="global-container relative z-20 flex flex-col items-center text-center mt-12">
+      <div className="global-container relative z-20 flex flex-col items-center text-center">
         
-        <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-tight text-slate-900 font-extrabold mb-8 max-w-4xl relative z-20 px-4">
+        {/* Headline */}
+        <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] leading-[1.1] tracking-tight text-slate-900 font-extrabold mb-4 sm:mb-6 max-w-4xl relative z-20 px-4">
           The best place to <br />
           <span className="relative inline-block z-10 mr-4">
             <span className="text-purple-600 italic font-serif">learn</span>
@@ -71,21 +72,28 @@ const Hero = () => {
           for kids
         </h1>
 
-        <p className="max-w-xl text-slate-500 text-sm sm:text-base lg:text-lg font-medium mb-10 leading-relaxed px-4 relative z-20">
+        {/* MOBILE IMAGES COLLAGE - CLEAN & IMPACTFUL */}
+        <div className="lg:hidden flex items-center justify-center gap-4 mb-6 relative px-4">
+           {/* Image 1 */}
+           <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-purple-50 -rotate-6">
+              <img src={otherKid} alt="Student" className="w-full h-full object-cover object-top" />
+           </div>
+           {/* Image 2 */}
+           <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-white shadow-2xl overflow-hidden bg-yellow-50 rotate-6 -translate-y-6">
+              <img src={heroKid} alt="Kid" className="w-full h-full object-cover" />
+           </div>
+           
+           {/* Background blob for images */}
+           <div className="absolute inset-0 bg-purple-100/50 blur-3xl -z-10 rounded-full scale-150" />
+        </div>
+
+        <p className="max-w-xl text-slate-500 text-base sm:text-lg font-medium mb-6 sm:mb-8 leading-relaxed px-4 relative z-20">
           Discover thousands of fun and interactive learning activities to support your child's growth and learning process.
         </p>
 
-        {/* MOBILE ONLY Image - Sequential Flow */}
-        <div className="lg:hidden flex items-center justify-center mb-6 relative z-20 scale-50 sm:scale-75 transition-all duration-500">
-          <div className="absolute inset-0 bg-purple-200 rounded-full scale-150 opacity-40" />
-          <div className="w-28 h-28 flex items-center justify-center relative z-10">
-             <img src={heroKid} alt="Kid" className="w-[120%] h-auto object-contain drop-shadow-md" />
-          </div>
-        </div>
-        
         <button
           onClick={scrollToContact}
-          className="flex items-center gap-3 px-8 py-3.5 sm:py-4 text-base sm:text-lg font-bold text-white bg-purple-600 rounded-full shadow-[0_10px_25px_rgba(147,51,234,0.4)] hover:shadow-[0_15px_35px_rgba(147,51,234,0.5)] hover:bg-purple-700 transition-all hover:-translate-y-1 active:scale-95 relative z-30 mb-10"
+          className="flex items-center gap-3 px-10 py-4 sm:px-12 sm:py-5 text-lg font-bold text-white bg-purple-600 rounded-full shadow-[0_10px_25px_rgba(147,51,234,0.4)] hover:shadow-[0_15px_35px_rgba(147,51,234,0.5)] hover:bg-purple-700 transition-all hover:-translate-y-1 active:scale-95 relative z-30 mb-6 sm:mb-8"
         >
           Get started
           <span className="bg-white text-purple-600 p-1.5 rounded-full shadow-sm"><ChevronRight size={18} strokeWidth={3} /></span>

@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="absolute -bottom-48 -right-48 w-[560px] h-[560px] bg-yellow-100/40 blur-[130px] rounded-full z-0" />
 
       {/* ===================== CONTENT ===================== */}
-      <div className="global-container relative z-20 pt-16">
+      <div className="global-container relative z-20 pt-8 sm:pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 2xl:gap-16 items-stretch">
           {/* LEFT CARD */}
           <div 
