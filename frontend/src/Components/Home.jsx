@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "./Hero";
-import WhyEEC from "./WhyEEC";
+import WhyEdifyEight from "./WhyEdifyEight";
 import Modules from "./Modules";
 import About from "./About";
 import FAQ from "./FAQ";
@@ -11,7 +11,7 @@ const Home = () => {
     <main className="w-full bg-white overflow-hidden">
       <Hero />
       <About />
-      <WhyEEC />
+      <WhyEdifyEight />
       <Modules />
       <FAQ />
       <Contact />

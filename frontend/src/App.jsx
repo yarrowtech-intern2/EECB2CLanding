@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
-import WhyEEC from "./Components/WhyEEC";
+import WhyEdifyEight from "./Components/WhyEdifyEight";
 import Modules from "./Components/Modules";
 import About from "./Components/About";
 import OurMission from "./Components/ourMission";
@@ -23,7 +23,7 @@ function Home() {
       <Hero />
       <About />
       <OurMission />
-      <WhyEEC />
+      <WhyEdifyEight />
       <Modules />
       <FAQ />
       <Contact />
@@ -75,7 +75,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/why-eec" element={<WhyEEC />} />
+          <Route path="/why-edify-eight" element={<WhyEdifyEight />} />
           <Route path="/modules" element={<Modules />} />
           {/* <Route path="/eec-unique" element={<EECUnique />} /> */}
           <Route path="/faq" element={<FAQ />} />

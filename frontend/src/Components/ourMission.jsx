@@ -30,7 +30,7 @@ const OurMission = () => {
               The Mission of Edify Eight
             </h3>
             <p className="text-slate-500 text-base sm:text-lg leading-relaxed font-medium mb-8">
-              Our mission is to ensure every learner receives the best assistance possible - building strong foundations in learning, retention and reflection. We go beyond traditional education. EEC strives to be a transformative solution provider, supporting institutions with real-time insights, AI-driven feedback and simplified digital-age learning systems.
+              Our mission is to ensure every learner receives the best assistance possible - building strong foundations in learning, retention and reflection. We go beyond traditional education. Edify Eight strives to be a transformative solution provider, supporting institutions with real-time insights, AI-driven feedback and simplified digital-age learning systems.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

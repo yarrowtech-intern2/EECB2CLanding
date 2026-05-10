@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaUserCheck, FaBolt, FaBookOpen, FaBullseye } from "react-icons/fa";
 
-const WhyEEC = () => {
+const WhyEdifyEight = () => {
   useEffect(() => {
     // AOS is refreshed globally in App.jsx
   }, []);
@@ -30,7 +30,7 @@ const WhyEEC = () => {
 
   return (
     <section
-      id="why-eec"
+      id="why-edify-eight"
       className="w-full py-6 sm:py-10 relative bg-purple-600 overflow-hidden"
     >
       {/* Decorative yellow sun */}
@@ -41,11 +41,11 @@ const WhyEEC = () => {
         
         <div className="mb-4 sm:mb-6 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight font-extrabold text-white mb-6">
-            Why <span className="text-yellow-400 italic font-serif">EEC?</span>
+            Why <span className="text-yellow-400 italic font-serif">Edify Eight?</span>
           </h2>
           
           <p className="text-purple-100 text-base sm:text-lg max-w-3xl leading-relaxed font-medium mx-auto">
-            Electronic Educare (EEC) is your one-stop intelligent learning partner for school students from Class 3 to 10. Powered by smart AI and machine learning, it delivers personalized learning experiences, practice modules, and instant academic support to help every student thrive.
+            Edify Eight is your one-stop intelligent learning partner for school students from Class 3 to 10. Powered by smart AI and machine learning, it delivers personalized learning experiences, practice modules, and instant academic support to help every student thrive.
           </p>
         </div>
 
@@ -78,4 +78,4 @@ const WhyEEC = () => {
   );
 };
 
-export default WhyEEC;
+export default WhyEdifyEight;

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Logo from "../assets/logo.webp";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaBookOpen } from "react-icons/fa";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,7 +15,7 @@ const Header = () => {
     { label: "Home", id: "home" },
     { label: "About Us", id: "about" },
     { label: "Our Mission", id: "mission" },
-    { label: "Why EEC", id: "why-eec" },
+    { label: "Why Edify Eight", id: "why-edify-eight" },
     { label: "Features", id: "features" },
     { label: "FAQ", id: "faq" },
   ];
@@ -113,8 +112,14 @@ const Header = () => {
             ? "h-16 bg-white/95 backdrop-blur-md shadow-lg rounded-full border border-slate-200" 
             : "h-16 bg-transparent border-transparent"
         }`}>
-          <button onClick={() => scrollToSection("home")} className="ml-6">
-            <img src={Logo} alt="logo" className="h-10 w-auto" />
+          <button onClick={() => scrollToSection("home")} className="ml-6 flex items-center gap-2">
+            <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+              <FaBookOpen size={20} />
+            </div>
+            <span className="text-2xl font-black tracking-tighter">
+              <span className="text-purple-600">Edify</span>
+              <span className="text-yellow-400">Eight</span>
+            </span>
           </button>
           <div className="flex items-center absolute left-1/2 -translate-x-1/2">
             <nav className="flex items-center gap-2">
@@ -150,8 +155,14 @@ const Header = () => {
         }`}
       >
         <div className="global-container flex items-center justify-between h-[64px]">
-          <button onClick={() => scrollToSection("home")}>
-            <img src={Logo} alt="logo" className="h-8 w-auto" />
+          <button onClick={() => scrollToSection("home")} className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white shadow-md">
+              <FaBookOpen size={16} />
+            </div>
+            <span className="text-xl font-black tracking-tighter">
+              <span className="text-purple-600">Edify</span>
+              <span className="text-yellow-400">Eight</span>
+            </span>
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}

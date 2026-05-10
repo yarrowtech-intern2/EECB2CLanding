@@ -67,7 +67,7 @@ const FAQ = () => {
             Got <span className="text-purple-600 italic font-serif">questions?</span>
           </h2>
           <p className="text-slate-500 text-base sm:text-lg max-w-3xl leading-relaxed font-medium mx-auto">
-            Quick answers to common questions about how EEC works.
+            Quick answers to common questions about how Edify Eight works.
           </p>
         </div>
 

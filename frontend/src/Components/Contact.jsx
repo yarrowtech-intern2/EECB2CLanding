@@ -78,7 +78,7 @@ const Contact = () => {
           },
           body: JSON.stringify({
             ...formData,
-            project: "B2C",
+            project: "Edify Eight",
           }),
         }
       );

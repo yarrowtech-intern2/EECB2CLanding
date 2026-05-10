@@ -142,7 +142,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 text-center text-sm text-slate-400 font-bold">
-          © {new Date().getFullYear()} Electronic Educare. All rights reserved.
+          © {new Date().getFullYear()} Edify Eight. All rights reserved.
         </div>
       </div>
     </footer>
