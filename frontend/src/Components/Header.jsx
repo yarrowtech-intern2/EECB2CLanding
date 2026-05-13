@@ -150,8 +150,9 @@ const Header = () => {
          MOBILE HEADER
       ====================== */}
       <header
+        ref={mobileRef}
         className={`lg:hidden fixed top-0 left-0 w-full z-[9999] transition-all duration-500 ease-in-out bg-white ${
-          mobileOpen ? "h-[500px]" : scrolled ? "shadow-md h-[64px] border-b border-slate-200" : "h-[72px] border-transparent"
+          mobileOpen ? "h-[540px] shadow-2xl" : scrolled ? "shadow-md h-[64px] border-b border-slate-200" : "h-[72px] border-transparent"
         }`}
       >
         <div className="global-container flex items-center justify-between h-[64px]">
@@ -182,7 +183,10 @@ const Header = () => {
             {navLinks.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => {
+                  scrollToSection(item.id);
+                  setMobileOpen(false);
+                }}
                 className={`text-left px-6 py-4 rounded-2xl font-bold text-lg transition-all ${
                   activeSection === item.id
                     ? "bg-blue-600 text-white shadow-lg border border-blue-600"
@@ -193,7 +197,10 @@ const Header = () => {
               </button>
             ))}
             <button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => {
+                scrollToSection("contact");
+                setMobileOpen(false);
+              }}
               className="mt-4 w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg shadow-xl active:scale-95 transition-all"
             >
               Get Started
@@ -204,7 +211,7 @@ const Header = () => {
 
       {/* BACKDROP */}
       <div 
-        className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] lg:hidden transition-all duration-500 ${
+        className={`fixed inset-0 bg-black/40 backdrop-blur-md z-[9998] lg:hidden transition-all duration-500 ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
         onClick={() => setMobileOpen(false)}

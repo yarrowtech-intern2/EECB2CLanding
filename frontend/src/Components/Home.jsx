@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import WhyEdifyEight from "./WhyEdifyEight";
 import Modules from "./Modules";
 import About from "./About";
+import OurMission from "./ourMission";
 import FAQ from "./FAQ";
 import Contact from "./Contact";
 
@@ -11,6 +12,7 @@ const Home = () => {
     <main className="w-full bg-white overflow-hidden">
       <Hero />
       <About />
+      <OurMission />
       <WhyEdifyEight />
       <Modules />
       <FAQ />

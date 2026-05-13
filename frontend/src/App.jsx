@@ -3,11 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Header from "./Components/Header";
-import Hero from "./Components/Hero";
+import Home from "./Components/Home";
 import WhyEdifyEight from "./Components/WhyEdifyEight";
 import Modules from "./Components/Modules";
-import About from "./Components/About";
-import OurMission from "./Components/ourMission";
 import FAQ from "./Components/FAQ";
 import Contact from "./Components/Contact";
 import Floating from "./Components/Floating";
@@ -16,20 +14,6 @@ import Footer from "./Components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Lenis from "lenis";
-
-function Home() {
-  return (
-    <main className="w-full">
-      <Hero />
-      <About />
-      <OurMission />
-      <WhyEdifyEight />
-      <Modules />
-      <FAQ />
-      <Contact />
-    </main>
-  );
-}
 
 export default function App() {
   React.useEffect(() => {
