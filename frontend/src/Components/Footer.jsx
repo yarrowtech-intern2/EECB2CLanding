@@ -42,9 +42,18 @@ export default function Footer() {
             {/* Decorative background circle */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500 rounded-full blur-3xl -translate-y-10 translate-x-10" />
 
-            <div className="relative z-10 mb-8">
-              <h3 className="text-3xl font-extrabold mb-4">Get in Touch</h3>
-              <div className="w-16 h-1.5 bg-yellow-400 rounded-full" />
+            <div className="relative z-10 mb-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div className="h-[96px] sm:h-[110px] w-auto px-5 py-2 bg-[#2b2b2b] rounded-2xl flex items-center justify-center shadow-2xl shrink-0 hover:scale-105 transition-all duration-300 border-2 border-amber-400/50">
+                <img 
+                  src="/logo.png" 
+                  alt="Edify Eight Logo" 
+                  className="h-full w-auto object-contain filter brightness-105 contrast-110" 
+                />
+              </div>
+              <div>
+                <h3 className="text-3xl font-extrabold mb-2">Get in Touch</h3>
+                <div className="w-16 h-1.5 bg-yellow-400 rounded-full" />
+              </div>
             </div>
 
             {/* Phone */}

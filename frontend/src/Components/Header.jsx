@@ -104,22 +104,22 @@ const Header = () => {
       ====================== */}
       <header
         className={`hidden lg:block fixed left-0 w-full z-[9999] transition-all duration-500 ease-in-out ${
-          scrolled ? "top-2 px-6" : "top-0 py-5 bg-transparent"
+          scrolled ? "top-2 px-6" : "top-0 py-2 bg-transparent"
         }`}
       >
         <div className={`global-container relative flex items-center justify-between transition-all duration-500 ${
           scrolled 
-            ? "h-16 bg-white/95 backdrop-blur-md shadow-lg rounded-full border border-slate-200" 
-            : "h-16 bg-transparent border-transparent"
+            ? "h-[96px] bg-white/95 backdrop-blur-md shadow-xl rounded-full border border-slate-200" 
+            : "h-[96px] bg-transparent border-transparent"
         }`}>
-          <button onClick={() => scrollToSection("home")} className="ml-6 flex items-center gap-2">
-            <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-              <FaBookOpen size={20} />
+          <button onClick={() => scrollToSection("home")} className="ml-4 flex items-center group focus:outline-none">
+            <div className="h-[84px] sm:h-[92px] w-auto px-3.5 py-1.5 bg-[#2b2b2b] rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105 border-2 border-amber-400/50 group-hover:border-amber-400">
+              <img 
+                src="/logo.png" 
+                alt="Edify Eight Logo" 
+                className="h-full w-auto object-contain filter brightness-105 contrast-110" 
+              />
             </div>
-            <span className="text-2xl font-black tracking-tighter">
-              <span className="text-purple-600">Edify</span>
-              <span className="text-yellow-400">Eight</span>
-            </span>
           </button>
           <div className="flex items-center absolute left-1/2 -translate-x-1/2">
             <nav className="flex items-center gap-2">
@@ -127,10 +127,10 @@ const Header = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                  className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
                     activeSection === item.id 
                       ? "bg-blue-600 text-white shadow-md border border-blue-600" 
-                      : "text-slate-500 hover:text-slate-800"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50"
                   }`}
                 >
                   {item.label}
@@ -139,7 +139,7 @@ const Header = () => {
             </nav>
           </div>
           <div className="mr-6">
-            <button onClick={() => scrollToSection("contact")} className="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-600 transition-all shadow-md">
+            <button onClick={() => scrollToSection("contact")} className="bg-slate-900 text-white px-7 py-3 rounded-full text-sm font-bold hover:bg-blue-600 transition-all shadow-md active:scale-95">
               Contact Us
             </button>
           </div>
@@ -152,24 +152,24 @@ const Header = () => {
       <header
         ref={mobileRef}
         className={`lg:hidden fixed top-0 left-0 w-full z-[9999] transition-all duration-500 ease-in-out bg-white ${
-          mobileOpen ? "h-[540px] shadow-2xl" : scrolled ? "shadow-md h-[64px] border-b border-slate-200" : "h-[72px] border-transparent"
+          mobileOpen ? "h-[560px] shadow-2xl" : scrolled ? "shadow-md h-[88px] border-b border-slate-200" : "h-[92px] border-transparent"
         }`}
       >
-        <div className="global-container flex items-center justify-between h-[64px]">
-          <button onClick={() => scrollToSection("home")} className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white shadow-md">
-              <FaBookOpen size={16} />
+        <div className="global-container flex items-center justify-between h-[88px]">
+          <button onClick={() => scrollToSection("home")} className="flex items-center group focus:outline-none">
+            <div className="h-[68px] sm:h-[74px] w-auto px-3 py-1 bg-[#2b2b2b] rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all border-2 border-amber-400/50">
+              <img 
+                src="/logo.png" 
+                alt="Edify Eight Logo" 
+                className="h-full w-auto object-contain filter brightness-105 contrast-110" 
+              />
             </div>
-            <span className="text-xl font-black tracking-tighter">
-              <span className="text-purple-600">Edify</span>
-              <span className="text-yellow-400">Eight</span>
-            </span>
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-purple-50 text-purple-600 active:scale-90 transition-all"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-purple-50 text-purple-600 active:scale-90 transition-all"
           >
-            {mobileOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+            {mobileOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
         </div>
 
